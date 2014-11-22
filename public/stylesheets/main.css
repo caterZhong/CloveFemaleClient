@@ -1,0 +1,28 @@
+.panelTips{
+	background:#FFF;
+	height:40px;
+	line-height: 40px;
+	padding-left:40px;
+	font-size:16px;
+	border-bottom:1px dashed #E24949;
+}
+.recordMenu{
+	min-height:400px;
+}
+.recordMenuItem{
+	height:80px;
+	line-height: 60px;
+	padding:15px;
+	border-bottom:1px solid #C4B2B2;
+}
+.recordMenuItem img{
+	float:left;
+}
+.recordMenuItem span{
+	padding-left:20px;
+}
+.more{
+	float:right;
+	font-weight: bold;
+	color:#E24949;
+}
