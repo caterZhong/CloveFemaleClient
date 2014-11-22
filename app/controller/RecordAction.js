@@ -1,12 +1,13 @@
 Ext.define('cfa.controller.RecordAction',{
 	extend:'Ext.app.Controller',
+	requires:['Ext.DataView'],
 	config: {
 		refs: {
 			recordMenu: "#recordMenu"
 		},
 		control: {
 
-			/*recordMenu: {
+			recordMenu: {
 				initialize:function(component,options){
 					component.element.on({
 						itemsingletap:function(dataview,index,item,record,e){
@@ -14,7 +15,7 @@ Ext.define('cfa.controller.RecordAction',{
 						}
 					})
 				}
-			}*/
+			}
 
 		}
 	}

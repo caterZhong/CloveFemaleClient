@@ -3165,14 +3165,14 @@ body.x-desktop {
 	-o-border-radius: 0.4em;
 	border-radius: 0.4em;
 	min-height: 1.8em;
-	padding: .3em .6em
+	padding: .3em .6em;
 }
 
 .x-button,.x-toolbar .x-button {
 	border: 1px solid #999;
 	border-top-color: #a6a6a6;
 	background-color: #ccc;
-	color: #000
+	color: #000;
 }
 
 .x-button.x-button-back:before,.x-button.x-button-forward:before,.x-toolbar .x-button.x-button-back:before,.x-toolbar .x-button.x-button-forward:before {
@@ -5836,6 +5836,18 @@ body.x-desktop {
 	color: #fff;
 	text-shadow:none; 
 }
+.x-toolbar-dark .x-button{
+	background:#AF3535;
+	border:0px;
+}
+.x-button.x-button-decline{
+	background:#AF3535;
+	border:0px;	
+}
+.x-toolbar .x-button.x-button-decline{
+	background:#AF3535;
+	border:0px;
+}
 /* 底部栏  */
 .x-tabbar-dark{
 	background:#585252;
@@ -5856,4 +5868,33 @@ body.x-desktop {
 }
 .x-tabbar-dark .x-tab-active{
 	color:#E06868;
+}
+/* 模态对话框  */
+.x-panel.x-floating,.x-msgbox,.x-form.x-floating {
+	padding: 6px;
+	background-color: #FFF;
+}
+/* 表单颜色  */
+.x-form .x-scroll-container{
+	background:#FFF;
+}
+.subBtn{
+	background: #EA7B7B;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px;
+	border: 0px;
+	border-radius: 2px;
+	margin-right:15px;
+}
+.resetBtn{
+	background:#999999;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px;
+	border: 0px;
+	border-radius: 2px;
+	margin-right:15px;
 }

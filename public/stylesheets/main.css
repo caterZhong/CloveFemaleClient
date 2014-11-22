@@ -26,3 +26,18 @@
 	font-weight: bold;
 	color:#E24949;
 }
+/* #growthPanel{
+	display:none;
+} */
+.modalPanel{
+	text-align:center;
+	color:#E24949;
+	font-size:16px;
+	font-weight: bold;
+	padding:10px;
+	border-bottom:1px dashed #E24949;
+}
+#healthForm{
+	height:80%;
+	background:#FFF;
+}
