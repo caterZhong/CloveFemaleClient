@@ -3,8 +3,8 @@ Ext.application({
 	name: "cfa",
 	requires:['Ext.MessageBox'],
 	
-	views: ["MainView","KidView"],
-	controllers:["MainAction","RecordAction"],
+	controllers:["MainAction","RecordAction","KidAction"],
+	views: ["MainView","RecordView","KidView"],
 
 	launch: function(){
 		Ext.Viewport.add({

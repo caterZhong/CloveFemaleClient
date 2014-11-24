@@ -2,7 +2,7 @@ Ext.define("cfa.view.KidView",{
 
 	extend:"Ext.Container",
 
-	requires:["Ext.DataView","Ext.Panel","Ext.data.Store","cfa.controller.KidAction","Ext.form.FormPanel","Ext.field.DatePicker","Ext.field.Select","Ext.data.JsonP"],
+	requires:["Ext.DataView","Ext.Panel","Ext.data.Store","cfa.controller.KidAction","Ext.form.FormPanel","Ext.field.DatePicker","Ext.form.FieldSet","Ext.field.Select","Ext.data.JsonP","Ext.field.Radio"],
 	
 	xtype:"kidview",
 
@@ -382,6 +382,7 @@ Ext.define("cfa.view.KidView",{
 		/*疫苗接种结束*/
 		{
 			xtype:"dataview",
+			id:"kidMenu",
 			cls:'recordMenu',
 			store:{
 				fields:['imgSrc','itemMsg'],
@@ -394,26 +395,26 @@ Ext.define("cfa.view.KidView",{
 			},
 			itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
 			listeners:{
-			itemsingletap:function(dataview,index,item,record,e){
+			// itemsingletap:function(dataview,index,item,record,e){
 					
-					if(index==0){
-						var birthModal=Ext.getCmp('kidBirthModal');
-						birthModal.show();
-					}
-					else if(index==1){
-						var healModal=Ext.getCmp('kidHealModal');
-						healModal.show();
-					}
-					else if(index==2){
-						var scoreModal=Ext.getCmp('kidScoreModal');
-						scoreModal.show();
-					}
-					else{
-						var vaccineModal=Ext.getCmp('vaccineModal');
-						/*vaccineModal.show();*/
-						vaccineModal.show();
-					}
-				}
+			// 		if(index==0){
+			// 			var birthModal=Ext.getCmp('kidBirthModal');
+			// 			birthModal.show();
+			// 		}
+			// 		else if(index==1){
+			// 			var healModal=Ext.getCmp('kidHealModal');
+			// 			healModal.show();
+			// 		}
+			// 		else if(index==2){
+			// 			var scoreModal=Ext.getCmp('kidScoreModal');
+			// 			scoreModal.show();
+			// 		}
+			// 		else{
+			// 			var vaccineModal=Ext.getCmp('vaccineModal');
+			// 			/*vaccineModal.show();*/
+			// 			vaccineModal.show();
+			// 		}
+			// 	}
 			}
 		}]
 	}

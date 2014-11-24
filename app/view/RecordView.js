@@ -34,15 +34,6 @@ Ext.define("cfa.view.RecordView",{
 					]
 				},
 				itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
-				listeners:{
-					itemsingletap:function(dataview,index,item,record,e){
-						if(index==1){
-							Ext.Viewport.setActiveItem('kidview');
-						}
-						else
-							console.log('其他功能');
-					}
-				}
 			}]
 	}
 });
