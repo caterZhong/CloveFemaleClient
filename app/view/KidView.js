@@ -394,28 +394,6 @@ Ext.define("cfa.view.KidView",{
 				]
 			},
 			itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
-			listeners:{
-			// itemsingletap:function(dataview,index,item,record,e){
-					
-			// 		if(index==0){
-			// 			var birthModal=Ext.getCmp('kidBirthModal');
-			// 			birthModal.show();
-			// 		}
-			// 		else if(index==1){
-			// 			var healModal=Ext.getCmp('kidHealModal');
-			// 			healModal.show();
-			// 		}
-			// 		else if(index==2){
-			// 			var scoreModal=Ext.getCmp('kidScoreModal');
-			// 			scoreModal.show();
-			// 		}
-			// 		else{
-			// 			var vaccineModal=Ext.getCmp('vaccineModal');
-			// 			/*vaccineModal.show();*/
-			// 			vaccineModal.show();
-			// 		}
-			// 	}
-			}
 		}]
 	}
 });

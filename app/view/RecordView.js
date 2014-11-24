@@ -4,7 +4,6 @@ Ext.define("cfa.view.RecordView",{
 	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store"],
 	
 	xtype: "recordview",
-	
 	config:{
 			/*记录控主页*/
 			xtype:"panel",
