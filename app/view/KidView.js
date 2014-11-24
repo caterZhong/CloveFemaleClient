@@ -2,7 +2,7 @@ Ext.define("cfa.view.KidView",{
 
 	extend:"Ext.Container",
 
-	requires:["Ext.DataView","Ext.Panel","Ext.data.Store","cfa.controller.KidAction","Ext.form.FormPanel","Ext.field.DatePicker"],
+	requires:["Ext.DataView","Ext.Panel","Ext.data.Store","cfa.controller.KidAction","Ext.form.FormPanel","Ext.field.DatePicker","Ext.field.Select","Ext.data.JsonP"],
 	
 	xtype:"kidview",
 
@@ -10,23 +10,21 @@ Ext.define("cfa.view.KidView",{
 		xtype:"panel",
 		layout: "vbox",
 		width: "100%",
-		//id:"recordmainview",
 		items: [{
 			xtype: "toolbar",
 			title: "小宝成长", 
 			docked: "top",
 			items:[{
 				id:'kidBackBtn',
-				/*xtype:'button',
-				ui:'decline-back',*/
 				text:'返回'
-				/*handler:function(){}*/
 			}]
 		},{
 			xtype:'panel',
 			cls:'panelTips',
 			html:'孩子的成长记录'			
-		},{
+		},
+    	/*身体指标开始*/
+		{
 			id:'kidHealModal',
 			xtype:'panel',
 			layout: "vbox",
@@ -43,13 +41,11 @@ Ext.define("cfa.view.KidView",{
 			},{
 				xtype:'formpanel',
 				id:'healthForm',
+				name:'healthForm',
 				scrollable:'vertical',
-				url:'test.php',
 				items:[
 				{
 					xtype:'fieldset',
-					title:'电影信息',
-					//instructions:'请填写电影信息',
 					defaults:{
 						labelwidth:'20%'
 					},
@@ -73,6 +69,110 @@ Ext.define("cfa.view.KidView",{
 					]
 				},{
 					xtype:'panel',
+					docked: "bottom",
+					layout:{
+						type:'hbox',
+						pack:'end'
+					},
+					defaults:{
+						xtype:'button'
+					},
+					items:[
+						{
+							cls:'subBtn',
+							text:'提交',
+							handler:function(){
+								Ext.data.JsonP.request({
+									url:'http://localhost:9000/Application/test',
+									timeout:3000,
+									params:{
+										name:'baby',
+										age:'10'
+									},
+									callback:function(){
+										console.log("successs");
+									},
+									success:function(result){
+										console.log("success");
+									},
+									failure:function(){
+										console.log("fail");
+									}
+								});
+							}
+						},{
+							cls:'resetBtn',
+							text:'重置',
+							handler:function(){
+								healthForm.reset();
+							}
+						}
+					]
+				}]
+			}]
+		},
+		/*身体指标结束*/
+        /*孩子诞生开始*/
+		{
+			id:'kidBirthModal',
+			xtype:'panel',
+			modal:true,
+			hidden:true,
+			hideOnMaskTap:true,
+			centered:true,
+			height:'60%',
+			width:'90%',
+			items:[{
+				xtype:'panel',
+				cls:'modalPanel',
+				html:'新生孩子记录'	
+			},{
+				xtype:'formpanel',
+				id:'birthForm',
+				scrollable:'vertical',
+				url:'http://localhost:9000/Application/test',
+				items:[
+				{
+					xtype:'fieldset',
+					/*title:'孩子信息',*/
+					defaults:{
+						labelwidth:'20%'
+					},
+					items:[
+						{
+							xtype:'textfield',
+							id:'babyName',
+							name:'babyName',
+							label:'姓名',
+							placeHolder:'输入孩子的姓名',
+							clearIcon:true,
+							disabled:false
+						},{
+							xtype:'datepickerfield',
+							id:'birthDate',
+							name:'healthTime',
+							label:'出生日期',
+							clearIcon:true,
+							disabled:false
+						},{
+							xtype:'radiofield',
+							id:'babyMale',
+							name:'sex',
+							label:'男孩',
+							value:'male',
+							checked:true
+						},{
+							xtype:'radiofield',
+							id:'babyFemale',
+							name:'sex',
+							label:'女孩',
+							vale:'female',
+							check:false
+						}
+					]
+				},{
+					xtype:'panel',
+					docked: "bottom",
 					layout:{
 						type:'hbox',
 						pack:'end'
@@ -97,17 +197,190 @@ Ext.define("cfa.view.KidView",{
 					]
 				}]
 			}]
-		},{
-			id:'kidBirthModal',
+		},
+		/*孩子诞生结束*/
+		/*成绩表单开始*/
+		{
+			id:'kidScoreModal',
 			xtype:'panel',
+			layout: "vbox",
 			modal:true,
 			hidden:true,
 			hideOnMaskTap:true,
 			centered:true,
 			height:'60%',
 			width:'90%',
-			html:'孩子诞生'
-		},{
+			items:[{
+				xtype:'panel',
+				cls:'modalPanel',
+				html:'小宝成绩记录'	
+			},{
+				xtype:'formpanel',
+				id:'scoreForm',
+				cls:'babyForm',
+				scrollable:'vertical',
+				url:'http://localhost:9000/Application/test',
+				items:[
+				{
+					xtype:'fieldset',
+					/*title:'电影信息',*/
+					defaults:{
+						labelwidth:'20%'
+					},
+					items:[
+						{
+							xtype:'selectfield',
+							id:'grade',
+							name:'grade',
+							label:'年级',
+							options:[{
+								text:'一年级',
+								value:'1'
+							},{
+								text:'二年级',
+								value:'2'
+							},{
+								text:'三年级',
+								value:'3'
+							},{
+								text:'四年级',
+								value:'4'
+							},{
+								text:'五年级',
+								value:'5'
+							},{
+								text:'六年级',
+								value:'6'
+							}]
+						},{
+							xtype:'selectfield',
+							id:'course',
+							name:'course',
+							label:'科目',
+							options:[{
+								text:'语文',
+								value:'1'
+							},{
+								text:'数学',
+								value:'1'
+							},{
+								text:'英语',
+								value:'1'
+							}]
+						},{
+							xtype:'textfield',
+							id:'tall',
+							name:'tall',
+							label:'成绩',
+							placeHolder:'输入科目成绩',
+							clearIcon:true,
+							disabled:false
+						}
+					]
+				},{
+					xtype:'panel',
+					docked: "bottom",
+					layout:{
+						type:'hbox',
+						pack:'end'
+					},
+					defaults:{
+						xtype:'button'
+					},
+					items:[
+						{
+							cls:'subBtn',
+							text:'提交',
+							handler:function(){
+								healthForm.submit();
+							}
+						},{
+							cls:'resetBtn',
+							text:'重置',
+							handler:function(){
+								healthForm.reset();
+							}
+						}
+					]
+				}]
+			}]
+		},
+		/*成绩表单结束*/
+		/*疫苗接种开始*/
+		{
+			id:'vaccineModal',
+			xtype:'panel',
+			layout: "vbox",
+			modal:true,
+			hidden:true,
+			hideOnMaskTap:true,
+			centered:true,
+			height:'60%',
+			width:'90%',
+			items:[{
+				xtype:'panel',
+				cls:'modalPanel',
+				html:'小宝疫苗记录'	
+			},{
+				xtype:'formpanel',
+				id:'vaccineForm',
+				cls:'babyForm',
+				scrollable:'vertical',
+				url:'http://localhost:9000/Application/test',
+				items:[
+				{
+					xtype:'fieldset',
+					defaults:{
+						labelwidth:'20%'
+					},
+					items:[
+						{
+							xtype:'datepickerfield',
+							id:'time',
+							name:'healthTime',
+							label:'日期',
+							clearIcon:true,
+							disabled:false
+						},{
+							xtype:'textfield',
+							id:'vaccineRec',
+							name:'tall',
+							label:'备注',
+							placeHolder:'输入疫苗接种备注',
+							clearIcon:true,
+							disabled:false
+						}
+					]
+				},{
+					xtype:'panel',
+					docked: "bottom",
+					layout:{
+						type:'hbox',
+						pack:'end'
+					},
+					defaults:{
+						xtype:'button'
+					},
+					items:[
+						{
+							cls:'subBtn',
+							text:'提交',
+							handler:function(){
+								healthForm.submit();
+							}
+						},{
+							cls:'resetBtn',
+							text:'重置',
+							handler:function(){
+								healthForm.reset();
+							}
+						}
+					]
+				}]
+			}]
+		},
+		/*疫苗接种结束*/
+		{
 			xtype:"dataview",
 			cls:'recordMenu',
 			store:{
@@ -121,7 +394,7 @@ Ext.define("cfa.view.KidView",{
 			},
 			itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
 			listeners:{
-				itemsingletap:function(dataview,index,item,record,e){
+			itemsingletap:function(dataview,index,item,record,e){
 					
 					if(index==0){
 						var birthModal=Ext.getCmp('kidBirthModal');
@@ -132,12 +405,16 @@ Ext.define("cfa.view.KidView",{
 						healModal.show();
 					}
 					else if(index==2){
-						;
+						var scoreModal=Ext.getCmp('kidScoreModal');
+						scoreModal.show();
 					}
-					else
-						;
+					else{
+						var vaccineModal=Ext.getCmp('vaccineModal');
+						/*vaccineModal.show();*/
+						vaccineModal.show();
 					}
 				}
+			}
 		}]
 	}
 });

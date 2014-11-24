@@ -5898,3 +5898,7 @@ body.x-desktop {
 	border-radius: 2px;
 	margin-right:15px;
 }
+/* 选择框样式 */
+.x-list-normal .x-list-item.x-item-selected.x-list-item-tpl{
+	background:#E06868;
+}

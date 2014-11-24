@@ -1,8 +1,8 @@
 Ext.define("cfa.view.RecordView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store","cfa.view.KidView"],
-
+	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store"],
+	
 	xtype: "recordview",
 	
 	config:{
