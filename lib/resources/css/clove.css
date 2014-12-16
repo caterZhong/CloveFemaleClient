@@ -5840,6 +5840,9 @@ body.x-desktop {
 	background:#AF3535;
 	border:0px;
 }
+.x-toolbar-dark .x-button.x-button-pressing{
+	background:#B94848;
+}
 .x-button.x-button-decline{
 	background:#AF3535;
 	border:0px;	
@@ -5901,4 +5904,20 @@ body.x-desktop {
 /* 选择框样式 */
 .x-list-normal .x-list-item.x-item-selected.x-list-item-tpl{
 	background:#E06868;
+}
+/* 弹出框样式  */
+.x-msgbox{
+	border:0px;
+}
+.x-button.x-button-action,.x-toolbar .x-button.x-button-action{
+	background:#EC6A6A;
+	border:0px;
+}
+.x-button.x-button-action.x-button-pressing,.x-toolbar .x-button.x-button-action.x-button-pressing{
+	background:#DF5353;
+}
+.x-msgbox-dark .x-msgbox-text{
+	color:#EC6A6A;
+	font-weight: bold;
+	text-shadow:none;
 }
