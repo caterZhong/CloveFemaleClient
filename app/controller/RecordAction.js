@@ -4,6 +4,7 @@ Ext.define('cfa.controller.RecordAction',{
 	config: {
 		refs: {
 			recordMenu: "#recordMenu", //记录控功能菜单
+			tabpanel:"#tabpanel1",
 			recordview:{
         		//引用记录控页面
                 selector: 'recordview',

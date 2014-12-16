@@ -26,7 +26,7 @@ Ext.define('cfa.controller.KidAction',{
 	},
 	//返回到记录控页面
 	backToRecordview: function(){
-		this.redirectTo('record');
+		this.redirectTo('main');
 	},
 	//显示小宝成长页面
 	showKidview:function(){
