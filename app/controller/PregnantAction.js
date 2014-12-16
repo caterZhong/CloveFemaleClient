@@ -30,12 +30,12 @@ Ext.define('cfa.controller.PregnantAction',{
 		this.redirectTo('main');
 	},
 
-	//显示助孕页面
+	//显示助孕记录页面
 	showPregnantview:function(){
     	Ext.Viewport.setActiveItem(this.getPregnantview());
     },
 
-    //根据助孕菜单点击显示不同输入模板
+    //根据助孕记录菜单点击显示不同输入模板
     showModel:function(dataview,index,item,record,e){
     	if(index==0){
 			var mensesModal=Ext.getCmp('mensesModal');
