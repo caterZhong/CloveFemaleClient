@@ -56,4 +56,10 @@ Ext.define('cfa.controller.PregnantAction',{
 		}
 				
     },
+
+    tapTestEvent:function(){
+    // 	 $('.floatTips').html("hahhah");
+     },
+
+    // $('.floatTips').click(tapTestEvent);
 });

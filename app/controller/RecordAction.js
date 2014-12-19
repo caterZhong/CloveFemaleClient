@@ -26,7 +26,7 @@ Ext.define('cfa.controller.RecordAction',{
 		switch(index){
 			case 0: this.redirectTo('pregnant');break;
 			case 1: this.redirectTo('kid'); break;
-			case 2: Ext.Msg.alert("Tips","功能尚未开发");break;
+			case 2: this.redirectTo('notebook'); break;
 			case 3: Ext.Msg.alert("Tips","功能尚未开发");break;
 			default:Ext.Msg.alert("Tips","功能尚未开发");break;
 		};

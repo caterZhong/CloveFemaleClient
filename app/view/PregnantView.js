@@ -170,7 +170,7 @@ Ext.define("cfa.view.PregnantView",{
 				items:[{
 					id:'item1',
 					xtype:'selectfield',
-					label:'体温1',
+					label:'体温',
 					options:[{
 						text:'35',
 						value:'1'
@@ -180,6 +180,18 @@ Ext.define("cfa.view.PregnantView",{
 					},{
 						text:'37',
 						value:'3'
+					},{
+						text:'38',
+						value:'4'
+					},{
+						text:'39',
+						value:'5'
+					},{
+						text:'40',
+						value:'6'
+					},{
+						text:'41',
+						value:'7'
 					}],
 					flex:1,
 					height:100,
@@ -188,19 +200,65 @@ Ext.define("cfa.view.PregnantView",{
 				{
 					id:'item2',
 					xtype:'selectfield',
-					label:'体温2',
+					label:'',
 					options:[{
-						text:'5',
+						text:'0',
+						value:'0'
+					},{
+						text:'1',
 						value:'1'
 					},{
-						text:'6',
+						text:'2',
 						value:'2'
 					},{
-						text:'7',
+						text:'3',
 						value:'3'
+					},{
+						text:'4',
+						value:'4'
+					},{
+						text:'5',
+						value:'5'
+					},{
+						text:'6',
+						value:'6'
+					},{
+						text:'7',
+						value:'7'
+					},{
+						text:'8',
+						value:'8'
+					},{
+						text:'9',
+						value:'9'
 					}],
 					flex:1,
 				}]
+			},{
+				xtype:'panel',
+					docked: "bottom",
+					layout:{
+						type:'hbox',
+						pack:'end'
+					},
+					defaults:{
+						xtype:'button'
+					},
+					items:[
+						{
+							cls:'subBtn',
+							text:'提交',
+							handler:function(){
+								healthForm.submit();
+							}
+						},{
+							cls:'resetBtn',
+							text:'重置',
+							handler:function(){
+								healthForm.reset();
+							}
+						}
+					]
 			}]
 		},
 		/*基础体温结束*/
@@ -281,6 +339,7 @@ Ext.define("cfa.view.PregnantView",{
 		/*胎动开始*/
 		{
 			id:'movementModal',
+			cls:'addWeight',
 			xtype:'panel',
 			layout: "vbox",
 			modal:true,
@@ -289,42 +348,60 @@ Ext.define("cfa.view.PregnantView",{
 			centered:true,
 			height:'60%',
 			width:'90%',
-			items:[{
+			items:[{ 
 				xtype:'panel',
-				cls:'modalPanel',
-				html:'胎动记录'	
+				// cls:'modalPanel',
+				// html:'胎动记录'	
+				items:[{
+					html:"<div class='movementHeader'><div class='floatTips'>Tips</div><div class='movementTitle'>胎动记录</div></div>",
+					
+				}
+				// ,{
+				// 	xtype:'panel',
+				// 	cls:'modalPanel',
+				// 	html:'胎动记录'
+				// }
+				]
 			},{
-				xtype:'formpanel',
-				id:'movementForm',
-				cls:'babyForm',
-				scrollable:'vertical',
-				url:'http://localhost:9000/Application/test',
-				items:[
-				{
-					xtype:'fieldset',
-					defaults:{
-						labelwidth:'20%'
-					},
-					items:[
-						{
-							xtype:'datepickerfield',
-							id:'time',
-							name:'Time',
-							label:'日期',
-							clearIcon:true,
-							disabled:false
-						},{
-							xtype:'textfield',
-							id:'movementNum',
-							name:'movementNum',
-							label:'次数',
-							placeHolder:'输入胎动次数',
-							clearIcon:true,
-							disabled:false
-						}
-					]
-				},{
-					xtype:'panel',
+				xtype:'panel',
+				layout: "hbox",
+				cls:'movementPanel',
+				items:[{
+					id:'movementNum',
+					xtype:'selectfield',
+					label:'',
+					options:[{
+						text:'5',
+						value:'0'
+					},{
+						text:'6',
+						value:'1'
+					},{
+						text:'7',
+						value:'32'
+					},{
+						text:'8',
+						value:'3'
+					},{
+						text:'9',
+						value:'4'
+					},{
+						text:'10',
+						value:'5'
+					},{
+						text:'11',
+						value:'6'
+					}],
+					height:100,
+
+	 			},{
+	 				cls:'movementUnit',
+	 				html:'次/小时'
+	 			}]
+	 			// html:'胎动记录'	
+			},{
+				
+	 				xtype:'panel',
 					docked: "bottom",
 					layout:{
 						type:'hbox',
@@ -348,9 +425,23 @@ Ext.define("cfa.view.PregnantView",{
 							}
 						}
 					]
-				}]
+
 			}]
 		},
+		// {	
+		// 	layout:'hbox',
+		// 	id:'movementModal',
+		// 	xtype:'toolbar',
+		// 	title:'胎动记录',
+		// 	items:[
+		// 	{xtype:'spacer'}	
+		// 	,{
+		// 		xtype:'label',
+		// 		html:'tips'
+		// 		text:'New'
+		// 		ui:'action'
+		// 	}]
+		// },
 		/*胎动结束*/
 		{
 			xtype:"dataview",
