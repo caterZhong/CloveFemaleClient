@@ -28,11 +28,12 @@ Ext.define('cfa.controller.RecordAction',{
 			case 1: this.redirectTo('kid'); break;
 			case 2: this.redirectTo('notebook'); break;
 			case 3: Ext.Msg.alert("Tips","功能尚未开发");break;
+			case 4: this.redirectTo('chart');break;
 			default:Ext.Msg.alert("Tips","功能尚未开发");break;
 		};
 	},
 	//显示记录控页面
 	showRecordview:function(){
     	Ext.Viewport.setActiveItem(this.getRecordview());
-    }
+    },
 });

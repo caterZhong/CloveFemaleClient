@@ -1616,19 +1616,8 @@ audio {
 }
 
 .x-chart-watermark {
-	opacity: 0.5;
-	z-index: 9;
-	right: 0;
-	bottom: 0;
-	background: rgba(0,0,0,0.5);
-	color: white;
-	padding: 4px 6px;
-	font-family: "Helvetica";
-	font-size: 12px;
-	position: absolute;
-	border-top-left-radius: 4px;
-	white-space: nowrap;
-	-webkit-border-top-left-radius: 4px
+	/* Edited by TanShichang  at 2014-12-21 */
+	display:none;
 }
 
 .x-legend .x-legend-inner .x-legend-container {
