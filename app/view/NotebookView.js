@@ -9,8 +9,7 @@ Ext.define("cfa.view.NotebookView",{
 			fullscreen: true,
 			layout: "hbox",
 			id:"notebookmainview",
-			items : [{
-						
+			items : [{		
 						xtype : 'bookfirstview',
 						cls: 'slide',
 												
@@ -18,8 +17,10 @@ Ext.define("cfa.view.NotebookView",{
 						width: '100%'											
 					}
 					, {
+
 						xtype : 'slidenav',
-						width : 250
+						width : 250,
+						
 			}
 			]
 	}

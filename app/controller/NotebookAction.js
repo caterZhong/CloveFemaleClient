@@ -33,9 +33,10 @@ Ext.define('cfa.controller.NotebookAction',{
 		}
 	},
 
-	//返回到记录控页面
+	//返回到记录控页面,同时删除笔记本的页面
 	backToRecordview: function(){
 		this.redirectTo('main');
+		Ext.Viewport.remove(this.getNotebookview());
 	},
 
 	//显示助孕记录页面
@@ -47,10 +48,12 @@ Ext.define('cfa.controller.NotebookAction',{
 	 * 切换展示导航栏
 	 */
 	toggleNav : function(){
+		alert("asdf");
 					var me = this,
 					mainEl = me.getBookfirstview().element;
 									
 					if (mainEl.hasCls('out')) {
+
 						mainEl.removeCls('out').addCls('in'); 
 						me.getBookfirstview().setMasked(false);
 					} else {
