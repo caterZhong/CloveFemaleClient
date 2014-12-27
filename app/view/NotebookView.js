@@ -1,7 +1,7 @@
 Ext.define("cfa.view.NotebookView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store"],
+	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store","Ext.form.FormPanel"],
 	
 	xtype: "notebookview",
 	config:{

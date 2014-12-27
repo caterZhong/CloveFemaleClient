@@ -8,10 +8,10 @@ Ext.application({
 	name: "cfa",
 	requires:['Ext.MessageBox','cfa.view.ColorPatterns'],
 	
-	controllers:["MainAction","RecordAction","KidAction","PregnantAction","NotebookAction",
+	controllers:["MainAction","RecordAction","KidAction","PregnantAction","NotebookAction","NewnoteAction",
 		"chart.ChartAction","chart.PieChartAction"],
 	views: ["MainView","RecordView","KidView","PregnantView","NotebookView","SlideNav",
-		"NotebookFirstView","chart.ChartView","chart.PieChart","chart.LineChart","chart.BarChart"],
+		"NotebookFirstView","NewnoteView","chart.ChartView","chart.PieChart","chart.LineChart","chart.BarChart"],
 	stores: ["PieStore"],
 
 	launch: function(){

@@ -4,6 +4,7 @@ Ext.define('cfa.controller.NotebookAction',{
 	config: {
 		refs: {
 			backBtn: 'button[name="bookBack_btn"]',
+			newBtn : 'button[name="new_btn"]',
 			bookfirstview : 'bookfirstview',
 			slidenav:'slidenav',
 			navBtn : 'button[name="nav_btn"]',
@@ -20,6 +21,9 @@ Ext.define('cfa.controller.NotebookAction',{
 			},
 			navBtn : {
 						tap : 'toggleNav'
+			},
+			newBtn : {
+						tap : 'showNewnoteView'
 			},
 												
 			slidenav : {
@@ -39,16 +43,19 @@ Ext.define('cfa.controller.NotebookAction',{
 		Ext.Viewport.remove(this.getNotebookview());
 	},
 
-	//显示助孕记录页面
+	//显示随手记页面
 	showNotebookview:function(){
     	Ext.Viewport.setActiveItem(this.getNotebookview());
     },
 
+    //切换到新建笔记页面
+    showNewnoteView:function(){
+    	this.redirectTo('newnote');
+    },
     /**
 	 * 切换展示导航栏
 	 */
 	toggleNav : function(){
-		alert("asdf");
 					var me = this,
 					mainEl = me.getBookfirstview().element;
 									

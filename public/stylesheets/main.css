@@ -143,6 +143,80 @@ to { -webkit-transform: translateX(0px); }
 	/*background: #222;*/
 }
 
+.note-form{
+	width:100%;
+}
+.note-add-titleBar{
+	height: 50px;
+}
+.spacer{
+	background-color: #fff;
+}
+
+
+/*.note-title{
+	width:100%;
+	height: 50px;
+	border-bottom: 1px solid gray;
+	padding: 0px;
+}*/
+.note-bottom{
+	height: 47px;
+}
+
+.testPanel{
+	border-bottom:1px solid #E24949;
+}
+
+.x-input-el{
+	width:100%;
+}
+
+/*#ext-element-64{
+	min-height:550px;
+	border-bottom: 1px solid red;
+}*/
+
+/*#ext-element-76{
+	min-height:505px;
+	border-bottom: 1px solid red;
+}*/
+.textarea-note{
+	padding:0;
+	margin: 0;
+	overflow: hidden;
+	height:505px;
+	background-color: #FFF;
+	border-bottom: 1px solid #E24949;
+}
+.textarea-note textarea{
+	height:505px;
+}
+
+.note-builddate{
+	padding:5px;
+	line-height: 36px;
+    background-color: #FFF;
+}
+
+.note-blong input{
+	text-align:right;
+	padding:0;
+	padding-right: 40px;
+	width: 150px;
+	overflow: hidden;
+}
+.x-dock.x-dock-horizontal>.x-dock-item{
+	width: 150px;
+}
+/*#ext-element-88{
+	text-align:right;
+	padding-right: 40px;
+	width: 150px;
+	overflow: hidden;
+}*/
+
+
 /*.slidenav-list .x-list-item{
 	color: rgb(223, 223, 223);
 	border-bottom: 1px solid #000 !important;

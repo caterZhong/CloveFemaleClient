@@ -1,12 +1,12 @@
 Ext.define("cfa.view.NotebookFirstView",{
 
-	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store"],
+	extend: "Ext.Panel",
+	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store","Ext.form.FormPanel"],
 	
 	xtype: "bookfirstview",
-	config:{
+
+    config:{
 			/*随手记默认页面*/
-			// fullscreen: true,
 			layout: "hbox",
 			id:"notebookmainview",
 			items : [{
@@ -35,7 +35,6 @@ Ext.define("cfa.view.NotebookFirstView",{
 			},{
 				xtype:'list',
 				width: "100%",
-				// fullscreen: true,
 				itemTpl : '{title}',
 				store:{
 					fields:['title'],
@@ -48,6 +47,10 @@ Ext.define("cfa.view.NotebookFirstView",{
 				},
 			}]
 	}
+
+
+
+	
 });
 
         
