@@ -12,7 +12,9 @@ Ext.application({
 		"chart.ChartAction","chart.PieChartAction"],
 	views: ["MainView","RecordView","KidView","PregnantView","NotebookView","SlideNav",
 		"NotebookFirstView","NewnoteView","chart.ChartView","chart.PieChart","chart.LineChart","chart.BarChart"],
-	stores: ["PieStore"],
+	models:["NoteGroupModel"],
+	stores: ["PieStore","NoteGroupStore"],
+
 
 	launch: function(){
 		Ext.Viewport.add({

@@ -5,6 +5,10 @@ Ext.define('cfa.controller.NewnoteAction',{
 		refs: {
 			newnotebackBtn: 'button[name="newnote_back_btn"]',
 			newnoteview : 'newnoteview',
+			noteGroup : '#noteGroup',
+			groupAddBtn:'#group_add_btn',
+			newGroupName:'#groupName',
+			cancelBtn:'#cancelBtn',
 			newnoteview:{
         		//引用新建笔记页面
                 selector: 'newnoteview',
@@ -15,6 +19,18 @@ Ext.define('cfa.controller.NewnoteAction',{
 		control: {
 			newnotebackBtn: {
 						tap : 'backToNotebookview'
+			},
+			noteGroup: {
+					change : 'showNewGroupModal'	
+			},
+			newGroupName:{
+					focus : 'hideTips'
+			},
+			groupAddBtn: {
+					tap : 'addNoteGroup'
+			},
+			cancelBtn:{
+					tap : 'cancleAddGroup'
 			},
 		},
 		routes:{
@@ -32,5 +48,59 @@ Ext.define('cfa.controller.NewnoteAction',{
 	showNewnoteview:function(){
     	Ext.Viewport.setActiveItem(this.getNewnoteview());
     },
+
+    //显示新建分组模态框
+    showNewGroupModal: function(select,newValue,oldValue){
+    	if(newValue == '新建笔记本'){
+    		var newGroupModal=Ext.getCmp('newgroupModal');
+    		var groupName = Ext.getCmp("groupName").setValue("");
+    		var shortName = Ext.getCmp("shortName").setValue("");
+			newGroupModal.show();
+    	}
+    },
+
+    //添加分组
+    addNoteGroup:function(){
+    	var groupName = Ext.getCmp("groupName").getValue();
+    	var shortName = Ext.getCmp("shortName").getValue();
+    	if(groupName == "" || shortName ==""){
+    		Ext.getCmp('notNullTips').show();
+    		return;
+    	}
+    	var noteGroup = Ext.getCmp("noteGroup");
+    	var store = noteGroup.getStore();
+    	var length = store.getCount();
+    	for(var i = 0; i < length; i++ ){
+    		if(groupName == store.getAt(i).get('groupName')){
+    			Ext.getCmp('newGroupTips').show();
+    			return;
+    		}
+    		
+    	}
+    	var newData = {'groupName':groupName,'shortName':shortName};
+    	store.addData(newData);
+    	hideModalFrame();
+    	noteGroup.setValue(groupName);
+    },
+
+    //隐藏提示
+    hideTips:function(){
+    	Ext.getCmp('newGroupTips').hide();
+    	Ext.getCmp('notNullTips').hide();
+    },
+
+    //隐藏添加笔记本的模态对话框
+    hideModalFrame:function(){
+    	Ext.getCmp('newgroupModal').hide();
+    },
+
+    //取消添加笔记本
+    cancleAddGroup:function(){
+    	var noteGroup = Ext.getCmp("noteGroup");
+    	var store = noteGroup.getStore();
+    	noteGroup.setValue(store.getAt(0).get("groupName"));
+		this.hideTips();
+		this.hideModalFrame();
+    }
 
 });
