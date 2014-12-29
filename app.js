@@ -6,14 +6,22 @@ Ext.Loader.setPath({
 Ext.application({
 
 	name: "cfa",
-	requires:['Ext.MessageBox','cfa.view.ColorPatterns'],
+	requires:['Ext.MessageBox','cfa.view.ColorPatterns','Ext.util.HashMap'],
 	
 	controllers:["MainAction","RecordAction","KidAction","PregnantAction","NotebookAction","NewnoteAction",
-		"chart.ChartAction","chart.PieChartAction"],
+		"chart.ChartAction","chart.CustomizeDateAction"],
+		
 	views: ["MainView","RecordView","KidView","PregnantView","NotebookView","SlideNav",
-		"NotebookFirstView","NewnoteView","chart.ChartView","chart.PieChart","chart.LineChart","chart.BarChart"],
+		"NotebookFirstView","NewnoteView","chart.ChartView","chart.CustomizeDateView", "chart.BarChartBabyMove", 
+		"chart.BarChartGrade", "chart.BarChartTemp",
+		"chart.LineChartBabyMove", "chart.LineChartGesWeight", "chart.LineChartGrade",
+		"chart.LineChartHeight", "chart.LineChartTemp", "chart.PieChartBabyMove", "chart.PieChartGrade",
+		"chart.PieChartTemp"],
 	models:["NoteGroupModel"],
-	stores: ["PieStore","NoteGroupStore"],
+	
+	stores: ["NoteGroupStore","chart.ChartStore", "chart.LineBabyMoveStore", "chart.LineGesWeightStore", 
+		"chart.LineGradeStore", "chart.LineHeightStore", "chart.LineTempStore", "chart.PieBabyMoveStore", 
+		"chart.PieGradeStore", "chart.PieTempStore"],
 
 
 	launch: function(){

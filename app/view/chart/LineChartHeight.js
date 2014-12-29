@@ -1,35 +1,35 @@
-Ext.define('cfa.view.chart.LineChart',{
+Ext.define('cfa.view.chart.LineChartHeight',{
 	extend:'Ext.Panel',
-
-	requires: ['Ext.chart.series.Line', 'Ext.chart.CartesianChart', 'Ext.chart.interactions.Rotate','Ext.Menu','Ext.chart.interactions.PanZoom'],
-
-	xtype: 'lineChart',
-
+	requires: ['Ext.chart.series.Line', 'Ext.chart.CartesianChart', 
+        'Ext.chart.interactions.Rotate','Ext.Menu','Ext.chart.interactions.PanZoom'],
+	xtype: 'lineChartHeight',
 	config:{
 		layout:'vbox',
 
 		items:[
             {
                 xtype: 'chart',
-                store: 'PieStore',
+                store: 'LineHeightStore',
+                // id: 'line_polar',
                 interactions: ['panzoom'],
                 flex:2,
                 series: [
                 {
-                    type: 'line',
-                    xField: 'name',
-                    yField: 'g2',
-                    title: 'Smooth',
-                    animate:true,
-                    style: {
+                    type    : 'line',
+                    xField  : 'date',
+                    yField  : 'height',
+                    // title   : 'g2',
+                    // id      : 'line_sery',
+                    animate : true,
+                    style   : {
                         smooth: true,
-                        stroke: "#94ae0a",
+                        stroke: "#3048E8",
                         fillOpacity: 0.6,
                         miterLimit: 3,
                         lineCap: 'miter',
                         lineWidth: 2
                     },
-                    marker: {
+                    marker  : {
                         type: 'circle',
                         stroke: '#0d1f96',
                         fill: '#115fa6',
@@ -45,48 +45,52 @@ Ext.define('cfa.view.chart.LineChart',{
                 ],
                 axes: [
                     {
-                        type: 'numeric',
-                        position: 'left',
+                        type     : 'numeric',
+                        position : 'left',
+                        // id       : 'line_y',
                         grid: {
                             odd: {
                                 fill: '#fafafa'
                             }
                         },
                         title:{
-                            text:'aaa',
-                            fontSize:20
+                            text:'身高(cm)',
+                            fontSize:18
                         }
                     },
                     {
-                        type: 'category',
-                        visibleRange: [0, 1],
-                        position: 'bottom',
-                        grid: true,
+                        type         : 'category',
+                        visibleRange : [0, 1],
+                        position     : 'bottom',
+                        // id           :'line_x',
+                        grid         : true,
                         visibleRange: [0, 0.8],
                         title:{
-                            text:'bbbbb',
-                            fontSize:20
+                            text:"时间",
+                            fontSize:18
                         }
                     }
                 ]
             },{
                 xtype:'container',
-                html:'<center>2014年9月</center>',
+                html:'<center><span id="line_height_date1">2014-09-01</span>&nbsp;&nbsp;至&nbsp;&nbsp;<span id="line_height_date2">2014-09-31</span>&nbsp;&nbsp;孩子身高线型统计图</center>',
                 align:'center',
                 docked:'top',
                 layout:'hbox',
                 items:[
                     {
                         xtype:'button',
-                        text:'上个月',
+                        // text:'上个月',
+                        iconCls:'arrow_left',
                         docked:'left',
-                        id:'preLineBtn',
+                        name:'preDataBtn',
                         ui:'plain'
                     },{
                         xtype:'button',
-                        text:'下个月',
+                        // text:'下个月',
+                        iconCls:'arrow_right',
                         docked:'right',
-                        id:'nextLineBtn',
+                        name:'nextDataBtn',
                         ui:'plain'
                     }
                 ]

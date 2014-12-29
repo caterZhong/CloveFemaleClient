@@ -2,7 +2,8 @@
 Ext.define('cfa.view.ColorPatterns', {
     singleton: true,
     requires: ['Ext.draw.Color'],
-    colors: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"],
+    colors: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", 
+        "#a66111", "#7CFC00", "#54FF9F", "#C67171"],
 
     getBaseColors: function (index) {
         if (index == null) {

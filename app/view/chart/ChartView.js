@@ -7,7 +7,7 @@ Ext.define('cfa.view.chart.ChartView', {
     xtype: 'chartView',
 
     config: {
-        cls: 'card1',
+        showed: false ,
         layout: 'vbox',
         width: "100%",
         style: 'background: white',
@@ -22,8 +22,8 @@ Ext.define('cfa.view.chart.ChartView', {
                 },
                 items: [
                     {
-                        iconCls:'action',
-                        text:'Back',
+                        // iconCls:'action',
+                        text:'〈 返回',
                         align: 'left',
                         name:'bookBack_btn',
                         cls:'backBtn-plain',
@@ -73,13 +73,49 @@ Ext.define('cfa.view.chart.ChartView', {
                 flex:2,
                 items:[
                     {
-                        xtype:'pieChart'
+                        xtype:'pieChartBabyMove'
+                        //0
                     },
                     {
-                        xtype:'lineChart'
+                        xtype:'pieChartGrade'
                     },
                     {
-                        xtype:'barChart'
+                        xtype:'pieChartTemp'
+                    },
+
+                    {
+                        xtype:'barChartBabyMove'
+                        //3
+                    },
+                    {
+                        xtype:'barChartGrade'
+                    },
+                    {
+                        xtype:'barChartTemp'
+                    },
+
+                    {
+                        xtype:'lineChartBabyMove'
+                        //6
+                    },
+                    {
+                        xtype:'lineChartGesWeight'
+                    },
+                    {
+                        xtype:'lineChartGrade'
+                    },
+                    {
+                        xtype:'lineChartHeight'
+                    },
+                    {
+                        xtype:'lineChartTemp'
+                        //10
+                    },
+
+                    {
+                        xtype:'panel',
+                        html:'<br><br><br><br><center><h2><span id="only_line_title"></span>数据只有线形图的表示</h2></center>'
+                        //11
                     }
                 ]
             }
@@ -87,9 +123,16 @@ Ext.define('cfa.view.chart.ChartView', {
         ]
     },
     show: function () {
-     //   Ext.create('cfa.controller.chart.PieChartAction');
         this.callParent();
-        Ext.getStore('PieStore').generateData(8);
+        var showed = this.getShowed() ;
+        if(!showed){
+            var storeList = ['PieTempStore','PieGradeStore','PieBabyMoveStore','LineTempStore',
+                'LineHeightStore','LineGradeStore','LineGesWeightStore','LineBabyMoveStore'] ;
+            for(i = 0 ; i < storeList.length ; i++){
+                Ext.getStore(storeList[i]).load() ;
+            }
+            window.initDateLabels() ;
+        }
     },
     doSetHidden: function(hidden) {
         this.callParent(arguments);
@@ -97,7 +140,15 @@ Ext.define('cfa.view.chart.ChartView', {
         if (hidden) {
             Ext.Viewport.removeMenu('right');
         } else {
-            Ext.Viewport.setMenu(this.menuForSide('right'), {
+            var menu = Ext.getCmp('closeMenuBtn') ;
+            if(!menu){
+                // menu = this.menuForSide('right') ;
+                window.chartMenu = this.menuForSide('right') ;
+            }else{
+                // do nothing
+                //菜单的组件已经创建了一次，界面再次被调用的时候就不必再创建
+            }
+            Ext.Viewport.setMenu(window.chartMenu, {
                 side: 'right',
                 reveal: true
             });
@@ -115,33 +166,40 @@ Ext.define('cfa.view.chart.ChartView', {
                 scope: this
             },
             {
-                text: '胎动次数统计',
+                text: '孩子成绩统计',
                 iconCls: 'star',
-                id:'babyMoveDataBtn',
+                id:'babyGradeBtn',
                 scope: this
             },
             {
                 xtype: 'button',
-                text: '体温变化统计',
-                id:'tempDataBtn',
+                text: '孩子身高统计',
+                id:'babyHeightBtn',
                 iconCls: 'star',
                 scope: this
             },
             {
-                text: '体重变化统计',
+                text: '孕重变化统计',
                 iconCls: 'star',
-                id:'weightDataBtn',
+                id:'fetalWeightBtn',
                 scope: this
             },
             {
-                text: '睡眠时间统计',
+                text: '胎动次数统计',
                 iconCls: 'star',
-                id:'sleepDataBtn',
+                id:'fetalMoveBtn',
                 scope: this
             },
             {
-                text: '收起菜单',
-                iconCls: 'action',
+                text: '孕妇体温统计',
+                iconCls: 'star',
+                id:'temperatureBtn',
+                scope: this
+            },
+            {
+                text: '〉收起菜单',
+                // iconCls: 'action',
+                id:'closeMenuBtn',
                 scope: this,
                 handler: function() {
                     Ext.Viewport.hideMenu(side);
