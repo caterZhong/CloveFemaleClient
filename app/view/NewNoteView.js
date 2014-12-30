@@ -39,8 +39,10 @@ Ext.define("cfa.view.NewnoteView",{
 				{
 					text:'保存',
 					xtype:'button',
+					id:'newnote_save_btn',
+					name:'newnote_save_btn',
 					align: 'right',
-					name:'saveNote_btn',
+					// name:'saveNote_btn',
 					cls:'backBtn-plain',
 					// icon:''
 					ui: 'plain'
@@ -87,12 +89,13 @@ Ext.define("cfa.view.NewnoteView",{
 				{
 					xtype:'selectfield',
 					id:'noteGroup',
+					name:'noteGroup',
 					docked:'right',
 					cls:'note-blong',
 					store:'NoteGroupStore',
 					valueField:'groupName',
 					displayField:'groupName',	
-					placeHolder:'默认笔记本'			
+					placeHolder:'默认笔记本',		
 				}
 				]
 			},{

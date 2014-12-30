@@ -4,8 +4,9 @@ Ext.define('cfa.controller.NewnoteAction',{
 	config: {
 		refs: {
 			newnotebackBtn: 'button[name="newnote_back_btn"]',
+			newnotesaveBtn: 'button[name="newnote_save_btn"]',
 			newnoteview : 'newnoteview',
-			noteGroup : '#noteGroup',
+			noteGroup : 'selectfield[name="noteGroup"]',
 			groupAddBtn:'#group_add_btn',
 			newGroupName:'#groupName',
 			cancelBtn:'#cancelBtn',
@@ -19,6 +20,9 @@ Ext.define('cfa.controller.NewnoteAction',{
 		control: {
 			newnotebackBtn: {
 						tap : 'backToNotebookview'
+			},
+			newnotesaveBtn: {
+						tap: 'saveNote'
 			},
 			noteGroup: {
 					change : 'showNewGroupModal'	
@@ -44,13 +48,17 @@ Ext.define('cfa.controller.NewnoteAction',{
 		Ext.Viewport.remove(this.getNewnoteview());
 	},
 
+	saveNote:function(){
+		alert("此功能还未开发完成");
+	},
+
 	//显示添加笔记页面
 	showNewnoteview:function(){
     	Ext.Viewport.setActiveItem(this.getNewnoteview());
     },
 
     //显示新建分组模态框
-    showNewGroupModal: function(select,newValue,oldValue){
+    showNewGroupModal: function(select,newValue,oldValue,eOpts){
     	if(newValue == '新建笔记本'){
     		var newGroupModal=Ext.getCmp('newgroupModal');
     		var groupName = Ext.getCmp("groupName").setValue("");
