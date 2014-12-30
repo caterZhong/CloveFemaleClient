@@ -1,4 +1,4 @@
-Ext.define('cfa.controller.NewnoteAction',{
+Ext.define('cfa.controller.NewNoteAction',{
 	extend:'Ext.app.Controller',
 	requires:['Ext.DataView'],
 	config: {

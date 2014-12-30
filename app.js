@@ -8,11 +8,11 @@ Ext.application({
 	name: "cfa",
 	requires:['Ext.MessageBox','cfa.view.ColorPatterns','Ext.util.HashMap'],
 	
-	controllers:["MainAction","RecordAction","KidAction","PregnantAction","NotebookAction","NewnoteAction",
+	controllers:["MainAction","RecordAction","KidAction","PregnantAction","NotebookAction","NewNoteAction",
 		"chart.ChartAction","chart.CustomizeDateAction"],
 		
 	views: ["MainView","RecordView","KidView","PregnantView","NotebookView","SlideNav",
-		"NotebookFirstView","NewnoteView","chart.ChartView","chart.CustomizeDateView", "chart.BarChartBabyMove", 
+		"NotebookFirstView","NewNoteView","chart.ChartView","chart.CustomizeDateView", "chart.BarChartBabyMove", 
 		"chart.BarChartGrade", "chart.BarChartTemp",
 		"chart.LineChartBabyMove", "chart.LineChartGesWeight", "chart.LineChartGrade",
 		"chart.LineChartHeight", "chart.LineChartTemp", "chart.PieChartBabyMove", "chart.PieChartGrade",
