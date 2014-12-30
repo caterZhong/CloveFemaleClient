@@ -183,15 +183,16 @@ to { -webkit-transform: translateX(0px); }
     background-color: #FFF;
 }
 
+.note-blong{
+	width:150px;
+}
+
 .note-blong input{
 	text-align:right;
 	padding:0;
 	padding-right: 40px;
 	width: 150px;
 	overflow: hidden;
-}
-.x-dock.x-dock-horizontal>.x-dock-item{
-	width: 150px;
 }
 
 .noteTips{
