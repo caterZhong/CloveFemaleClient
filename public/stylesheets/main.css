@@ -202,3 +202,7 @@ to { -webkit-transform: translateX(0px); }
 	padding:3px 15px;
 }
 
+/*为图表中选择科目的列表定义的样式	--TanShichang 2014-01-14*/
+.subject_select{
+	max-width: 5em;
+}

@@ -21,7 +21,7 @@ Ext.application({
 	
 	stores: ["NoteGroupStore","chart.ChartStore", "chart.LineBabyMoveStore", "chart.LineGesWeightStore", 
 		"chart.LineGradeStore", "chart.LineHeightStore", "chart.LineTempStore", "chart.PieBabyMoveStore", 
-		"chart.PieGradeStore", "chart.PieTempStore"],
+		"chart.PieGradeStore", "chart.PieTempStore", "chart.ChartSubjectsStore"],
 
 
 	launch: function(){

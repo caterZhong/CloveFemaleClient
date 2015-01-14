@@ -38,4 +38,13 @@ Ext.define("cfa.store.chart.ChartStore", {
         this.load() ;
     },
 
+    getSubjects: function(){
+        var items = [
+                {text: '语文', value: '1'},
+                {text: '数学', value: '2'},
+                {text: '英语', value: '3'}
+            ] ;
+        return items ;
+    }
+
 });

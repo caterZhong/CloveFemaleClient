@@ -8,8 +8,10 @@ Ext.define('cfa.view.chart.ChartView', {
 
     config: {
         showed: false ,
-        layout: 'vbox',
+        requestQuota: 0 ,
+        layout: 'vbox', 
         width: "100%",
+        id:'chartView',
         style: 'background: white',
         items: [
             {
@@ -132,6 +134,8 @@ Ext.define('cfa.view.chart.ChartView', {
                 Ext.getStore(storeList[i]).load() ;
             }
             window.initDateLabels() ;
+            Ext.getStore('ChartSubjectsStore').load() ;
+            this.setShowed(true) ;
         }
     },
     doSetHidden: function(hidden) {

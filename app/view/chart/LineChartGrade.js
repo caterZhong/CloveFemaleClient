@@ -73,25 +73,44 @@ Ext.define('cfa.view.chart.LineChartGrade',{
                 ]
             },{
                 xtype:'container',
-                html:'<center><span id="line_grade_date1">2014-09-01</span>&nbsp;&nbsp;至&nbsp;&nbsp;<span id="line_grade_date2">2014-09-31</span>&nbsp;&nbsp;孩子成绩线型统计图</center>',
                 align:'center',
                 docked:'top',
                 layout:'hbox',
                 items:[
                     {
                         xtype:'button',
-                        // text:'上个月',
                         iconCls:'arrow_left',
                         docked:'left',
                         name:'preDataBtn',
                         ui:'plain'
                     },{
                         xtype:'button',
-                        // text:'下个月',
                         iconCls:'arrow_right',
                         docked:'right',
                         name:'nextDataBtn',
                         ui:'plain'
+                    },{
+                        xtype:'container',
+                        align:'center',
+                        layout:'vbox',
+                        width:'100%',
+                        items:[
+                            {
+                                html : '<center><span id="line_grade_date1">2014-09-01</span>&nbsp;&nbsp;至&nbsp;&nbsp;<span id="line_grade_date2">2014-09-31</span></center>'
+                            }, {
+                                xtype : 'container',
+                                layout : 'hbox',
+                                items : [
+                                    {
+                                        xtype: 'spacer'
+                                    },
+                                    window.subjectsSelection
+                                    ,{
+                                        xtype: 'spacer'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }

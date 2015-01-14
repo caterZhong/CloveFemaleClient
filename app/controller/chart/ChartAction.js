@@ -37,9 +37,8 @@ Ext.define('cfa.controller.chart.ChartAction',{
 
 			preDataBtn		:'button[name=preDataBtn]',
 			nextDataBtn		:'button[name=nextDataBtn]',
-			// nextDataBtn		:'#nextDataBtn'
 
-			line_x			:'#line_x'
+			subject_selects	:'selectfield[name=subject_selects]'
 		},
 		control:{
 			lineChartBtn:{
@@ -66,6 +65,10 @@ Ext.define('cfa.controller.chart.ChartAction',{
 			},
 			nextDataBtn:{
 				tap:'getNextData'
+			},
+			subject_selects:{
+				change:'changeSubject',
+				focus:'tapSelection'
 			}
 		},
 		routes:{
@@ -189,31 +192,53 @@ Ext.define('cfa.controller.chart.ChartAction',{
         }
 	},
 
+	changeSubject: function(){
+		var chartView = Ext.getCmp('chartView') ;
+		//1.只有点击过选择列表之后，触发change事件才执行下面的逻辑
+		//	因为选择列表使用了store，远程加载数据的时候change事件会被触发多次
+		//	而此时是不需要进行处理的
+		//2.自动设置列表选中项的时候会触发change事件，需要防止多次执行
+		if(chartView.getRequestQuota() != undefined && chartView.getRequestQuota() > 0){
+			chartView.setRequestQuota(chartView.getRequestQuota() - 1) ;
+			var newIndex = arguments[1] ;
+			var oldIndex = arguments[2] ;
+			var owner = arguments[0] ;
+			var selects = Ext.ComponentQuery.query('selectfield[name=subject_selects]') ;
+			for(i = 0 ; i < selects.length ; i++){
+				
+				selects[i].setValue(newIndex) ;
+			}
+			var subjects = Ext.getStore('ChartSubjectsStore') ;
+			var index = parseInt(newIndex) ;
+			if(index < subjects.getData().length){
+				var subject = subjects.getData().getAt(index).data.text ;
+				Ext.getStore('LineGradeStore').loadSubject(subject) ;
+				Ext.getStore('PieGradeStore').loadSubject(subject) ;
+			}
+		}
+	},
+
+	tapSelection: function(){
+		var chartView = Ext.getCmp('chartView') ;
+		//限制自动更改选中科目时多次调用请求
+		chartView.setRequestQuota(1) ;
+	},
+
 	setChartTitleDates: function(dateString1, dateString2){
-		document.getElementById("pie_grade_date1").innerHTML 	= dateString1 ;
-		document.getElementById("pie_grade_date2").innerHTML 	= dateString2 ;
-		document.getElementById("pie_babymove_date1").innerHTML = dateString1 ;
-		document.getElementById("pie_babymove_date2").innerHTML = dateString2 ;
-		document.getElementById("pie_temp_date1").innerHTML 	= dateString1 ;
-		document.getElementById("pie_temp_date2").innerHTML 	= dateString2 ;
+		var date1_ids = ["pie_grade_date1","pie_babymove_date1","pie_temp_date1","bar_grade_date1",
+			"bar_babymove_date1","bar_temp_date1","line_grade_date1","line_babymove_date1",
+			"line_gesweight_date1","line_height_date1","line_temp_date1"] ;
 
-		document.getElementById("bar_grade_date1").innerHTML 	= dateString1 ;
-		document.getElementById("bar_grade_date2").innerHTML 	= dateString2 ;
-		document.getElementById("bar_babymove_date1").innerHTML = dateString1 ;
-		document.getElementById("bar_babymove_date2").innerHTML = dateString2 ;
-		document.getElementById("bar_temp_date1").innerHTML 	= dateString1 ;
-		document.getElementById("bar_temp_date2").innerHTML 	= dateString2 ;
+		var date2_ids = ["pie_grade_date2","pie_babymove_date2","pie_temp_date2","bar_grade_date2",
+			"bar_babymove_date2","bar_temp_date2","line_grade_date2","line_babymove_date2",
+			"line_gesweight_date2","line_height_date2","line_temp_date2"] ;
 
-		document.getElementById("line_grade_date1").innerHTML 		= dateString1 ;
-		document.getElementById("line_grade_date2").innerHTML 		= dateString2 ;
-		document.getElementById("line_babymove_date1").innerHTML 	= dateString1 ;
-		document.getElementById("line_babymove_date2").innerHTML 	= dateString2 ;
-		document.getElementById("line_gesweight_date1").innerHTML 	= dateString1 ;
-		document.getElementById("line_gesweight_date2").innerHTML 	= dateString2 ;
-		document.getElementById("line_height_date1").innerHTML 		= dateString1 ;
-		document.getElementById("line_height_date2").innerHTML 		= dateString2 ;
-		document.getElementById("line_temp_date1").innerHTML 		= dateString1 ;
-		document.getElementById("line_temp_date2").innerHTML 		= dateString2 ;
+		for(i = 0 ; i < date1_ids.length ; i++){
+			document.getElementById(date1_ids[i]).innerHTML 	= dateString1 ;
+		}
+		for(i = 0 ; i < date2_ids.length ; i++){
+			document.getElementById(date2_ids[i]).innerHTML 	= dateString2 ;
+		}
 	},
 
 	showCustomizeDateView: function(){
