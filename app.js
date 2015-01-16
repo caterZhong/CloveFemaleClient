@@ -9,7 +9,7 @@ Ext.application({
 	requires:['Ext.MessageBox','cfa.view.ColorPatterns','Ext.util.HashMap'],
 	
 	controllers:["MainAction","RecordAction","KidAction","PregnantAction","NotebookAction","NewNoteAction",
-		"chart.ChartAction","chart.CustomizeDateAction"],
+		"chart.ChartAction","chart.CustomizeDateAction","cfa.controller.MedicineAction","cfa.controller.MedicineListAction"],
 		
 	views: ["MainView","RecordView","KidView","PregnantView","NotebookView","SlideNav",
 		"NotebookFirstView","NewNoteView","chart.ChartView","chart.CustomizeDateView", "chart.BarChartBabyMove", 
@@ -21,7 +21,7 @@ Ext.application({
 	
 	stores: ["NoteGroupStore","chart.ChartStore", "chart.LineBabyMoveStore", "chart.LineGesWeightStore", 
 		"chart.LineGradeStore", "chart.LineHeightStore", "chart.LineTempStore", "chart.PieBabyMoveStore", 
-		"chart.PieGradeStore", "chart.PieTempStore"],
+		"chart.PieGradeStore", "chart.PieTempStore","medicine.medBoxStore","medicine.medDetailStore","medicine.medSingleStore"],
 
 
 	launch: function(){

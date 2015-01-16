@@ -21,11 +21,6 @@
 .recordMenuItem span{
 	padding-left:20px;
 }
-.more{
-	float:right;
-	font-weight: bold;
-	color:#E24949;
-}
 /* #growthPanel{
 	display:none;
 } */
@@ -201,4 +196,75 @@ to { -webkit-transform: translateX(0px); }
 	color:red;
 	padding:3px 15px;
 }
-
+/* 药品药箱 */
+.medMenuItem{
+	padding-left:10px;
+	clear: both;
+	overflow: hidden;
+}
+.medMenuItem img{
+	float:left;
+}
+.medMenuItem .medBoxTitle{
+	float:left;
+	padding-left:20px;
+}
+.medMenuItem .medBoxTitle .medBoxName{
+	font-size:15px;
+	font-weight: 700;
+	line-height: 25px;
+}
+.medMenuItem .medBoxTitle .medBoxMark{
+	font-size:13px;
+	color:#858383;
+}
+.more{
+	float:right;
+	font-weight: bold;
+	color:#E24949;
+}
+.medMore{
+	float:right;
+	font-size:14px;
+	line-height:50px;
+}
+.subBtn{
+	width:100%;
+	margin-bottom: 10px;
+}
+.resetBtn{
+	width:100%;
+}
+.deadline{
+	font-size:14px;
+	color:red;
+	padding-left:5px;
+}
+.deadlineDesc{
+	font-size:13px;
+	color:#858383;
+}
+#medId{
+	display:none;
+}	
+.medAddTip{
+	transition: all .3s;
+	position:fixed;
+	width:100%;
+	height:140px;
+	bottom:-140px;
+	background:#FFF;
+	transition: all .3s;
+}
+.medAddTip.show{
+	bottom:0px;
+}
+.medAddTipBtn{
+	border-radius: 0px;
+	border:0px;
+	margin: 0px 0px 0px 0px;
+	padding:10px;
+	background:#FFF;
+	color:#FF4444;
+	border-bottom:5px solid #F8F8F8;
+}
