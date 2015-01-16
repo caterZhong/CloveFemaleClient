@@ -33,10 +33,14 @@ Ext.define("cfa.store.chart.PieGradeStore", {
 
     reload: function(){
         this.getMap().clear() ;
+        this.loadSubject('语文') ;
+    },
+
+    loadSubject: function(subject){
         var params = {
             'startDate': Ext.Date.format(window.dataDate1, "Y-m-d"),
             'endDate': Ext.Date.format(window.dataDate2, "Y-m-d"),
-            'subject':'语文'
+            'subject':subject
         } ;
         this.getProxy().setExtraParams(params) ;
         this.load() ;
