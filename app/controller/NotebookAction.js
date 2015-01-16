@@ -104,10 +104,9 @@ Ext.define('cfa.controller.NotebookAction',{
 	loadNoteBookData: function(){
 		var list = Ext.getCmp("noteBookList");
     	var store = list.getStore();
-    	// alert(store.getAt(0));
     	if(store.getCount()<=1){
 			Ext.data.JsonP.request({
-	    		url:'http://localhost:9000/RandomNote/findNoteBookByUserId',
+	    		url:domain+'RandomNote/findNoteBookByUserId',
 	    		callbackKey:'callback',
 	    		callback:'callback',
 	    		params:{
@@ -145,7 +144,7 @@ Ext.define('cfa.controller.NotebookAction',{
 	/*显示用户的所有笔记*/
 	showAllNote:function(store){
 		Ext.data.JsonP.request({
-    		url:'http://localhost:9000/RandomNote/findNoteByUserId',
+    		url:domain+'RandomNote/findNoteByUserId',
     		callbackKey:'callback',
     		callback:'callback',
     		params:{
@@ -164,7 +163,7 @@ Ext.define('cfa.controller.NotebookAction',{
 	/*显示具体笔记本中的笔记*/
 	showNoteInNoteBook : function(noteBookId,store){
 			Ext.data.JsonP.request({
-    		url:'http://localhost:9000/RandomNote/findNoteByUserIdAndBookId',
+    		url:domain+'RandomNote/findNoteByUserIdAndBookId',
     		callbackKey:'callback',
     		callback:'callback',
     		params:{

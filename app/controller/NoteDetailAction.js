@@ -46,9 +46,8 @@ Ext.define('cfa.controller.NoteDetailAction',{
         note.set("content",noteContent.getValue());
         note.set("noteBookId",noteBookId.getValue());
         var createDate = new Date(note.get('createDate'));
-        alert(note.get('title')+"--"+note.get('content'));
         Ext.data.JsonP.request({
-            url:'http://localhost:9000/RandomNote/updateNote2',
+            url:domain+'RandomNote/updateNote2',
             callbackKey:'callback',
             callback:'callback',
             params:{
@@ -61,7 +60,6 @@ Ext.define('cfa.controller.NoteDetailAction',{
             callback:function(success,result){           
                 noteTitle.setValue("");
                 noteContent.setValue("");   
-                alert(success);
             }
 
         });
@@ -72,11 +70,8 @@ Ext.define('cfa.controller.NoteDetailAction',{
 	showNotedetailview:function(){
     	Ext.Viewport.setActiveItem(this.getNotedetailview());
         var noteId = localStorage.noteId;
-        // alert(noteId);
-        // var modifyDate = new Date('Jan 22, 2015 12:00:00 AM');
-        // alert(modifyDate.getFullYear());
         Ext.data.JsonP.request({
-                url:'http://localhost:9000/RandomNote/findNoteById',
+                url:domain+'RandomNote/findNoteById',
                 callbackKey:'callback',
                 callback:'callback',
                 params:{

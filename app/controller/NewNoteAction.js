@@ -59,7 +59,7 @@ Ext.define('cfa.controller.NewNoteAction',{
         var noteContent= Ext.getCmp("noteContent");
         var noteBookId = Ext.getCmp("noteGroup");
         Ext.data.JsonP.request({
-            url:'http://localhost:9000/RandomNote/addNote2',
+            url:domain+'RandomNote/addNote2',
             callbackKey:'callback',
             callback:'callback',
             params:{
@@ -112,7 +112,7 @@ Ext.define('cfa.controller.NewNoteAction',{
     	}
         //使用JsonP的request请求到后台添加笔记本
         Ext.data.JsonP.request({
-            url:'http://localhost:9000/RandomNote/addNoteBook2',
+            url:domain+'RandomNote/addNoteBook2',
             callbackKey:'callback',
             callback:'callback',
             params:{
@@ -120,8 +120,6 @@ Ext.define('cfa.controller.NewNoteAction',{
                 'noteBookName':noteBookName,
             },
             callback:function(success,result){
-                alert(success);
-                alert(result.data.name);
                 if(success&&result.data != ""){
                     var list = Ext.getCmp("noteGroup");
                     var store = list.getStore();

@@ -163,7 +163,7 @@ Ext.define('cfa.controller.MedicineListAction',{
    		var func = Ext.getCmp('medFunctionFeild2').getValue();
    		var medAction = this;
    		Ext.data.JsonP.request({
-			url:'http://localhost:9000/MedicineTestAction/addMedicine',
+			url:domain+'MedicineTestAction/addMedicine',
 			params:{
 				name:name,
 				func:func,
@@ -193,7 +193,7 @@ Ext.define('cfa.controller.MedicineListAction',{
    		var func = Ext.getCmp('medFunctionFeild').getValue();
    		var medAction = this;
    		Ext.data.JsonP.request({
-			url:'http://localhost:9000/MedicineTestAction/alterMedicine',
+			url:domain+'MedicineTestAction/alterMedicine',
 			params:{
 				name:name,
 				func:func,
@@ -218,7 +218,7 @@ Ext.define('cfa.controller.MedicineListAction',{
    		var medId = sessionStorage.getItem("medId");
    		var medAction = this;
    		Ext.data.JsonP.request({
-			url:'http://localhost:9000/MedicineTestAction/delMedById',
+			url:domain+'MedicineTestAction/delMedById',
 			params:{
 				id:medId
 			},

@@ -50,7 +50,7 @@ Ext.define('cfa.controller.NoteSearchAction',{
     	var store = Ext.getStore('NoteStore');
     	// list.setStore(store);
     	Ext.data.JsonP.request({
-    		url:'http://localhost:9000/RandomNote/findNoteByKeyWord',
+    		url:domain+'RandomNote/findNoteByKeyWord',
     		callbackKey:'callback',
     		callback:'callback',
     		params:{
@@ -73,7 +73,6 @@ Ext.define('cfa.controller.NoteSearchAction',{
     },
 
     showsearchdetailview:function(list, index, target, record){
-    	alert("切换页面");
     	var noteStore = list.getStore();
 		noteId = noteStore.getAt(index).get('id');
 		localStorage.notesearchId = noteId;

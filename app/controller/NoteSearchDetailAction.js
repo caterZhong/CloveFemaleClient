@@ -16,9 +16,9 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
 			backBtn: {
 						tap : 'backToNotebookview'
 			},
-            editBtn: {
-                        tap : 'showEditview'
-            },
+            // editBtn: {
+            //             tap : 'showEditview'
+            // },
 		},
 		routes:{
 			'notesearchdetail':'showNotesearchdetailview'
@@ -32,20 +32,19 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
 
     showEditview:function(){
         this.redirectTo('notedetail');
-    }
+    },
 
 	//显示搜索笔记详情页面
 	showNotesearchdetailview:function(){
         Ext.Viewport.setActiveItem(this.getNotesearchdetailview());
         var resultList = Ext.getCmp("notesearchdetailList");
-        // alert(resultList);
         var store = resultList.getStore();
         store.removeAll();
     	
         var noteId = localStorage.notesearchId;
         var keyword = localStorage.keyword;
         Ext.data.JsonP.request({
-                url:'http://localhost:9000/RandomNote/findSearchNoteDetailByNoteIdAndKeyword',
+                url:domain+'RandomNote/findSearchNoteDetailByNoteIdAndKeyword',
                 callbackKey:'callback',
                 callback:'callback',
                 params:{

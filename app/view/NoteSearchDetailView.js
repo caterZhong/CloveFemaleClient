@@ -17,7 +17,7 @@ Ext.define("cfa.view.NoteSearchDetailView",{
 						{
 							// iconCls:'refresh',
 							text:'返回',
-							name:'bookBack_btn',
+							name:'notesearchDetailBack_btn',
 							cls:'backBtn-plain',
 							ui: 'plain'
 						},{
