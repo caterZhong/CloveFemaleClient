@@ -13,6 +13,7 @@ Ext.define("cfa.view.NotebookFirstView",{
 						xtype : 'titlebar',
 						title : '随手记',
 						docked: 'top',
+						cls:'note-titleBar',
 						items :[
 						{
 							// iconCls:'refresh',
@@ -22,8 +23,8 @@ Ext.define("cfa.view.NotebookFirstView",{
 							ui: 'plain'
 						},{
 							align: 'right',
-							name: 'new_btn',
-							iconCls: 'add',
+							name: 'search_btn',
+							iconCls: 'search',
 							ui: 'plain'
 						},
 						{
@@ -34,17 +35,22 @@ Ext.define("cfa.view.NotebookFirstView",{
 					    }]
 			},{
 				xtype:'list',
+				id:'shownoteList',
+				name:'shownoteList',
 				width: "100%",
-				itemTpl : '{title}',
-				store:{
-					fields:['title'],
-					data:[
-						{title : '最近'},
-						{title : '全部笔记'},
-						{title : '默认笔记本'},
-						{title : '菜谱'},
-					]
-				},
+				itemTpl : '<div class="noteTitile">{title}</div><div class="noteDate">{year}年{month}月{day}日</div><div class="noteContent">{content}...</div>',
+				store:'NoteStore',
+			},{
+						xtype:'panel',
+						baseCls:'addNote',
+						height:40,
+						items:[{
+							xtype:'button',
+							name: 'new_btn',
+							iconCls: 'add',
+							ui: 'plain'
+						}]
+
 			}]
 	}
 

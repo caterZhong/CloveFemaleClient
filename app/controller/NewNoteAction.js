@@ -7,9 +7,9 @@ Ext.define('cfa.controller.NewNoteAction',{
 			newnotesaveBtn: 'button[name="newnote_save_btn"]',
 			newnoteview : 'newnoteview',
 			noteGroup : 'selectfield[name="noteGroup"]',
-			groupAddBtn:'#group_add_btn',
-			newGroupName:'#groupName',
-			cancelBtn:'#cancelBtn',
+            notebookAddBtn:'button[name="noteBook_add_btn"]',
+            notebbooCancelBtn:'button[name="noteBook_cancel_btn"]',
+			newNoteBookName:'textfield[name="noteBookName"]',
 			newnoteview:{
         		//引用新建笔记页面
                 selector: 'newnoteview',
@@ -27,13 +27,13 @@ Ext.define('cfa.controller.NewNoteAction',{
 			noteGroup: {
 					change : 'showNewGroupModal'	
 			},
-			newGroupName:{
+			newNoteBookName:{
 					focus : 'hideTips'
 			},
-			groupAddBtn: {
-					tap : 'addNoteGroup'
+			notebookAddBtn: {
+					tap : 'addNoteBook'
 			},
-			cancelBtn:{
+			notebbooCancelBtn:{
 					tap : 'cancleAddGroup'
 			},
 		},
@@ -46,10 +46,34 @@ Ext.define('cfa.controller.NewNoteAction',{
 	backToNotebookview: function(){
 		this.redirectTo('notebook');
 		Ext.Viewport.remove(this.getNewnoteview());
+        var list = Ext.getCmp("noteBookList");
+        var store = list.getStore();
+        store.removeAt(store.getCount()-1);
+        var newData = {'id':0,'name':'全部笔记'};
+        store.insert(0,newData);
 	},
 
+    //保存笔记
 	saveNote:function(){
-		alert("此功能还未开发完成");
+        var noteTitle = Ext.getCmp("noteTitle");
+        var noteContent= Ext.getCmp("noteContent");
+        var noteBookId = Ext.getCmp("noteGroup");
+        Ext.data.JsonP.request({
+            url:'http://localhost:9000/RandomNote/addNote2',
+            callbackKey:'callback',
+            callback:'callback',
+            params:{
+                'noteTitle':noteTitle.getValue(),
+                'noteContent':noteContent.getValue(),
+                'noteBookId':noteBookId.getValue(),
+            },
+            callback:function(success,result){           
+                noteTitle.setValue("");
+                noteContent.setValue("");   
+            }
+
+        });
+        this.backToNotebookview();
 	},
 
 	//显示添加笔记页面
@@ -59,19 +83,19 @@ Ext.define('cfa.controller.NewNoteAction',{
 
     //显示新建分组模态框
     showNewGroupModal: function(select,newValue,oldValue,eOpts){
-    	if(newValue == '新建笔记本'){
+        if(newValue == '0'){
     		var newGroupModal=Ext.getCmp('newgroupModal');
-    		var groupName = Ext.getCmp("groupName").setValue("");
+    		var noteBookName = Ext.getCmp("noteBookName").setValue("");
     		var shortName = Ext.getCmp("shortName").setValue("");
 			newGroupModal.show();
     	}
     },
 
     //添加分组
-    addNoteGroup:function(){
-    	var groupName = Ext.getCmp("groupName").getValue();
+    addNoteBook:function(){
+    	var noteBookName = Ext.getCmp("noteBookName").getValue();
     	var shortName = Ext.getCmp("shortName").getValue();
-    	if(groupName == "" || shortName ==""){
+    	if(noteBookName == ""){
     		Ext.getCmp('notNullTips').show();
     		return;
     	}
@@ -79,21 +103,42 @@ Ext.define('cfa.controller.NewNoteAction',{
     	var store = noteGroup.getStore();
     	var length = store.getCount();
     	for(var i = 0; i < length; i++ ){
-    		if(groupName == store.getAt(i).get('groupName')){
-    			Ext.getCmp('newGroupTips').show();
+    		if(noteBookName == store.getAt(i).get('name')){
+    			Ext.getCmp('existTips').show();
+                 Ext.getCmp("noteBookName").setValue("")
     			return;
     		}
     		
     	}
-    	var newData = {'groupName':groupName,'shortName':shortName};
-    	store.addData(newData);
-    	hideModalFrame();
-    	noteGroup.setValue(groupName);
+        //使用JsonP的request请求到后台添加笔记本
+        Ext.data.JsonP.request({
+            url:'http://localhost:9000/RandomNote/addNoteBook2',
+            callbackKey:'callback',
+            callback:'callback',
+            params:{
+                'userId':'199762408FBC4D6C9455BB332D5FC877',
+                'noteBookName':noteBookName,
+            },
+            callback:function(success,result){
+                alert(success);
+                alert(result.data.name);
+                if(success&&result.data != ""){
+                    var list = Ext.getCmp("noteGroup");
+                    var store = list.getStore();
+                    var length = store.getCount();
+                    store.insert(length-1,result.data);
+                    noteGroup.setValue(result.data.id);
+                }else{
+                    alert("添加笔记本失败");
+                }
+            }
+        })
+    	this.hideModalFrame();
     },
 
     //隐藏提示
     hideTips:function(){
-    	Ext.getCmp('newGroupTips').hide();
+    	Ext.getCmp('existTips').hide();
     	Ext.getCmp('notNullTips').hide();
     },
 

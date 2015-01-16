@@ -19,9 +19,13 @@ Ext.define("cfa.view.NotebookView",{
 					, {
 
 						xtype : 'slidenav',
+						name : 'noteBookList',
+						id:'noteBookList',
+						itemTpl : '{name}',
+						store:'SimpleNoteBookStore',
 						width : 250,
 						
-			}
+					}
 			]
 	}
 });
