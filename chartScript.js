@@ -1,3 +1,14 @@
+window.subjectsSelection = {
+      xtype: 'selectfield',
+      name : 'subject_selects',
+      cls : 'subject_select' ,
+      showAnimation : 'slideOut' ,
+      usePicker : false,
+      label: Ext.theme.name === "Blackberry" ? 'Select': null,
+      store:'ChartSubjectsStore'
+      // options : window.optionalSubjects
+  };
+
 //自定义的时间区间
 window.customizedDate1 = new Date() ;
 window.customizedDate2 = new Date() ;

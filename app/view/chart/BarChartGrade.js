@@ -58,7 +58,6 @@ Ext.define('cfa.view.chart.BarChartGrade',{
                 ]
             },{
                 xtype:'container',
-                html:'<center><span id="bar_grade_date1">2014-09-01</span>&nbsp;&nbsp;至&nbsp;&nbsp;<span id="bar_grade_date2">2014-09-31</span>&nbsp;&nbsp;孩子成绩柱状统计图</center>',
                 align:'center',
                 docked:'top',
                 layout:'hbox',
@@ -75,6 +74,28 @@ Ext.define('cfa.view.chart.BarChartGrade',{
                         docked:'right',
                         name:'nextDataBtn',
                         ui:'plain'
+                    },{
+                        xtype:'container',
+                        align:'center',
+                        layout:'vbox',
+                        width:'100%',
+                        items:[
+                            {
+                                html : '<center><span id="bar_grade_date1">2014-09-01</span>&nbsp;&nbsp;至&nbsp;&nbsp;<span id="bar_grade_date2">2014-09-31</span></center>'
+                            }, {
+                                xtype : 'container',
+                                layout : 'hbox',
+                                items : [
+                                    {
+                                        xtype: 'spacer'
+                                    },
+                                    window.subjectsSelection
+                                    ,{
+                                        xtype: 'spacer'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
