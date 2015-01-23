@@ -18,7 +18,7 @@ Ext.application({
 		"chart.LineChartBabyMove", "chart.LineChartGesWeight", "chart.LineChartGrade",
 		"chart.LineChartHeight", "chart.LineChartTemp", "chart.PieChartBabyMove", "chart.PieChartGrade",
 		"chart.PieChartTemp"],
-	models:["NoteModel","NoteGroupModel","SimpleNoteBookModel","NoteDetailModel"],
+	models:["NoteModel","NoteGroupModel","SimpleNoteBookModel","NoteDetailModel", "RecordModel"],
 	
 	stores: ["NoteStore","NoteGroupStore","SimpleNoteBookStore","NoteDetailStore","chart.ChartStore", "chart.LineBabyMoveStore", "chart.LineGesWeightStore", 
 		"chart.LineGradeStore", "chart.LineHeightStore", "chart.LineTempStore", "chart.PieBabyMoveStore", 
