@@ -41,6 +41,7 @@ Ext.define("cfa.view.KidView",{
 			},{
 				xtype:'formpanel',
 				id:'healthForm',
+				url : domain+'BabyGrowth/addBodyIndex',
 				name:'healthForm',
 				scrollable:'vertical',
 				items:[
@@ -52,17 +53,27 @@ Ext.define("cfa.view.KidView",{
 					items:[
 						{
 							xtype:'datepickerfield',
-							id:'time',
+							id:'healthTime',
 							name:'healthTime',
+                        	dateFormat:'Y-m-d',
+							value : new Date() ,
 							label:'日期',
 							clearIcon:true,
 							disabled:false
 						},{
 							xtype:'textfield',
-							id:'tall',
-							name:'tall',
+							id:'height',
+							name:'height',
 							label:'身高',
-							placeHolder:'输入身高',
+							placeHolder:'输入身高(cm)',
+							clearIcon:true,
+							disabled:false
+						},{
+							xtype:'textfield',
+							id:'weight',
+							name:'weight',
+							label:'体重',
+							placeHolder:'输入体重(Kg)',
 							clearIcon:true,
 							disabled:false
 						}
@@ -80,31 +91,13 @@ Ext.define("cfa.view.KidView",{
 					items:[
 						{
 							cls:'subBtn',
-							text:'提交',
-							handler:function(){
-								Ext.data.JsonP.request({
-									url:'http://localhost:9000/Application/test',
-									timeout:3000,
-									params:{
-										name:'baby',
-										age:'10'
-									},
-									callback:function(){
-										console.log("successs");
-									},
-									success:function(result){
-										console.log("success");
-									},
-									failure:function(){
-										console.log("fail");
-									}
-								});
-							}
+							id : 'submitHealthBtn',
+							text:'提交'
 						},{
 							cls:'resetBtn',
 							text:'重置',
 							handler:function(){
-								healthForm.reset();
+								Ext.getCmp('healthForm').reset();
 							}
 						}
 					]
@@ -130,7 +123,7 @@ Ext.define("cfa.view.KidView",{
 				xtype:'formpanel',
 				id:'birthForm',
 				scrollable:'vertical',
-				url:'http://localhost:9000/Application/test',
+				url:domain+'BabyAction/addBaby',
 				items:[
 				{
 					xtype:'fieldset',
@@ -151,6 +144,8 @@ Ext.define("cfa.view.KidView",{
 							xtype:'datepickerfield',
 							id:'birthDate',
 							name:'healthTime',
+                        	dateFormat:'Y-m-d',
+							value : new Date() ,
 							label:'出生日期',
 							clearIcon:true,
 							disabled:false
@@ -166,7 +161,7 @@ Ext.define("cfa.view.KidView",{
 							id:'babyFemale',
 							name:'sex',
 							label:'女孩',
-							vale:'female',
+							value:'female',
 							check:false
 						}
 					]
@@ -183,15 +178,13 @@ Ext.define("cfa.view.KidView",{
 					items:[
 						{
 							cls:'subBtn',
-							text:'提交',
-							handler:function(){
-								healthForm.submit();
-							}
+							id : 'submitBirthFormBtn',
+							text:'提交'
 						},{
 							cls:'resetBtn',
 							text:'重置',
 							handler:function(){
-								healthForm.reset();
+								Ext.getCmp('birthForm').reset();
 							}
 						}
 					]
@@ -219,7 +212,7 @@ Ext.define("cfa.view.KidView",{
 				id:'scoreForm',
 				cls:'babyForm',
 				scrollable:'vertical',
-				url:'http://localhost:9000/Application/test',
+				url:domain+'BabyGrowth/addGradeCondition',
 				items:[
 				{
 					xtype:'fieldset',
@@ -254,8 +247,8 @@ Ext.define("cfa.view.KidView",{
 							}]
 						},{
 							xtype:'selectfield',
-							id:'course',
-							name:'course',
+							id:'subject',
+							name:'subject',
 							label:'科目',
 							options:[{
 								text:'语文',
@@ -269,10 +262,19 @@ Ext.define("cfa.view.KidView",{
 							}]
 						},{
 							xtype:'textfield',
-							id:'tall',
-							name:'tall',
+							id:'mark',
+							name:'mark',
 							label:'成绩',
 							placeHolder:'输入科目成绩',
+							clearIcon:true,
+							disabled:false
+						},{
+							xtype:'datepickerfield',
+							id:'scoreDate',
+							name:'scoreDate',
+                        	dateFormat:'Y-m-d',
+							value : new Date() ,
+							label:'日期',
 							clearIcon:true,
 							disabled:false
 						}
@@ -290,15 +292,13 @@ Ext.define("cfa.view.KidView",{
 					items:[
 						{
 							cls:'subBtn',
-							text:'提交',
-							handler:function(){
-								healthForm.submit();
-							}
+							id : 'submitScoreFormBtn',
+							text:'提交'
 						},{
 							cls:'resetBtn',
 							text:'重置',
 							handler:function(){
-								healthForm.reset();
+								Ext.getCmp('scoreForm').reset();
 							}
 						}
 					]
@@ -326,7 +326,7 @@ Ext.define("cfa.view.KidView",{
 				id:'vaccineForm',
 				cls:'babyForm',
 				scrollable:'vertical',
-				url:'http://localhost:9000/Application/test',
+				url:domain+'BabyGrowth/addVaccination',
 				items:[
 				{
 					xtype:'fieldset',
@@ -336,15 +336,17 @@ Ext.define("cfa.view.KidView",{
 					items:[
 						{
 							xtype:'datepickerfield',
-							id:'time',
-							name:'healthTime',
+							id:'vaccinTime',
+							name:'vaccinTime',
 							label:'日期',
+                        	dateFormat:'Y-m-d',
+							value : new Date() ,
 							clearIcon:true,
 							disabled:false
 						},{
 							xtype:'textfield',
-							id:'vaccineRec',
-							name:'tall',
+							id:'vaccineContent',
+							name:'vaccineContent',
 							label:'备注',
 							placeHolder:'输入疫苗接种备注',
 							clearIcon:true,
@@ -364,15 +366,13 @@ Ext.define("cfa.view.KidView",{
 					items:[
 						{
 							cls:'subBtn',
-							text:'提交',
-							handler:function(){
-								healthForm.submit();
-							}
+							id : 'submitVaccineFormBtn',
+							text:'提交'
 						},{
 							cls:'resetBtn',
 							text:'重置',
 							handler:function(){
-								healthForm.reset();
+								Ext.getCmp('vaccineForm').reset();
 							}
 						}
 					]

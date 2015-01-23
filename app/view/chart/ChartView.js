@@ -74,46 +74,19 @@ Ext.define('cfa.view.chart.ChartView', {
                 id:'chartsPanel',
                 flex:2,
                 items:[
-                    {
-                        xtype:'pieChartBabyMove'
-                        //0
-                    },
-                    {
-                        xtype:'pieChartGrade'
-                    },
-                    {
-                        xtype:'pieChartTemp'
-                    },
+                    {xtype:'pieChartBabyMove'},
+                    {xtype:'pieChartGrade'},
+                    {xtype:'pieChartTemp'},
+                    {xtype:'barChartBabyMove'},
+                    {xtype:'barChartGrade'},
 
-                    {
-                        xtype:'barChartBabyMove'
-                        //3
-                    },
-                    {
-                        xtype:'barChartGrade'
-                    },
-                    {
-                        xtype:'barChartTemp'
-                    },
+                    {xtype:'barChartTemp'},
+                    {xtype:'lineChartBabyMove'},
+                    {xtype:'lineChartGesWeight'},
+                    {xtype:'lineChartGrade'},
+                    {xtype:'lineChartHeight'},
 
-                    {
-                        xtype:'lineChartBabyMove'
-                        //6
-                    },
-                    {
-                        xtype:'lineChartGesWeight'
-                    },
-                    {
-                        xtype:'lineChartGrade'
-                    },
-                    {
-                        xtype:'lineChartHeight'
-                    },
-                    {
-                        xtype:'lineChartTemp'
-                        //10
-                    },
-
+                    {xtype:'lineChartTemp'},
                     {
                         xtype:'panel',
                         html:'<br><br><br><br><center><h2><span id="only_line_title"></span>数据只有线形图的表示</h2></center>'
@@ -202,7 +175,6 @@ Ext.define('cfa.view.chart.ChartView', {
             },
             {
                 text: '〉收起菜单',
-                // iconCls: 'action',
                 id:'closeMenuBtn',
                 scope: this,
                 handler: function() {

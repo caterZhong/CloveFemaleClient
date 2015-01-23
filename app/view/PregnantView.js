@@ -40,10 +40,10 @@ Ext.define("cfa.view.PregnantView",{
 				html:'月经记录'	
 			},{
 				xtype:'formpanel',
-				id:'scoreForm',
+				id:'mensesForm',
 				cls:'babyForm',
 				scrollable:'vertical',
-				url:'http://localhost:9000/Application/test',
+				url:domain+'MensesAction/addMenses',
 				items:[
 				{
 					xtype:'fieldset',
@@ -133,16 +133,18 @@ Ext.define("cfa.view.PregnantView",{
 					items:[
 						{
 							cls:'subBtn',
-							text:'提交',
-							handler:function(){
-								healthForm.submit();
-							}
+							id:'mensesFormSubmitBtn',
+							text:'提交'
+							// handler:function(){
+							// 	healthForm.submit();
+							// }
 						},{
 							cls:'resetBtn',
-							text:'重置',
-							handler:function(){
-								healthForm.reset();
-							}
+							id:'mensesFormResetBtn',
+							text:'重置'
+							// handler:function(){
+							// 	healthForm.reset();
+							// }
 						}
 					]
 				}]
@@ -165,33 +167,34 @@ Ext.define("cfa.view.PregnantView",{
 				cls:'modalPanel',
 				html:'基础体温记录'	
 			},{
-				xtype:'panel',
-				layout: "hbox",
-				items:[{
-					id:'item1',
+				xtype	: 'panel',
+				layout	: "hbox",
+				id		: 'temperatureForm',
+				items 	:[{
+					id:'tValue',
 					xtype:'selectfield',
 					label:'体温',
 					options:[{
 						text:'35',
-						value:'1'
+						value:'35'
 					},{
 						text:'36',
-						value:'2'
+						value:'36'
 					},{
 						text:'37',
-						value:'3'
+						value:'37'
 					},{
 						text:'38',
-						value:'4'
+						value:'38'
 					},{
 						text:'39',
-						value:'5'
+						value:'39'
 					},{
 						text:'40',
-						value:'6'
+						value:'40'
 					},{
 						text:'41',
-						value:'7'
+						value:'41'
 					}],
 					flex:1,
 					height:100,
@@ -233,7 +236,13 @@ Ext.define("cfa.view.PregnantView",{
 						value:'9'
 					}],
 					flex:1,
-				}]
+				}],
+				getUrl: function(){
+					return domain+"TemperatureAction/addTemperature" ;
+				},
+				reset: function(){
+					Ext.getCmp('tValue').setValue('37') ;
+				}
 			},{
 				xtype:'panel',
 					docked: "bottom",
@@ -246,16 +255,14 @@ Ext.define("cfa.view.PregnantView",{
 					},
 					items:[
 						{
-							cls:'subBtn',
-							text:'提交',
-							handler:function(){
-								healthForm.submit();
-							}
+							cls : 'subBtn',
+							id	: 'submitTemperatureFormBtn',
+							text: '提交'
 						},{
 							cls:'resetBtn',
 							text:'重置',
 							handler:function(){
-								healthForm.reset();
+								Ext.getCmp('temperatureForm').reset() ;
 							}
 						}
 					]
@@ -264,26 +271,26 @@ Ext.define("cfa.view.PregnantView",{
 		/*基础体温结束*/
 		/*孕重开始*/
 		{
-			id:'weightModal',
-			xtype:'panel',
-			layout: "vbox",
-			modal:true,
-			hidden:true,
-			hideOnMaskTap:true,
-			centered:true,
-			height:'60%',
-			width:'90%',
-			items:[{
-				xtype:'panel',
-				cls:'modalPanel',
-				html:'孕重记录'	
+			id 				: 'weightModal',
+			xtype 			: 'panel',
+			layout 			: "vbox",
+			modal 			: true,
+			hidden 			: true,
+			hideOnMaskTap	: true,
+			centered 		: true,
+			height			: '60%',
+			width 			: '90%',
+			items 			: [{
+				xtype 	:'panel',
+				cls 	:'modalPanel',
+				html 	:'孕重记录'	
 			},{
-				xtype:'formpanel',
-				id:'weightForm',
-				cls:'babyForm',
-				scrollable:'vertical',
-				url:'http://localhost:9000/Application/test',
-				items:[
+				xtype 		: 'formpanel',
+				id 			: 'weightForm',
+				cls 		: 'babyForm',
+				scrollable 	: 'vertical',
+				url 		: domain+'GestationalWeightAction/addWeight',
+				items 		: [
 				{
 					xtype:'fieldset',
 					defaults:{
@@ -292,14 +299,16 @@ Ext.define("cfa.view.PregnantView",{
 					items:[
 						{
 							xtype:'datepickerfield',
-							id:'time',
+							id:'wDate',
 							name:'Time',
 							label:'日期',
+                        	dateFormat:'Y-m-d',
+							value:new Date(),
 							clearIcon:true,
 							disabled:false
 						},{
 							xtype:'textfield',
-							id:'weight',
+							id:'wValue',
 							name:'weight',
 							label:'孕重',
 							placeHolder:'输入孕重',
@@ -319,16 +328,14 @@ Ext.define("cfa.view.PregnantView",{
 					},
 					items:[
 						{
-							cls:'subBtn',
-							text:'提交',
-							handler:function(){
-								healthForm.submit();
-							}
+							cls : 'subBtn',
+							id	: 'submitWeightFormBtn',
+							text: '提交'
 						},{
 							cls:'resetBtn',
 							text:'重置',
 							handler:function(){
-								healthForm.reset();
+								this.getCmp('weightForm').reset();
 							}
 						}
 					]
@@ -363,41 +370,93 @@ Ext.define("cfa.view.PregnantView",{
 				// }
 				]
 			},{
-				xtype:'panel',
-				layout: "hbox",
-				cls:'movementPanel',
-				items:[{
-					id:'movementNum',
-					xtype:'selectfield',
-					label:'',
-					options:[{
-						text:'5',
+				xtype   : 'panel',
+				layout	: 'hbox',
+				id 		: 'movementForm' ,
+				cls 	: 'movementPanel',
+				items 	:[{
+					id 		: 'movementNum',
+					xtype 	: 'selectfield',
+					label 	: '',
+					options :[{
+						text:'0',
 						value:'0'
 					},{
-						text:'6',
+						text:'1',
 						value:'1'
 					},{
-						text:'7',
-						value:'32'
+						text:'2',
+						value:'2'
 					},{
-						text:'8',
+						text:'3',
 						value:'3'
 					},{
-						text:'9',
+						text:'4',
 						value:'4'
 					},{
-						text:'10',
+						text:'5',
 						value:'5'
 					},{
-						text:'11',
+						text:'6',
 						value:'6'
+					},{
+						text:'7',
+						value:'7'
+					},{
+						text:'8',
+						value:'8'
+					},{
+						text:'9',
+						value:'9'
+					},{
+						text:'10',
+						value:'10'
+					},{
+						text:'11',
+						value:'11'
+					},{
+						text:'12',
+						value:'12'
+					},{
+						text:'13',
+						value:'13'
+					},{
+						text:'14',
+						value:'14'
+					},{
+						text:'15',
+						value:'15'
+					},{
+						text:'16',
+						value:'16'
+					},{
+						text:'17',
+						value:'17'
+					},{
+						text:'18',
+						value:'18'
+					},{
+						text:'19',
+						value:'19'
+					},{
+						text:'20',
+						value:'20'
+					},{
+						text:'21',
+						value:'21'
 					}],
 					height:100,
 
 	 			},{
 	 				cls:'movementUnit',
 	 				html:'次/小时'
-	 			}]
+	 			}],
+	 			getUrl: function(){
+	 				return domain+"FetalMovementAction/addMovement" ;
+	 			},
+	 			reset: function(){
+	 				Ext.getCmp('movementNum').setValue('0') ;
+	 			}
 	 			// html:'胎动记录'	
 			},{
 				
@@ -414,14 +473,12 @@ Ext.define("cfa.view.PregnantView",{
 						{
 							cls:'subBtn',
 							text:'提交',
-							handler:function(){
-								healthForm.submit();
-							}
+							id 	: 'submitMovementFormBtn'
 						},{
 							cls:'resetBtn',
 							text:'重置',
 							handler:function(){
-								healthForm.reset();
+								this.getCmp('movementForm').reset();
 							}
 						}
 					]
