@@ -1,10 +1,10 @@
-Ext.define("cfa.view.NewNoteView",{
+Ext.define("cfa.view.NoteDetailView",{
 
 	extend: "Ext.Panel",
 	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store",
 			  "Ext.form.FormPanel","Ext.field.Select"],
 	
-	xtype: "newnoteview",
+	xtype: "notedetailview",
 
     config:{
 		// 随手记添加笔记页面
@@ -15,10 +15,9 @@ Ext.define("cfa.view.NewNoteView",{
 			},
 		items:[{
 			xtype:'panel',
-			id:'noteForm',
-			name:'noteForm',
+			id:'noteDetailForm',
+			name:'noteDetailForm',
 			url:'http://localhost:9000/RandomNote/addNote2',
-			id:'noteForm',
 			width:'100%',
 			height:'100%',
 			layout:{
@@ -30,20 +29,20 @@ Ext.define("cfa.view.NewNoteView",{
 			items:[
 				{
 				xtype:'titlebar',
-				title:'添加笔记',
+				title:'笔记详情',
 				docked:'top',
 				cls:'note-titleBar',
 				items:[{
 					text:'返回',
-					name:'newnote_back_btn',
+					name:'notedetail_back_btn',
 					cls:'backBtn-plain',
 					ui: 'plain'
 				},
 				{
 					text:'保存',
 					xtype:'button',
-					id:'newnote_save_btn',
-					name:'newnote_save_btn',
+					id:'notedetail_save_btn',
+					name:'notedetail_save_btn',
 					align: 'right',
 					cls:'backBtn-plain',
 					ui: 'plain'
@@ -54,7 +53,7 @@ Ext.define("cfa.view.NewNoteView",{
 				cls:'testPanel', 
 				items:[{
 					xtype:'textfield',
-					id:'noteTitle',
+					id:'noteDetailTitle',
 					name:'noteTitle',
 					placeHolder:'标题',
 					clearIncon:false,
@@ -63,8 +62,8 @@ Ext.define("cfa.view.NewNoteView",{
 			,{
 				flex:1,
 				xtype:'textareafield',
-				id:'noteContent',
-				name:'noteContent',
+				id:'noteDetailContent',
+				name:'noteDetailContent',
 				placeHolder:'内容',
 				clearIcon:false,
 				baseCls:'textarea-note'
@@ -80,9 +79,9 @@ Ext.define("cfa.view.NewNoteView",{
 					layout:'hbox',
 					items:[
 					{
-						html:'创建日期:&nbsp;',		
+						html:'修改日期:&nbsp;',		
 					},{
-						id:'note-dateText',
+						id:'noteModifyDate_text',
 						html:'',
 					}
 					]
@@ -121,12 +120,12 @@ Ext.define("cfa.view.NewNoteView",{
 					xtype:'formpanel',
 					id:'healthForm',
 					name:'healthForm',
-					scrollable:'vertical',
+					// scrollable:'vertical',
 					items:[
 					{
 						xtype:'fieldset',
 						defaults:{
-						labelwidth:'20%'
+							labelwidth:'20%'
 						},
 						items:[
 						{
@@ -153,12 +152,14 @@ Ext.define("cfa.view.NewNoteView",{
 							cls:'noteTips',
 							items:[{
 								id:'existTips',
+								cls:'hidden',
 								hidden:true,
 								html:"此笔记本已经存在！请更换名称"	
 							},{
 								id:'notNullTips',
 								hidden:true,
-								html:"笔记本名称或者简称不能为空！"
+								cls:'hidden',
+								html:"笔记本名称不能为空！"
 							}]
 						},{
 						xtype:'panel',

@@ -10,6 +10,17 @@ Ext.define('cfa.controller.KidAction',{
                 xtype: "kidview",
                 autoCreate: true
         	},
+        	healthForm 			: "#healthForm",
+        	submitHealthBtn 	: "#submitHealthBtn",
+
+        	birthForm 			: "#birthForm",
+        	submitBirthFormBtn 	: "#submitBirthFormBtn",
+
+        	scoreForm 			: "#scoreForm",
+        	submitScoreFormBtn 	: "#submitScoreFormBtn",
+
+        	vaccineForm 		: "#vaccineForm",
+        	submitVaccineFormBtn : "#submitVaccineFormBtn"
 		},
 		control: {
 			backBtn: {
@@ -17,6 +28,18 @@ Ext.define('cfa.controller.KidAction',{
 			},
 			kidMenu: { 
 				itemsingletap: "showModel"
+			},
+			submitHealthBtn:{
+				tap:"submitHealthForm"
+			},
+			submitBirthFormBtn:{
+				tap:"submitBirthForm"
+			},
+			submitScoreFormBtn:{
+				tap:"submitScoreForm"
+			},
+			submitVaccineFormBtn:{
+				tap:"submitVaccineForm"
 			}
 
 		},
@@ -53,5 +76,92 @@ Ext.define('cfa.controller.KidAction',{
 		}
 				
     },
+
+    submitHealthForm: function(){
+    	var form = this.getHealthForm() ;
+    	var height = parseFloat(Ext.getCmp('height').getValue()) ;
+    	var weight = parseFloat(Ext.getCmp('weight').getValue()) ;
+    	if(isNaN(height) || isNaN(weight) 
+    		|| height <= 0 || weight <= 0){
+    		Ext.Msg.alert("ERROR", "身高体重必须为正数") ;
+    		return ;
+    	}
+    	var params = {
+    		"model.date" : Ext.getCmp('healthTime').getValue() ,
+    		"model.height" : height ,
+    		"model.weight" : weight ,
+    		"model.babyId" : "BA3DE68086D9464A89E0DFCA9D0CB6F3"
+    	} ;
+     	Ext.create('cfa.model.RecordModel',{
+     		name : '' ,
+     		type : ''
+     	}).saveRecord(form, params) ;
+    },
+
+    submitBirthForm: function(){
+    	var form = this.getBirthForm() ;
+    	var sex = "female" ;
+    	var radios = Ext.ComponentQuery.query("radiofield[name=sex]") ;
+    	if(radios[0].getChecked() == true){
+    		sex = radios[0].getValue() ;
+    	}else{
+    		sex = radios[1].getValue() ;
+    	}
+    	var babyName = Ext.getCmp('babyName').getValue() ;
+    	if(babyName.length < 1){
+    		Ext.Msg.alert("ERROR", "姓名长度至少为1") ;
+    		return ;
+    	}
+    	var params = {
+    		"model.name" 	: babyName ,
+    		"model.date" 	: Ext.getCmp('birthDate').getValue(),
+    		"model.sex" 	: sex ,
+    		"model.userId" 	: "EBC0D4432F1F47F0A8DC928CD57A0A5A"
+    	} ;
+     	Ext.create('cfa.model.RecordModel',{
+     		name : '' ,
+     		type : ''
+     	}).saveRecord(form, params) ;
+    },
+
+    submitScoreForm: function(){
+    	var form = this.getScoreForm() ;
+    	var mark = parseFloat(Ext.getCmp('mark').getValue()) ;
+    	if(isNaN(mark)){
+    		Ext.Msg.alert("ERROR", "分数必须是罗马数字") ;
+    		return ;
+    	}
+    	var params = {
+    		"model.date" 	: Ext.getCmp('scoreDate').getValue() ,
+    		"model.grade" 	: Ext.getCmp('grade').getValue() ,
+    		"model.subject" : Ext.getCmp('subject').getValue() ,
+    		"model.mark" 	: mark ,
+    		"model.babyId" 	: "BA3DE68086D9464A89E0DFCA9D0CB6F3"
+    	} ;
+     	Ext.create('cfa.model.RecordModel',{
+     		name : '' ,
+     		type : ''
+     	}).saveRecord(form, params) ;
+    },
+
+    submitVaccineForm: function(){
+    	var form = this.getVaccineForm() ;
+    	var content = Ext.getCmp('vaccineContent').getValue() ;
+    	if(content.length < 1){
+    		Ext.Msg.alert("ERROR", "备注长度至少为1") ;
+    		return ;
+    	}
+    	var params = {
+    		"model.date" 	: Ext.getCmp('vaccinTime').getValue() ,
+    		"model.content" : content ,
+    		"model.babyId" 	: "BA3DE68086D9464A89E0DFCA9D0CB6F3"
+    	} ;
+     	Ext.create('cfa.model.RecordModel',{
+     		name : '' ,
+     		type : ''
+     	}).saveRecord(form, params) ;
+    }
+
+
 
 });

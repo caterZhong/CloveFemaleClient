@@ -88,6 +88,7 @@
 /*随手记样式*/
 .backBtn-plain{
 	font-size: 24px;
+	border:1px solid red;
 }
 
 .slide ,.slidenav-list {
@@ -138,11 +139,53 @@ to { -webkit-transform: translateX(0px); }
 	/*background: #222;*/
 }
 
+.noteTitile{
+	/*font-weight: bold;*/
+	font-size: 15px;
+	font-family: "Microsoft Yahei";
+}
+
+.noteDate{
+	color:#E24949;
+	font-size: 0.5em;
+	padding-top:4px;
+}
+
+.noteContent{
+	font-size: 13px;
+	color:#777;
+	padding-top:6px;
+	line-height: 20px;
+}
+
+.addNote{
+	position: absolute;
+	text-align: center;
+	line-height: 400px;
+	right:10px;
+	bottom:10px;
+	width:40px;
+	border:1px solid red;
+	border-radius: 20px;
+	background-color:#E24949;
+	color:white;
+	opacity:0.8;
+}
+
+.addNote .x-button{
+	color:white;
+	right:3px;
+}
+.testGroup .x-list-header{
+	/*background-color: white;*/
+	margin-bottom:15px;
+}
+
 .note-form{
 	width:100%;
 }
-.note-add-titleBar{
-	height: 50px;
+.note-titleBar{
+	height: 48px;
 }
 .spacer{
 	background-color: #fff;
@@ -196,6 +239,10 @@ to { -webkit-transform: translateX(0px); }
 	color:red;
 	padding:3px 15px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 83ecdaef20c05c240b4b227dec9870e33183af9c
 /* 药品药箱 */
 .medMenuItem{
 	padding-left:10px;
@@ -268,8 +315,42 @@ to { -webkit-transform: translateX(0px); }
 	color:#FF4444;
 	border-bottom:5px solid #F8F8F8;
 }
+<<<<<<< HEAD
 
 /*为图表中选择科目的列表定义的样式	--TanShichang 2014-01-14*/
 .subject_select{
 	max-width: 5em;
+=======
+/*为图表中选择科目的列表定义的样式	--TanShichang 2014-01-14*/
+.subject_select{
+	max-width: 5em;
+
+}
+.searchField{
+	position: absolute;
+	width:70%;
+	left:30%;
+	margin-left:-15%;
+	top:50%;
+	margin-top:-25px;
+}
+
+.searchField input{
+	line-height: 38px;
+	color:gray;
+}
+
+.note-titleBar.x-toolbar .x-field{
+	width:70%;
+}
+
+.highLight{
+	background-color: yellow;
+}
+
+.detailTitle{
+	border-bottom:1px solid #ccc;
+	font-size: 1.1em;
+	padding-bottom:5px;
+>>>>>>> 83ecdaef20c05c240b4b227dec9870e33183af9c
 }

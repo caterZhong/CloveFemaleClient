@@ -2,6 +2,10 @@ Ext.define('cfa.store.NoteGroupStore', {
 	extend: 'Ext.data.Store',
 	requires:['cfa.model.NoteGroupModel'],
 	model:'cfa.model.NoteGroupModel',
+	// sorters:Ext.create('Ext.util.Sorter',{
+	// 			property:'id',
+	// 			direction:'acs',
+	// 		}),
 	data:[
 		{groupName:'默认笔记本',shortName:'默'},
 		{groupName:'菜谱',shortName:'菜'},
