@@ -196,7 +196,6 @@ to { -webkit-transform: translateX(0px); }
 	color:red;
 	padding:3px 15px;
 }
-<<<<<<< HEAD
 /* 药品药箱 */
 .medMenuItem{
 	padding-left:10px;
@@ -268,10 +267,9 @@ to { -webkit-transform: translateX(0px); }
 	background:#FFF;
 	color:#FF4444;
 	border-bottom:5px solid #F8F8F8;
-=======
+}
 
 /*为图表中选择科目的列表定义的样式	--TanShichang 2014-01-14*/
 .subject_select{
 	max-width: 5em;
->>>>>>> 639b0ecaac00c6b7f5be3fde4731f3017fa6796b
 }

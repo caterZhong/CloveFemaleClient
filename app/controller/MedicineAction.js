@@ -109,7 +109,7 @@ Ext.define('cfa.controller.MedicineAction',{
 		var medBoxMark = formValues["medBoxMark"];
 		//通过JsonP跨域提交数据
 		Ext.data.JsonP.request({
-			url:'http://localhost:9000/MedicineAction/addMedBox',
+			url:domain+'MedicineAction/addMedBox',
 			params:{
 				medBoxName:medBoxName,
 				medBoxMark:medBoxMark,
