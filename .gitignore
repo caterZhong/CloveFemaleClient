@@ -4,3 +4,12 @@ eclipse
 .settings
 tmp
 common.js
+
+#不知道是什么东西，忽然多出来的
+
+lib/resources/themes/stylesheets/sencha-touch/bb10/var/
+lib/resources/themes/stylesheets/sencha-touch/cupertino-classic/var/
+lib/resources/themes/stylesheets/sencha-touch/cupertino/var/
+lib/resources/themes/stylesheets/sencha-touch/default/var/
+lib/resources/themes/stylesheets/sencha-touch/mountainview/var/
+lib/resources/themes/stylesheets/sencha-touch/windows/var/
