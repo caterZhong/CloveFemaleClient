@@ -116,7 +116,7 @@ Ext.define('cfa.controller.KidAction',{
     		"model.name" 	: babyName ,
     		"model.date" 	: Ext.getCmp('birthDate').getValue(),
     		"model.sex" 	: sex ,
-    		"model.userId" 	: "EBC0D4432F1F47F0A8DC928CD57A0A5A"
+    		"model.userId" 	: localStorage.userId
     	} ;
      	Ext.create('cfa.model.RecordModel',{
      		name : '' ,

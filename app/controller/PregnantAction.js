@@ -101,7 +101,7 @@ Ext.define('cfa.controller.PregnantAction',{
 	        'model.mPiece' 		: Ext.getCmp('mpiece').getValue()==1 ? 'true' : 'false',
 	        'model.isMcramp' 	: Ext.getCmp('ismcramp').getValue()==1 ? 'true':'false',
 	        'model.vicidity' 	: Ext.getCmp('vicidity').getValue(),
-	        'model.userId' 		: 'EBC0D4432F1F47F0A8DC928CD57A0A5A'
+	        'model.userId' 		: localStorage.userId
         } ;
      	Ext.create('cfa.model.RecordModel',{
      		name : '' ,
@@ -113,7 +113,7 @@ Ext.define('cfa.controller.PregnantAction',{
      	var form = this.getTemperatureForm() ;
      	var params = {
      		'model.tValue'	: Ext.getCmp('tValue').getValue(),
-            'model.userId' 	: 'EBC0D4432F1F47F0A8DC928CD57A0A5A'
+            'model.userId' 	: localStorage.userId
      	} ;
      	Ext.create('cfa.model.RecordModel',{
      		name : '' ,
@@ -131,7 +131,7 @@ Ext.define('cfa.controller.PregnantAction',{
      	var params = {
      		'model.wDate'	: Ext.getCmp('wDate').getValue(),
             'model.wValue'	: wValue,
-            'model.userId' 	: 'EBC0D4432F1F47F0A8DC928CD57A0A5A'
+            'model.userId' 	: localStorage.userId
      	} ;
      	Ext.create('cfa.model.RecordModel',{
      		name : '' ,
@@ -143,7 +143,7 @@ Ext.define('cfa.controller.PregnantAction',{
      	var form = this.getMovementForm() ;
      	var params = {
             'model.num'		: Ext.getCmp('movementNum').getValue(),
-            'model.userId' 	: 'EBC0D4432F1F47F0A8DC928CD57A0A5A'
+            'model.userId' 	: localStorage.userId
      	} ;
      	Ext.create('cfa.model.RecordModel',{
      		name : '' ,

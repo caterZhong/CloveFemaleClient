@@ -22,12 +22,7 @@ Ext.application({
 	
 	stores: ["NoteStore","NoteGroupStore","SimpleNoteBookStore","NoteDetailStore","chart.ChartStore", "chart.LineBabyMoveStore", "chart.LineGesWeightStore", 
 		"chart.LineGradeStore", "chart.LineHeightStore", "chart.LineTempStore", "chart.PieBabyMoveStore", 
-<<<<<<< HEAD
 		"chart.PieGradeStore", "chart.PieTempStore","chart.ChartSubjectsStore","medicine.medBoxStore","medicine.medDetailStore","medicine.medSingleStore"],
-=======
-		"chart.PieGradeStore", "chart.PieTempStore","medicine.medBoxStore", "chart.ChartSubjectsStore","medicine.medDetailStore","medicine.medSingleStore"],
-
->>>>>>> 83ecdaef20c05c240b4b227dec9870e33183af9c
 
 
 	launch: function(){
