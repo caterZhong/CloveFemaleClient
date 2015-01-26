@@ -38,7 +38,6 @@ Ext.define("cfa.view.NotebookView",{
 						hideOnMaskTap:true,
 						centered:true,
 						height:170,
-						minHeight:170,
 						width:'90%',
 						items:[{
 							xtype:'panel',
@@ -46,6 +45,7 @@ Ext.define("cfa.view.NotebookView",{
 							html:'笔记本名称',
 						},{
 							xtype:'list',
+							name:'nbMenuList',
 							height:120,
 							cls:'nbModelList',
 							store:'NbMenuStore',

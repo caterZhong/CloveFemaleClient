@@ -25,7 +25,8 @@ Ext.define('cfa.controller.NotebookAction',{
 			delNote_btn:'button[name="delNote_btn"]',
 			/*删除的TitleBar*/
 			delBar : 'titlebar[name="noteDelBar"]',
-			// delBar :'#noteDelBar',
+			/*笔记本的操作选项-模态对话框中的List*/
+			nbMenuList : 'list[name="nbMenuList"]',
 			/*随手记页面*/
 			notebookview:{
         		//引用随手记页面
@@ -52,13 +53,10 @@ Ext.define('cfa.controller.NotebookAction',{
 			/*笔记本列表*/
 			noteBookList:{
 						itemtap : 'showNote',
-						itemtaphold:'showDeleteImg',
+						// itemtaphold:'showDeleteImg',showNbModel
+						itemtaphold:'showNbModel',
 						selectionchange:'nbchange',
-						activate:'nbactiveitemchange',
 						initialize:'nbListInit',
-						itemtouchend:'nbItemTouch',
-						// OnItemDisclosure
-						
 			},
 			/*搜索笔记按钮*/
 			searchBtn:{
@@ -79,6 +77,11 @@ Ext.define('cfa.controller.NotebookAction',{
 			/*删除的TitleBar*/
 			delBar:{
 					initialize:'delBarInit',
+			},
+			/*笔记本的操作选项-模态对话框中的List*/
+			nbMenuList :{
+						//执行菜单相关操作
+						itemtap:'doNbMenuOpr',
 			},
 
 		},
@@ -303,18 +306,36 @@ Ext.define('cfa.controller.NotebookAction',{
 	},
 
 	/*显示相关笔记--笔记本选择的itemtap事件*/
+	// showNote:function(list, index, target, record){
+	// 	var noteBookId = list.getStore().getAt(index).get('id');
+	// 	if(localStorage.tapDisclosure == 1){//如果点击的是垃圾桶按钮，则删除相关笔记
+	// 		Ext.Msg.confirm('删除','确认删除该笔记本？(将删除该笔记本中的所有笔记哦！)',function(btn,text){
+	// 			if(btn == 'yes'){
+	// 				this.DelNoteBook(noteBookId, list, index)
+	// 			}else{
+	// 				alert("cancel");
+	// 			}
+	// 		})
+	// 	}
+	// 	else if(localStorage.onlytap == 1){//当只是tap的时候加载数据，而hold的时候不加载数据
+	// 		console.log("tap");	
+	// 		var noteList = Ext.getCmp("shownoteList");
+	//     	var store = noteList.getStore();
+	// 		switch(index){
+	// 			case 0:this.showAllNote(store);break;
+	// 			default:this.showNoteInNoteBook(noteBookId,store);break;
+	// 		}
+	// 		this.toggleNav();//关闭slideNav
+	// 	}
+	// 	localStorage.onlytap = 1;
+	// 	localStorage.tapDisclosure = 0;
+	// },
+
+	/*显示相关笔记--笔记本选择的itemtap事件*/
 	showNote:function(list, index, target, record){
-		var noteBookId = list.getStore().getAt(index).get('id');
-		if(localStorage.tapDisclosure == 1){//如果点击的是垃圾桶按钮，则删除相关笔记
-			Ext.Msg.confirm('删除','确认删除该笔记本？(将删除该笔记本中的所有笔记哦！)',function(btn,text){
-				if(btn == 'yes'){
-					this.DelNoteBook(noteBookId, list, index)
-				}else{
-					alert("cancel");
-				}
-			})
-		}
-		else if(localStorage.onlytap == 1){//当只是tap的时候加载数据，而hold的时候不加载数据
+		var noteBookId = list.getStore().getAt(index).get('id'); //获取笔记本Id，0表示点击的是全部笔记
+
+		if(localStorage.onlytap == 1){//当只是tap的时候加载数据，而hold的时候不加载数据
 			console.log("tap");	
 			var noteList = Ext.getCmp("shownoteList");
 	    	var store = noteList.getStore();
@@ -325,7 +346,6 @@ Ext.define('cfa.controller.NotebookAction',{
 			this.toggleNav();//关闭slideNav
 		}
 		localStorage.onlytap = 1;
-		localStorage.tapDisclosure = 0;
 	},
 
 	/*删除指定Id的笔记本*/
@@ -427,16 +447,40 @@ Ext.define('cfa.controller.NotebookAction',{
 
     /*显示笔记本操作模态对话框*/
     showNbModel:function(list, index, target, record, e){    
-    	localStorage.onlytap = 0;
-
-    	var lastHoldIndex = localStorage.holdItem; 
-    	if(lastHoldIndex!=0){
-    		
-    	}	    	
-    	if(index!=0&&index!=1&&index!=lastHoldIndex){
-    		list.getItemAt(index).addCls("activeNb");
+    	localStorage.onlytap = 0;   	
+    	if(index!=0){ //如果点击的全部笔记Item，则不显示对话框
+    		Ext.getCmp("nbModal").show(); 
     	}	
-    	localStorage.holdItem = index;
+    },
+
+    /*根据选择执行笔记本菜单操作*/
+    doNbMenuOpr:function(list, index, target, record){
+    	switch(index){
+    		case 0:this.doRenameForBb();break;//重命名
+    		case 1:this.deleteNoteBook();break;//删除
+    		case 2:this.newNb();break;//新建笔记本
+    	}
+    },
+
+    /*笔记本重命名操作*/
+    doRenameForBb:function(){
+    	Ext.getCmp("nbModal").hide();
+    	Ext.Msg.show({
+    		title:'请输入笔记本名称',
+    		message:'请输入笔记本名称',
+    		height:200,
+    		width:'90%',
+    		buttons:Ext.MessageBox.YESNO,
+    		modal:true,
+    		value:'默认值',
+    		prompt:true,
+    		defaultTextHeight:80,
+    	});
+    },
+
+    /*新建笔记本*/
+    newNb:function(){
+    	// Ext.
     },
 
     /*删除笔记本*/
@@ -451,14 +495,6 @@ Ext.define('cfa.controller.NotebookAction',{
     	console.log(records[0].get("name"));
     },
 
-    nbactiveitemchange:function( list, value, oldValue, eOpts ){
-    	// alert(list.getSelectionCount());
-    },
-
-    nbItemTouch:function( list, index, target, record, e, eOpts ){
-    	// alert("touch");
-    	
-    },
 
     nbListInit:function(list, eOpts ){
     	localStorage.holdItem = 0;
