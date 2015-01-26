@@ -79,6 +79,12 @@ Ext.define('cfa.controller.NewNoteAction',{
 	//显示添加笔记页面
 	showNewnoteview:function(){
     	Ext.Viewport.setActiveItem(this.getNewnoteview());
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth()+1;
+        var day = now.getDay()+1;
+        var createDay = "" + year + "年" + month + "月" + day + "日";
+        Ext.getCmp("note-dateText").setHtml(createDay);
     },
 
     //显示新建分组模态框

@@ -1,7 +1,7 @@
 Ext.define("cfa.view.MainView", {
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","cfa.view.RecordView"],
+	requires: ["Ext.TabPanel","cfa.view.RecordView","cfa.view.PersonalView"],
 	
 	xtype: "mainview",
 	
@@ -38,8 +38,11 @@ Ext.define("cfa.view.MainView", {
 				},
 				{
 					title: "我",
-					html:"我",
-					iconCls: "user"
+					// html:"我",
+					iconCls: "user",
+					items: [{
+		            	xtype: "personalview"
+		            }]
 				}    			
     		]
     	}]

@@ -3,25 +3,52 @@ Ext.define('cfa.controller.NoteSearchAction',{
 	requires:['Ext.DataView','Ext.data.JsonP','Ext.data.reader.Json','Ext.data.Store'],
 	config: {
 		refs: {
+			/*返回按钮——返回到随手记页面*/
 			backBtn: 'button[name="notesearchBack_btn"]',
+			/*搜素按钮*/
 			searchBtn:'button[name="notesearch_btn"]',
+			/*搜索结果列表*/
 			searchList:'list[name="searchnoteList"]',
+			/*删除按钮*/
+			delBtn:'button[name="delNote_ns_btn"]',
+			/*关闭按钮——关闭删除模式*/
+			closeBtn:'button[name="closeDel_ns_btn"]',
+			/*删除的TitleBar*/
+			delBar : 'titlebar[name="nsDelBar"]',
+			/*搜索页面*/
 			notesearchview:{
-        		//引用随手记页面
+        		//引用笔记搜索页面
                 selector: 'notesearchview',
                 xtype: "notesearchview",
                 autoCreate: true
         	}
 		},
 		control: {
+			/*返回按钮——返回到随手记页面*/
 			backBtn: {
 						tap : 'backToNoteBookview'
 			},
+			/*搜素按钮*/
 			searchBtn:{
 						tap : 'loadSearchResult'
 			},
+			/*关闭按钮——关闭删除模式*/
+			closeBtn:{
+						tap:'closeDelModel',
+			},
+			/*删除按钮*/
+			delBtn:{
+					    tap:'delNote',
+			},
+			/*删除的TitleBar*/
+			delBar:{
+					initialize:'delBarInit',
+			},
+			/*搜索结果列表*/
 			searchList:{
-						itemtap:'showsearchdetailview'
+						itemtap:'noteListTap',
+						/*切换到删除模式*/
+						itemtaphold:'changeToDelModel',
 			}
 
 		},
@@ -33,12 +60,13 @@ Ext.define('cfa.controller.NoteSearchAction',{
 	//返回到随手记页面,同时删除笔记搜索的页面
 	backToNoteBookview: function(){
 		this.redirectTo('notebook');
-		// Ext.Viewport.remove(this.getNotesearchview());
+		Ext.Viewport.remove(this.getNotesearchview());
 	},
 
 	//显示笔记搜索页面
 	showNoteSearchView:function(){
     	Ext.Viewport.setActiveItem(this.getNotesearchview());
+    	// Ext.Viewport.animateActiveItem(this.getNotesearchview(),{type:'fade',duration:300});/*direction:'left',*/
     	// this.loadNoteBookData();
     },
 
@@ -72,11 +100,120 @@ Ext.define('cfa.controller.NoteSearchAction',{
     	})	
     },
 
+	/*切换到笔记搜索的全部内容页面*/
     showsearchdetailview:function(list, index, target, record){
     	var noteStore = list.getStore();
 		noteId = noteStore.getAt(index).get('id');
 		localStorage.notesearchId = noteId;
     	this.redirectTo('notesearchdetail');
-    }
+    },
+
+    /*长按笔记list时切换到删除模式*/
+    changeToDelModel:function(list, index, target, record){
+    	localStorage.noteModel = 1;//删除模式
+    	var noteBar =  Ext.getCmp("ns_titleBar");
+    	noteBar.hide();
+    	var delBar = Ext.getCmp("nsDelBar");
+    	delBar.show();
+
+    	list.getItemAt(index).addCls("Listitem-del");
+    	list.addCls("DelNoteList");
+    	// .Listitem-del
+    },
+
+    /*关闭搜索笔记页面的删除模式*/
+    closeDelModel:function(){
+    	var noteBar =  Ext.getCmp("ns_titleBar");
+    	noteBar.show();
+    	var delBar = Ext.getCmp("nsDelBar");
+    	delBar.hide();
+
+    	localStorage.noteModel = 0; //改变模式
+
+    	//取消置灰的选项
+    	var length = delNoteList.length;
+    	var list = Ext.getCmp("searchnoteList");
+    	for(var index in delNoteList){
+    		list.getItemAt(delNoteList[index]).removeCls("Listitem-del");
+    	}
+
+    	list.removeCls("DelNoteList");//取消选中置白的样式
+
+    	//清空两个转载index和Id的数组
+    	delNoteList.splice(0,delNoteList.length);
+    	delNoteIdList.splice(0,delNoteIdList.length);
+
+    	//恢复title
+    	Ext.getCmp("nsDelBar").setTitle("已选择1个");
+    },
+
+    /*笔记搜索结果列表的tap事件*/
+    noteListTap:function(list, index, target, record){
+    	var model = localStorage.noteModel;
+    	if(model == 0){
+    		//切换到笔记搜索的全部内容页面
+    		this.showsearchdetailview(list, index, target, record);
+    	}else{
+    		//让选中的item置灰表示选中 	
+    		var inSelected = false;	
+    		for(var selectedIndex in delNoteList){
+    			if(index == delNoteList[selectedIndex]){
+    				delNoteList.splice(selectedIndex,1);
+    				delNoteIdList.splice(selectedIndex,1);
+    				list.getItemAt(index).removeCls("Listitem-del");
+    				inSelected = true;
+    				break;
+    			}
+    		}
+    		if(!inSelected){
+    			list.getItemAt(index).addCls("Listitem-del");
+    			var noteId = list.getStore().getAt(index).get("id");
+    			delNoteList.push(index);
+    			delNoteIdList.push(noteId);
+    		}
+    		if(delNoteList.length == 0){
+    			this.closeDelModel();
+    		}else{
+    			var title = "已选择"+delNoteList.length+"个";
+    			Ext.getCmp("nsDelBar").setTitle(title);
+    		}
+    		
+    	}	
+    },
+
+    /*删除笔记*/
+    delNote:function(){
+    	if(delNoteIdList.length==0){
+    		Ext.Msg.alert("消息","请选择要删除的笔记");
+    	}else{
+    		var closeDelModel = this.closeDelModel;
+    		Ext.data.JsonP.request({
+	    		url:domain+'RandomNote/delNote',
+	    		callbackKey:'callback',
+	    		callback:'callback',
+	    		params:{
+					'noteIdList':delNoteIdList,
+				},
+	    		callback:function(success,result){
+	    			if(result.result == 0){
+	    				var store = Ext.getCmp("searchnoteList").getStore();
+	    				for(var index in delNoteList){
+	    					store.removeAt(delNoteList[index]);
+	    				}
+	    				closeDelModel();
+	    			}else{
+	    				Ext.Msg.alert("消息","操作失败");
+	    			}
+	    		}
+			});
+    	}
+    },
+
+    /*nsDelBar的初始化时间
+	 *隐藏该titleBar
+     */
+    delBarInit:function(titleBar,eOpts){
+    	titleBar.hide();
+    },
 
 });

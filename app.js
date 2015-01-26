@@ -10,7 +10,7 @@ Ext.application({
 	
 
 	controllers:["MainAction","RecordAction","KidAction","PregnantAction","NotebookAction","NewNoteAction","NoteSearchAction","NoteSearchDetailAction",
-		"NoteDetailAction","cfa.controller.MedicineAction","cfa.controller.MedicineListAction","chart.ChartAction","chart.CustomizeDateAction"],
+		"NoteDetailAction","cfa.controller.MedicineAction","cfa.controller.MedicineListAction","chart.ChartAction","chart.CustomizeDateAction","PersonalAction"],
 		
 	views: ["MainView","RecordView","KidView","PregnantView","NotebookView","SlideNav",
 		"NotebookFirstView","NewNoteView","NoteSearchView","NoteDetailView","NoteSearchDetailView","chart.ChartView","chart.CustomizeDateView", "chart.BarChartBabyMove", 
@@ -20,7 +20,7 @@ Ext.application({
 		"chart.PieChartTemp"],
 	models:["NoteModel","NoteGroupModel","SimpleNoteBookModel","NoteDetailModel", "RecordModel"],
 	
-	stores: ["NoteStore","NoteGroupStore","SimpleNoteBookStore","NoteDetailStore","chart.ChartStore", "chart.LineBabyMoveStore", "chart.LineGesWeightStore", 
+	stores: ["NoteStore","NoteGroupStore","SimpleNoteBookStore","NoteDetailStore","NoteSearchDetailStore","NbMenuStore","chart.ChartStore", "chart.LineBabyMoveStore", "chart.LineGesWeightStore", 
 		"chart.LineGradeStore", "chart.LineHeightStore", "chart.LineTempStore", "chart.PieBabyMoveStore", 
 		"chart.PieGradeStore", "chart.PieTempStore","chart.ChartSubjectsStore","medicine.medBoxStore","medicine.medDetailStore","medicine.medSingleStore"],
 

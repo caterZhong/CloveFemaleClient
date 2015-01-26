@@ -14,11 +14,11 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
 		},
 		control: {
 			backBtn: {
-						tap : 'backToNotebookview'
+						tap : 'backToNotesearchview'
 			},
-            // editBtn: {
-            //             tap : 'showEditview'
-            // },
+            editBtn: {
+                        tap : 'showEditview'
+            },
 		},
 		routes:{
 			'notesearchdetail':'showNotesearchdetailview'
@@ -31,7 +31,17 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
 	},
 
     showEditview:function(){
-        this.redirectTo('notedetail');
+        // this.redirectTo('notedetail');
+        var noteId = localStorage.notesearchId;
+        localStorage.noteId = noteId;
+        var list = Ext.getCmp("noteBookList");
+        var store = list.getStore(); 
+        store.removeAt(0);
+        var newData = {'id':0,'name':'新建笔记本'};
+        store.addData(newData);
+
+        localStorage.lastView = "notesearchdetail";
+        this.redirectTo("notedetail");
     },
 
 	//显示搜索笔记详情页面

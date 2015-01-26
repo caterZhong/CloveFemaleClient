@@ -36,4 +36,5 @@ Ext.define('cfa.controller.RecordAction',{
 	showRecordview:function(){
     	Ext.Viewport.setActiveItem(this.getRecordview());
     },
+
 });

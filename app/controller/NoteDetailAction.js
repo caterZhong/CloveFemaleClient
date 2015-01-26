@@ -6,7 +6,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
 			backBtn: 'button[name="notedetail_back_btn"]',
 			saveBtn: 'button[name="notedetail_save_btn"]',
 			notedetailview:{
-        		//引用新建笔记页面
+        		//引用笔记详情页面
                 selector: 'notedetailview',
                 xtype: "notedetailview",
                 autoCreate: true
@@ -27,8 +27,9 @@ Ext.define('cfa.controller.NoteDetailAction',{
 
 	//返回到随手记页面,同时删除新建笔记的页面
 	backToNotebookview: function(){
-		this.redirectTo('notebook');
-		Ext.Viewport.remove(this.getNotedetailview());
+        var lastView = localStorage.lastView;  //获取上一个页面
+		this.redirectTo(lastView); //返回到上一个页面
+		Ext.Viewport.remove(this.getNotedetailview());  //删除本页面
         var list = Ext.getCmp("noteBookList");
         var store = list.getStore();
         store.removeAt(store.getCount()-1);
@@ -68,7 +69,12 @@ Ext.define('cfa.controller.NoteDetailAction',{
 
 	//显示笔记详情页面
 	showNotedetailview:function(){
-    	Ext.Viewport.setActiveItem(this.getNotedetailview());
+        var lastView = localStorage.lastView;  //获取上一个页面
+        if(lastView == "notebook"){
+            Ext.Viewport.setActiveItem(this.getNotedetailview());
+        }else{
+            Ext.Viewport.animateActiveItem(this.getNotedetailview(),{type:'slide',duration:300});
+        }
         var noteId = localStorage.noteId;
         Ext.data.JsonP.request({
                 url:domain+'RandomNote/findNoteById',

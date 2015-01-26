@@ -12,6 +12,8 @@ Ext.define("cfa.view.NotebookFirstView",{
 			items : [{
 						xtype : 'titlebar',
 						title : '随手记',
+						name:'randomNoteBar',
+						id:'randomNoteBar',
 						docked: 'top',
 						cls:'note-titleBar',
 						items :[
@@ -41,16 +43,41 @@ Ext.define("cfa.view.NotebookFirstView",{
 				itemTpl : '<div class="noteTitile">{title}</div><div class="noteDate">{year}年{month}月{day}日</div><div class="noteContent">{content}...</div>',
 				store:'NoteStore',
 			},{
-						xtype:'panel',
-						baseCls:'addNote',
-						height:40,
-						items:[{
-							xtype:'button',
-							name: 'new_btn',
-							iconCls: 'add',
-							ui: 'plain'
-						}]
+				xtype:'panel',
+				baseCls:'addNote',
+				name:'addNotePanel',
+				id:'addNotePanel',
+				// hidden:true,
+				height:40,
+				items:[{
+						xtype:'button',
+						name: 'new_btn',
+						iconCls: 'add',
+						ui: 'plain'
+				}]
 
+			},{
+				xtype : 'titlebar',
+				title : '已选择1个',
+				docked: 'top',
+				name:'noteDelBar',
+				id:'noteDelBar',
+				cls:'note-titleBar',
+				items :[
+						{
+							// iconCls:'refresh',
+							// text:'Back',
+							name:'closeDel_btn',
+							iconCls:'delete',
+							cls:'closeBtn-plain',
+							ui: 'plain'
+						},
+						{
+							align: 'right',
+							name: 'delNote_btn',
+							iconCls: 'trash',
+							ui: 'plain'
+					    }]
 			}]
 	}
 

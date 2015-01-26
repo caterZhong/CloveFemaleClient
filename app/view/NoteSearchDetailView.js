@@ -36,7 +36,7 @@ Ext.define("cfa.view.NoteSearchDetailView",{
 				name:'notesearchdetailList',
 				width: "100%",
 				itemTpl : '<div class="noteTitile detailTitle">{title}</div><div class="noteDate">{year}年{month}月{day}日</div><div class="noteContent">{content}</div>',
-				store:'NoteStore',
+				store:'NoteSearchDetailStore',
 			}
 			]
 	}

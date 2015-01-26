@@ -91,6 +91,79 @@
 	border:1px solid red;
 }
 
+/*.x-stretched.x-container{
+	display: none;
+}
+*/
+.notebookList{
+	height: 40px;
+}
+
+.slidenav-list.x-list .x-list-disclosure{
+	overflow: visible;
+	background-image: url(../images/delete32.png);
+  	width: 1.7em;
+  	height: 1.7em;
+  	background-color: #F7F7F7;
+  	background-position: center;
+  	/*display: none;*/
+  	display: none;
+}
+
+.slidenav-list.x-list .activeNb .x-list-disclosure{
+	display: block;
+}
+
+.slidenav-list.x-list .notebookListItem.activeNB .x-list-disclosure{
+	display: none;
+}
+
+.slidenav-list.x-list #test .x-list-disclosure{
+	display: block;
+}
+
+
+#test{
+	border:1px solid red;
+}
+
+
+ .x-list-disclosure{
+	display: block;
+}
+.slidenav-list.x-list .x-list-disclosure::before{
+	content:"";
+}
+/*x-list-item x-stretched x-list-item-tpl notebookListItem x-list-item-relative*/
+
+.notebookList .x-list-indexed .x-list-disclosure {
+  margin-right: 1.3em;
+}
+
+.notebookList .x-item-selected .x-list-disclosure {
+  background: #fff none;
+}
+
+.bookDelImg{
+	float:right;
+	height: 32px;
+	display: none;
+}
+
+.closeBtn-plain{
+	border-right: 1px solid gray
+}
+
+.hideDeleteImg{
+	display: none;
+}
+
+.notebookName{
+	height: 32px;
+	line-height: 32px;
+	/*border:1px solid red;*/
+}
+
 .slide ,.slidenav-list {
     -webkit-animation-duration: .200s;
 	-webkit-transition-timing-function: cubic-bezier(0.275, 0.080, 0.425, 0.855); 
@@ -127,8 +200,6 @@ to { -webkit-transform: translateX(0px); }
     -webkit-transform: translateX(0px);
 }
 
-
-
 .slidenav-list{
     position: absolute !important;
     height: 100%;
@@ -138,6 +209,48 @@ to { -webkit-transform: translateX(0px); }
 	/*-webkit-box-shadow: inset -15px 0px 30px -15px rgba(0,0,0,1);*/
 	/*background: #222;*/
 }
+
+.notebookListItem{
+	min-height: 0px;
+	max-height: 50px;
+	padding-top:-5px;
+}
+
+.x-list .x-list-item.x-list-item-tpl.notebookListItem .x-innerhtml{
+	padding:6px 15px;
+}
+
+/*删除模式的样式*/
+.x-list-normal.DelNoteList .x-list-item.x-item-selected.x-list-item-tpl{
+	background-color: #F7F7F7;
+}
+
+.x-list-normal.DelNoteList .x-list-item.Listitem-del.x-list-item-tpl{
+	background-color: #ccc;
+}
+/*删除模式样式-----结束*/
+
+/*笔记本操作模态对话框样式*/
+.nbModal_title{
+	/*text-align:center;
+	color:#E24949;
+	font-size:16px;
+	font-weight: bold;
+	padding:10px;
+	border-bottom:1px dashed #E24949;*/
+}
+
+.nbModelList{
+	background-color: #fff;
+	overflow: hidden;
+}
+
+.nbModelListItem{
+	min-height: 20px;
+	max-height:20px;
+	font-size:13px;
+}
+/*笔记本操作模态对话框样式----结束*/
 
 .noteTitile{
 	/*font-weight: bold;*/
@@ -239,10 +352,7 @@ to { -webkit-transform: translateX(0px); }
 	color:red;
 	padding:3px 15px;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 83ecdaef20c05c240b4b227dec9870e33183af9c
 /* 药品药箱 */
 .medMenuItem{
 	padding-left:10px;
@@ -315,16 +425,11 @@ to { -webkit-transform: translateX(0px); }
 	color:#FF4444;
 	border-bottom:5px solid #F8F8F8;
 }
-<<<<<<< HEAD
+
 
 /*为图表中选择科目的列表定义的样式	--TanShichang 2014-01-14*/
 .subject_select{
 	max-width: 5em;
-=======
-/*为图表中选择科目的列表定义的样式	--TanShichang 2014-01-14*/
-.subject_select{
-	max-width: 5em;
-
 }
 .searchField{
 	position: absolute;
@@ -352,5 +457,95 @@ to { -webkit-transform: translateX(0px); }
 	border-bottom:1px solid #ccc;
 	font-size: 1.1em;
 	padding-bottom:5px;
->>>>>>> 83ecdaef20c05c240b4b227dec9870e33183af9c
+}
+
+.personalList{
+	height: 300px;
+}
+
+
+/*我的样式*/
+.personalViewe{
+	/*background-color: gray;*/
+}
+
+.psnSim{
+	/*height: 73px;*/
+	height: 80px;
+	margin-top:20px;
+	/*margin-*/
+}
+
+.personalImg{
+	float:left;
+	padding-left:15px;
+	width:50px;
+	height: 50px;
+	border-radius: 25px;
+	/*border:1px solid #ccc;*/
+}
+
+.personalImg>img{
+	width:50px;
+	border-radius: 25px;
+	border:1px solid #aaa;
+}
+
+.personalName{
+	font-size: 0.8em;
+	padding:8px 0px 0px 75px;
+	margin:0;
+	text-align: left;
+	font-weight: 700;
+}
+
+.personalId{
+	font-size: 0.3em;
+	padding:0px 0px 0px 75px;
+	color:#858383;
+	margin:0;
+	font-weight: normal;
+	text-align: left;
+}
+
+.x-button.x-button-plain.psnSim, .x-toolbar .x-button.x-button-plain.psnSim{
+	height:73px; 
+	background-color: white;
+	/*border-*/
+}
+
+.x-button.x-button-plain.psnMenu, .x-toolbar .x-button.x-button-plain.psnMenu{
+	height:40px; 
+	background-color: white;
+	/*border-*/
+}
+
+.psnMenu{
+	margin-top: 20px;
+}
+
+.psnItemImg{
+	display: block;
+	padding-left: 15px;
+	padding-top:4px;
+	float:left;
+	
+}
+
+.psnItemImg>img{
+	width:32px;
+	/*border:1px solid red;*/
+}
+
+.psnItemTitle{
+	text-align: left;
+	padding:11px 0px 0px 50px;
+	font-size: 15px;
+
+}
+
+.x-button.x-button-plain.psnMenuPres, .x-toolbar .x-button.x-button-plain.psnMenuPres{
+/*	background-color: yellow;
+	border:1px solid red;
+	height: 100px;*/
 }

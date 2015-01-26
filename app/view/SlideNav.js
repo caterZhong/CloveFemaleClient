@@ -3,6 +3,10 @@ Ext.define('cfa.view.SlideNav', {
 				xtype: 'slidenav',
 				requires : ['Ext.data.Store'],
 				cls : 'slidenav-list',
+				// disclosureProperty:'disclosure',
+				// onItemDisclosure:function(record,element,index,e){
+				// 			alert("2");
+				// 		}
 				// config: {
 				// 				cls : 'slidenav-list',
 				// 				itemTpl : '{name}',
