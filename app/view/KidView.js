@@ -32,6 +32,7 @@ Ext.define("cfa.view.KidView",{
 			hidden:true,
 			hideOnMaskTap:true,
 			centered:true,
+			minHeight:273,
 			height:'60%',
 			width:'90%',
 			items:[{
@@ -113,6 +114,7 @@ Ext.define("cfa.view.KidView",{
 			hidden:true,
 			hideOnMaskTap:true,
 			centered:true,
+			minHeight:326,
 			height:'60%',
 			width:'90%',
 			items:[{
@@ -201,6 +203,7 @@ Ext.define("cfa.view.KidView",{
 			hidden:true,
 			hideOnMaskTap:true,
 			centered:true,
+			minHeight:271,
 			height:'60%',
 			width:'90%',
 			items:[{
@@ -315,6 +318,7 @@ Ext.define("cfa.view.KidView",{
 			hidden:true,
 			hideOnMaskTap:true,
 			centered:true,
+			minHeight:215,
 			height:'60%',
 			width:'90%',
 			items:[{

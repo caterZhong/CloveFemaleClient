@@ -6,7 +6,7 @@ Ext.define("cfa.view.me.PsnInfView",{
 	
 	xtype: "psninfview",
 	config:{
-			/*我主页*/
+			/*个人信息页面*/
 			xtype:"panel",
 			layout: "vbox",
 			width: "100%",
