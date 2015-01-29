@@ -47,6 +47,7 @@ Ext.define('cfa.controller.NewNoteAction',{
 
 	/*返回到随手记页面,同时删除新建笔记的页面*/
 	backToNotebookview: function(){
+        // alert(this);
 		this.redirectTo('notebook');
 		Ext.Viewport.remove(this.getNewnoteview());
         var list = Ext.getCmp("noteBookList");
@@ -62,6 +63,7 @@ Ext.define('cfa.controller.NewNoteAction',{
         var noteContent= Ext.getCmp("noteContent");
         var noteBookId = Ext.getCmp("noteGroup");
         var showTipsModal = this.showTipsModal;
+        var thisParam = this;
         Ext.data.JsonP.request({
             url:domain+'RandomNote/addNote2',
             callbackKey:'callback',
@@ -76,7 +78,16 @@ Ext.define('cfa.controller.NewNoteAction',{
                     showTipsModal("保存成功",2000);
                     noteTitle.setValue("");
                     noteContent.setValue("");  
-                    this.backToNotebookview();//返回到随手记页面 
+                    //返回到随手记页面
+                    // thisParam.redirectTo('notebook');
+                    // Ext.Viewport.remove(thisParam.getNewnoteview());
+                    // var list = Ext.getCmp("noteBookList");
+                    // var store = list.getStore();
+                    // store.removeAt(store.getCount()-1);
+                    // var newData = {'id':0,'name':'全部笔记'};
+                    // store.insert(0,newData);
+                    // localStorage.tips = "保存成功";
+                    // back();//返回到随手记页面 
                 }else{
                     //操作失败
                     showTipsModal("保存失败",2000);

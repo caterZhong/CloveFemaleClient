@@ -107,6 +107,10 @@ Ext.define('cfa.controller.NotebookAction',{
 	//显示随手记页面
 	showNotebookview:function(){
     	Ext.Viewport.setActiveItem(this.getNotebookview());
+    	// if(localStorage.tips != undefined && ""!=localStorage.tips){
+    	// 	this.showTipsModal(localStorage.tips,1500);
+    	// 	localStorage.tips = "";
+    	// }
     	this.loadNoteData();//加载笔记信息
     	this.loadNoteBookData();//加载笔记本信息
     },
@@ -251,7 +255,7 @@ Ext.define('cfa.controller.NotebookAction',{
 	 * 切换展示导航栏
 	 */
 	toggleNav : function(){
-					var me = this;
+					var me = this; 
 					mainEl = me.getBookfirstview().element;
 					
 									
@@ -291,7 +295,9 @@ Ext.define('cfa.controller.NotebookAction',{
 	    			
 	    		if(success&&result.result== 0){//操作成功
 	    			store.loadData(result.data);
-	    			
+	    			if(store.getCount()==0){
+	    				showTipsModal("您还没有笔记哦！",1500);
+	    			}
 	    		}else{
 	 				showTipsModal("加载数据失败",2000);
 	    			// alert("加载数据失败");
@@ -348,7 +354,7 @@ Ext.define('cfa.controller.NotebookAction',{
 
 	/*显示用户的所有笔记*/
 	showAllNote:function(store,showTipsModal){
-		// var showTipsModal = this.showTipsModal;
+		var showTipsModal = this.showTipsModal;
 		Ext.data.JsonP.request({
     		url:domain+'RandomNote/findNoteByUserId',
     		callbackKey:'callback',
@@ -434,7 +440,7 @@ Ext.define('cfa.controller.NotebookAction',{
     showNbModel:function(list, index, target, record, e){    
     	localStorage.onlytap = 0;  	
     	if(index!=0){ //如果点击的全部笔记Item，则不显示对话框
-    		var nbName = record.get("name"); //获取点击Item中的笔记本名称
+    		var nbName = record.get("name"); //获取点击Item中的笔记本名称 
     		Ext.getCmp("nbModalName").setHtml(nbName);//设置模态对话框的标题为笔记本名称
     		Ext.getCmp("nbModal").show(); 
     		localStorage.nbListTapIndex = index;//更新最新tap的ItemIndex
@@ -481,6 +487,7 @@ Ext.define('cfa.controller.NotebookAction',{
 
     /*新建笔记本*/
     newNb:function(store,index,nbName){
+    	var showTipsModal = this.showTipsModal;
     	Ext.data.JsonP.request({
 			    		url:domain+'RandomNote/addNoteBook2',
 			    		callbackKey:'callback',
@@ -493,9 +500,11 @@ Ext.define('cfa.controller.NotebookAction',{
 			    			if(success&&result.result==0){//添加成功则把新建笔记本加入到store中，从而在list上显示
 			       				var length = store.getCount();
 			       				store.addData(result.data);
+			       				showTipsModal("新建成功",1500);
 			    			}else{
 			    				//操作失败
-			    				Ext.Msg.alert("操作失败","请检查网络连接");
+			    				showTipsModal("操作失败",1500);
+			    				// Ext.Msg.alert("操作失败","请检查网络连接");
 			    			}
 			    		},
 		});

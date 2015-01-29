@@ -10,14 +10,17 @@ Ext.define("cfa.view.PersonalView",{
 			xtype:"panel",
 			layout: "vbox",
 			width: "100%",
-			id:'personalPanel',
+			height:'100%',
+			// id:'personalPanel',
+			// scrollable:'vertical',
+			scrollable:'vertical',
 			default:{
 				styleHtmlContent:true,
 			},
 			items: [{
-				xtype: "toolbar",
+				xtype: "titlebar",
 				title: "我", 
-				docked: "top"
+				docked: "top",
 			},{
 				xtype:'button',
 				html:['<div class="personalImg"><img src="public/images/headPhoto.jpg" /></div><div class="personalName">丁香妹子</div><div class="personalId">丁香号:37232892</div>'],
@@ -29,21 +32,20 @@ Ext.define("cfa.view.PersonalView",{
 				xtype:'button',
 				cls:'psnMenu',
 				name:'coin_btn',
-				pressedCls:'psnMenuPres',
 				ui: 'plain',
-				html:['<div class="psnItemImg"><img src="public/images/coin.png" /></div><div class="psnItemTitle">金币</div>']
+				html:['<div class="psnItemImg"><img src="public/images/coin.png" /></div><div class="psnItemTitle">金币</div>'],
 			},{
 				xtype:'button',
 				cls:'psnMenu',
 				name:'tool',
 				ui: 'plain',
-				html:['<div class="psnItemImg"><img src="public/images/tool.png" /></div><div class="psnItemTitle">小工具</div>']
+				html:['<div class="psnItemImg"><img src="public/images/tool.png" /></div><div class="psnItemTitle">小工具</div>'],
 			},{
 				xtype:'button',
 				cls:'psnMenu',
 				name:'settings',
 				ui: 'plain',
-				html:['<div class="psnItemImg"><img src="public/images/setting.png" /></div><div class="psnItemTitle">设置</div>']
+				html:['<div class="psnItemImg"><img src="public/images/setting.png" /></div><div class="psnItemTitle">设置</div>'],
 			}]
 	}
 });

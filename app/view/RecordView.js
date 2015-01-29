@@ -21,6 +21,7 @@ Ext.define("cfa.view.RecordView",{
 			},
 			{
 				xtype:"dataview",
+				scrollable:'vertical',
 				cls:'recordMenu',
 				id:'recordMenu',
 				store:{

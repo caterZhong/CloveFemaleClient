@@ -16,7 +16,7 @@ Ext.define('cfa.controller.PersonalAction',{
         		//引用我页面
                 selector: 'personalview',
                 xtype: "personalview",
-                autoCreate: true
+                autoCreate: true,
         	}
 		},
 		control: {		
@@ -36,15 +36,20 @@ Ext.define('cfa.controller.PersonalAction',{
 				tap:'testest',
 			},
 		},
-		// routes:{
-		// 	'record':'showRecordview'
-		// }
+		routes:{
+			'personal':'showPersonalview'
+		}
 	},
 
 	/*切换到个人信息详细页面-----个人信息按钮tap事件*/
 	testest:function(){
 		alert("正在开发中");
 		// this.redirectTo("psninf");
+	},
+
+	/*显示我页面---即本页*/
+	showPersonalview:function(){
+		Ext.Viewport.setActiveItem(this.getPersonalview());
 	},
 
 });
