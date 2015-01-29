@@ -21,6 +21,7 @@ Ext.define("cfa.view.MedicineView",{
                 	items: [{
 								xtype: "titlebar",
 								title: "我的药箱", 
+								id:'medBoxComPanel',
 								docked: "top",
 								items:[{
 									name:'medBackBtn',
@@ -33,13 +34,35 @@ Ext.define("cfa.view.MedicineView",{
 									name:'medNewBtn'
 								}]
 							},{
+								xtype: "titlebar", 
+								docked: "top",
+								title: "删除药箱", 
+								id:'medBoxDelPanel',
+								cls:'hidden',
+								items:[{
+									name:'medBoxCancel',
+									iconCls:'delete',
+									ui: 'plain'
+								},{
+									align: 'right',
+									iconCls: 'trash',
+									ui: 'plain',
+									name:'medBoxDel'
+								}]
+							},{
 								cls:'medboxList',
 								id:'medboxList',
 								xtype:'list',
 								name:'medboxList',
 								width:'100%',
 								height:'100%',
-								itemTpl:'<div class="medMenuItem" medBoxNum="{id}" userId="{userId}"><img src="public/images/medicine.png" /><div class="medBoxTitle"><div class="medBoxName">{name}</div><span class="medBoxMark">{mark}</span></div><div class="medMore">></div></div>'
+								itemCls:'medboxListItem',
+								emptyText:'暂时没有药箱，请点击添加按钮新增药箱',
+								/*onItemDisclosure:'shanchu',*/
+								preventSelectionOnDisclose:true,
+								itemTpl:'<div class="medMenuItem" medBoxNum="{id}" userId="{userId}"><img src="public/images/medicine.png" /><div class="medBoxTitle"><div class="medBoxName">{name}</div><span class="medBoxMark">{mark}</span></div><div class="medMore">></div></div><div class="listDelBtn" mId="{id}" id="medMenuItem-{id}">删除</div>'
+							},{
+									html:'<div class="custTipSucDel cusTip">删除成功！</div><div class="custTipFalDel cusTip">删除失败！</div>'
 							}
 					]
                },
@@ -110,10 +133,12 @@ Ext.define("cfa.view.MedicineView",{
 											cls:'resetBtn',
 											text:'重置',
 											handler:function(){
-												healthForm.reset();
+												medBoxForm.reset();
 											}
 										}
 									]
+								},{
+									html:'<div class="custTipSuc cusTip">添加成功！</div><div class="custTipFal cusTip">添加失败！</div>'
 								}]
 							}
 							/* form end */

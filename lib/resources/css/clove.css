@@ -5910,3 +5910,11 @@ body.x-desktop {
 	font-weight: bold;
 	text-shadow:none;
 }
+/* 列表样式 */
+.x-list-normal .x-list-item.x-list-item-tpl, .x-list-normal .x-list-item .x-dock-horizontal{
+	background:#FFF;
+}
+/* 药箱列表样式 */
+.x-list-normal .x-list-item.x-item-selected.x-list-item-tpl .medMenuItem{
+	background:#E06868;
+}

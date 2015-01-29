@@ -397,8 +397,8 @@ to { -webkit-transform: translateX(0px); }
 	transition: all .3s;
 	position:fixed;
 	width:100%;
-	height:140px;
-	bottom:-140px;
+	height:200px;
+	bottom:-200px;
 	background:#FFF;
 	transition: all .3s;
 }
@@ -413,6 +413,7 @@ to { -webkit-transform: translateX(0px); }
 	background:#FFF;
 	color:#FF4444;
 	border-bottom:5px solid #F8F8F8;
+	height:65px;
 }
 
 
