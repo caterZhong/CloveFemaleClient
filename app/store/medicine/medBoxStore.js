@@ -8,14 +8,16 @@ Ext.define("cfa.store.medicine.medBoxStore",{
 		model:'cfa.model.medicine.medBoxModel',
 		proxy:{
 	        type: 'jsonp',
-	        url : domain + 'MedicineTestAction/findAllMedBox'
+	        url : domain + 'MedicineTestAction/findAllMedBoxByUser'
 	   },
 	   callbackkey: 'callback'
 	},
 	
-	reload: function(){
+	reload: function(userId){
         this.load({
-        	params:{},
+        	params:{
+        		userId:userId
+        	},
         	callback: function(records,operation,success){
         		
         	}

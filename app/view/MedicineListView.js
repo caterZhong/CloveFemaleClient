@@ -39,14 +39,17 @@ Ext.define("cfa.view.MedicineListView",{
 								xtype:'list',
 								width:'100%',
 								height:'100%',
+								emptyText:'药箱为空，请自行添加药品',
 								itemTpl:'<div class="medMenuItem" medId="{id}""><img src="public/images/med.png" /><div class="medBoxTitle"><div class="medBoxName">{name}</div><span class="medBoxMark"><span class="deadlineDesc">有效期至</span><span class="deadline">{deadline}</span></div><div class="medMore">></div></div>'
 							},{
 								cls:'medAddTip',
 								id:'medAddTip',
+								xtype:'panel',
 								items:[{
 									xtype:'button',
 									cls:'medAddTipBtn',
 									name:'med2code',
+									disabled:'true',
 									text:'扫描输入'
 								},{
 									xtype:'button',

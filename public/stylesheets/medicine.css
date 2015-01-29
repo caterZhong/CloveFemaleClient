@@ -1,0 +1,69 @@
+ 
+.medMenuItem{
+	width:100%;
+}
+.medboxListItem .listDelBtn{
+	transition: all 0.3s;
+	position:absolute;
+	display: inline-block;
+	background:rgb(238, 137, 137);
+	color:#FFF;
+	width:0px;
+	text-align: center;
+	height:100%;
+	line-height: 75px;
+	top:0;
+	right:0;
+	font-size:18px;
+	z-index:1;
+}
+.medboxListItem.show .listDelBtn{
+	z-index:1;
+	width:80px;
+}
+.medboxListItem.show .listDelBtn:hover{
+	background:rgb(211, 92, 92);
+}
+/* 普通面板*/
+#medBoxComPanel.hidden{
+	display: none;
+}
+/* 删除面板*/
+#medBoxDelPanel.hidden{
+	display: none;
+}
+
+/* 淡入淡出动画 */
+@-webkit-keyframes fadeInOut {
+	0% {
+	opacity: 0; /*初始状态 透明度为0*/
+	}
+	50% {
+	opacity: 1; /*中间状态 透明度为0*/
+	}
+	100% {
+	opacity: 0; /*结尾状态 透明度为1*/
+	}
+}
+/* 提示信息 */
+.cusTip{
+	position:absolute;
+	background:#000;
+	color:#FFF;
+	left:50%;
+	margin-left:-80px;
+	bottom:20px;
+	width:160px;
+	height:40px;
+	line-height:40px;
+	opacity:0;
+	border-radius: 5px;
+	text-align:center;
+	transition: all 1s;
+}
+.custTipSuc.show,.custTipFal.show,.custTipSucDel.show,.custTipFalDel.show{
+	-webkit-animation-name: fadeInOut; /*动画名称*/
+	-webkit-animation-duration: 3s; /*动画持续时间*/
+	-webkit-animation-iteration-count: 1; /*动画次数*/
+	-webkit-animation-delay: 0s; /*延迟时间*/
+}

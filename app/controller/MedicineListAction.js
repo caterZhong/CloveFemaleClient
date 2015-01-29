@@ -20,6 +20,8 @@ Ext.define('cfa.controller.MedicineListAction',{
         	},
 			// 返回按钮(药品列表)
 			backBtn: 'button[name="medDetailBackBtn"]',
+			// 返回按钮(新建药品)
+			backListBtn: 'button[name="showMedRtnBtn"]',
 			// 药品列表
 			medList : 'list[name="medList"]',
 			// 返回按钮(药品详情)
@@ -44,6 +46,10 @@ Ext.define('cfa.controller.MedicineListAction',{
 			// 返回按钮(药品列表)
 			backBtn: {
 				tap: 'backToMedBox'
+			},
+			// 返回按钮(新建药品)
+			backListBtn:{
+				tap: 'backToMedList'
 			},
 			// 返回按钮(药品详情)
 			detailBackBtn: {
@@ -148,6 +154,7 @@ Ext.define('cfa.controller.MedicineListAction',{
 	 },
 	 /* 手动输入面板 */
 	showAddMedPanel: function(){
+		Ext.getCmp('medAddTip').removeCls('show');
 		Ext.getCmp("medicineListView").animateActiveItem(Ext.getCmp('addMedDetailPanel'),{
 			type:'slide',
 			direction:'left'
