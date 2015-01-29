@@ -32,6 +32,7 @@ Ext.define("cfa.view.PregnantView",{
 			hidden:true,
 			hideOnMaskTap:true,
 			centered:true,
+			minHeight:381,
 			height:'60%',
 			width:'90%',
 			items:[{
@@ -160,7 +161,8 @@ Ext.define("cfa.view.PregnantView",{
 			hidden:true,
 			hideOnMaskTap:true,
 			centered:true,
-			height:'60%',
+			minHeight:151,
+			height:'30%',
 			width:'90%',
 			items:[{
 				xtype:'panel',
@@ -278,7 +280,8 @@ Ext.define("cfa.view.PregnantView",{
 			hidden 			: true,
 			hideOnMaskTap	: true,
 			centered 		: true,
-			height			: '60%',
+			minHeight       : 213,
+			height			: '40%',
 			width 			: '90%',
 			items 			: [{
 				xtype 	:'panel',
@@ -353,7 +356,8 @@ Ext.define("cfa.view.PregnantView",{
 			hidden:true,
 			hideOnMaskTap:true,
 			centered:true,
-			height:'60%',
+			minHeight:171,
+			height:'25%',
 			width:'90%',
 			items:[{ 
 				xtype:'panel',
