@@ -9,7 +9,21 @@ Ext.define("cfa.view.NoteSearchView",{
 			/*笔记搜索页面*/
 			layout: "hbox",
 			id:"notesearchview",
-			items : [{
+			items : [{//数据加载提示Model
+						id:'nbSearchTipsModal',
+						xtype:'panel',
+						layout: "vbox",
+						modal:true,
+						name:'nbTipsModal',
+						hidden:true,
+						hideOnMaskTap:true,
+						// showAnimation:'pop',
+						hideAnimation:'fadeOut',
+						height:30,
+						minWidth:80,
+						html:'加载失败',
+						cls:'infTipsModal',
+			},{
 						xtype : 'toolbar',
 						layout:'hbox',
 						docked: 'top',
@@ -48,11 +62,11 @@ Ext.define("cfa.view.NoteSearchView",{
 				name:'searchnoteList',
 				width: "100%",
 				itemTpl : '<div class="noteTitile">{title}</div><div class="noteDate">{year}年{month}月{day}日</div><div class="noteContent">{content}...</div>',
-				// store:'NoteStore',
 			},{
 				xtype : 'titlebar',
 				title : '已选择1个',
 				docked: 'top',
+				hidden:true,
 				name:'nsDelBar',
 				id:'nsDelBar',
 				cls:'note-titleBar',

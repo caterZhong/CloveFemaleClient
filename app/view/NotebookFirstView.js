@@ -19,7 +19,7 @@ Ext.define("cfa.view.NotebookFirstView",{
 						items :[
 						{
 							// iconCls:'refresh',
-							text:'Back',
+							text:'返回',
 							name:'bookBack_btn',
 							cls:'backBtn-plain',
 							ui: 'plain'
@@ -60,6 +60,7 @@ Ext.define("cfa.view.NotebookFirstView",{
 				xtype : 'titlebar',
 				title : '已选择1个',
 				docked: 'top',
+				hidden:true,
 				name:'noteDelBar',
 				id:'noteDelBar',
 				cls:'note-titleBar',

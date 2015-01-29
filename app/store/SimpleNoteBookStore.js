@@ -7,9 +7,4 @@ Ext.define('cfa.store.SimpleNoteBookStore', {
 	data:[
 		{id:'0',name:'全部笔记'},
 	],
-	// listeners:{
-	// 	load:function(store,records,successful,operation){
-	// 		//读取数据失败
-	// 	}
-	// },
 });

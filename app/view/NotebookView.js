@@ -9,7 +9,21 @@ Ext.define("cfa.view.NotebookView",{
 			fullscreen: true,
 			layout: "hbox",
 			id:"notebookmainview",
-			items : [{		
+			items : [{//数据加载提示Model
+						id:'nbTipsModal',
+						xtype:'panel',
+						layout: "vbox",
+						modal:true,
+						name:'nbTipsModal',
+						hidden:true,
+						hideOnMaskTap:true,
+						// showAnimation:'pop',
+						hideAnimation:'fadeOut',
+						height:30,
+						minWidth:80,
+						html:'加载失败',
+						cls:'infTipsModal',
+					},{		
 						xtype : 'bookfirstview',
 						cls: 'slide',
 						width: '100%'											
@@ -18,18 +32,12 @@ Ext.define("cfa.view.NotebookView",{
 						xtype : 'slidenav',
 						name : 'noteBookList',
 						id:'noteBookList',
-						// cls:'noteBookList',
-						// itemTpl : '<div class="bookDelImg" id="delImg_{id}"><img src="public/images/delete32.png"/></div><div class="notebookName">{name}</div>',
 						itemTpl : '<div class="notebookName">{name}</div>',
 						store:'SimpleNoteBookStore',
 						width : 250,
 						itemCls:'notebookListItem',
-						preventSelectionOnDisclose:true,
-						onItemDisclosure:function(record,element,index,e){
-							console.log("点击了垃圾桶图标");
-							localStorage.tapDisclosure = 1;
-						},
-					},{
+						
+					},{//笔记本操作菜单模态对话框
 						id:'nbModal',
 						xtype:'panel',
 						layout: "vbox",
@@ -41,6 +49,7 @@ Ext.define("cfa.view.NotebookView",{
 						width:'90%',
 						items:[{
 							xtype:'panel',
+							id:'nbModalName',
 							cls:'modalPanel',
 							html:'笔记本名称',
 						},{
@@ -51,6 +60,38 @@ Ext.define("cfa.view.NotebookView",{
 							store:'NbMenuStore',
 							itemTpl:'{name}',
 							itemCls:'nbModelListItem',
+						}]
+					},{//笔记本重命名或新建笔记本操作模态对话框
+						id:'nbRnOrNewModal',
+						xtype:'panel',
+						layout: "vbox",
+						modal:true,
+						hidden:true,
+						hideOnMaskTap:true,
+						centered:true,
+						height:170,
+						width:'90%',
+						items:[{
+							xtype:'panel',
+							cls:'modalPanel',
+							html:'请输入笔记本名称',
+						},{
+							xtype:'textfield',
+							name:'nbNameField',
+							placeHolder:'少于12字',
+							id:'nbNameField',
+							cls:'nbModelTf',
+							
+						},{
+							html:'笔记本名称不能为空!',
+							id:'nbNameTips',
+							hidden:true,
+							cls:'nbTips',
+						},{
+							xtype:'button',
+							name:'nbNameBtn',
+							cls:'subBtn',
+							text:'确定',
 						}]
 					}]
 	}

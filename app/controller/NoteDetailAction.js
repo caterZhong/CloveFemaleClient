@@ -3,8 +3,11 @@ Ext.define('cfa.controller.NoteDetailAction',{
 	requires:['Ext.DataView'],
 	config: {
 		refs: {
+            /*返回按钮---返回到搜索详情页面或随手记页面*/
 			backBtn: 'button[name="notedetail_back_btn"]',
+            /*保存按钮---保存修改后的笔记*/
 			saveBtn: 'button[name="notedetail_save_btn"]',
+            /*引用笔记详情页面*/
 			notedetailview:{
         		//引用笔记详情页面
                 selector: 'notedetailview',
@@ -13,9 +16,11 @@ Ext.define('cfa.controller.NoteDetailAction',{
         	}
 		},
 		control: {
+            /*返回按钮---返回到搜索详情页面或随手记页面*/
 			backBtn: {
 						tap : 'backToNotebookview'
 			},
+            /*保存按钮---保存修改后的笔记*/
 			saveBtn: {
 						tap: 'saveNote'
 			},
@@ -25,7 +30,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
 		}
 	},
 
-	//返回到随手记页面,同时删除新建笔记的页面
+	/*返回到随手记页面,同时删除新建笔记的页面*/
 	backToNotebookview: function(){
         var lastView = localStorage.lastView;  //获取上一个页面
 		this.redirectTo(lastView); //返回到上一个页面
@@ -37,7 +42,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
         store.insert(0,newData);
 	},
 
-    //保存笔记
+    /*保存笔记*/
 	saveNote:function(){
         var noteTitle = Ext.getCmp("noteDetailTitle");
         var noteContent= Ext.getCmp("noteDetailContent");
@@ -47,6 +52,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
         note.set("content",noteContent.getValue());
         note.set("noteBookId",noteBookId.getValue());
         var createDate = new Date(note.get('createDate'));
+        var showTipsModal = this.showTipsModal;
         Ext.data.JsonP.request({
             url:domain+'RandomNote/updateNote2',
             callbackKey:'callback',
@@ -58,16 +64,22 @@ Ext.define('cfa.controller.NoteDetailAction',{
                 'createDate':createDate,
                 'noteBookId':note.get('noteBookId'),
             },
-            callback:function(success,result){           
-                noteTitle.setValue("");
-                noteContent.setValue("");   
+            callback:function(success,result){  
+                if(success && result.result==0){
+                    noteTitle.setValue("");
+                    noteContent.setValue("");  
+                    showTipsModal("保存成功",2000);
+                }else{
+                    showTipsModal("保存失败",2000);
+                }         
+                 
             }
 
         });
         // this.backToNotebookview();
 	},
 
-	//显示笔记详情页面
+	/*显示笔记详情页面*/
 	showNotedetailview:function(){
         var lastView = localStorage.lastView;  //获取上一个页面
         if(lastView == "notebook"){
@@ -76,6 +88,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
             Ext.Viewport.animateActiveItem(this.getNotedetailview(),{type:'slide',duration:300});
         }
         var noteId = localStorage.noteId;
+        var showTipsModal = this.showTipsModal;
         Ext.data.JsonP.request({
                 url:domain+'RandomNote/findNoteById',
                 callbackKey:'callback',
@@ -84,9 +97,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
                     'userId':'199762408FBC4D6C9455BB332D5FC877',
                     'noteId':noteId,
                 },
-                callback:function(success,result){
-                    
-                    
+                callback:function(success,result){                   
                     if(success&&result.data!=null&&result.data != ""){
                         var note = result.data;
                         var noteStore = Ext.getStore("NoteDetailStore");
@@ -98,11 +109,27 @@ Ext.define('cfa.controller.NoteDetailAction',{
                         Ext.getCmp("noteDetailContent").setValue(note.content);
                         Ext.getCmp("noteGroup").setValue(note.noteBookId);
                     }else{
-                        
-                        alert("加载数据失败");
+                        showTipsModal('加载数据失败',2000);
                     }
                 }
             })
     },
+
+    /*
+     *消息提示模态对话框显示
+     *tips：显示内容，timeout：消失时间
+     */
+    showTipsModal:function(tips,timeout){
+        var tipsModal = Ext.getCmp("nbDetailTipsModal");
+        tipsModal.setHtml(tips);
+        var width = tips.length*13 + 20;
+        tipsModal.setWidth(width);
+        var marginLeft = width/-2;
+        var MarginString = "0 0 0 "+ marginLeft;
+        tipsModal.setMargin(MarginString);
+        tipsModal.show();
+        setTimeout('Ext.getCmp("nbDetailTipsModal").hide()',timeout);
+    },
+    
 
 });
