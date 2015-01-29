@@ -10,7 +10,7 @@ Ext.application({
 	
 
 	controllers:["MainAction","RecordAction","KidAction","PregnantAction","NotebookAction","NewNoteAction","NoteSearchAction","NoteSearchDetailAction",
-		"NoteDetailAction","cfa.controller.MedicineAction","cfa.controller.MedicineListAction","chart.ChartAction","chart.CustomizeDateAction","PersonalAction"],
+		"NoteDetailAction","cfa.controller.MedicineAction","cfa.controller.MedicineListAction","chart.ChartAction","chart.CustomizeDateAction","PersonalAction","me.PsnInfAction"],
 		
 	views: ["MainView","RecordView","KidView","PregnantView","NotebookView","SlideNav",
 		"NotebookFirstView","NewNoteView","NoteSearchView","NoteDetailView","NoteSearchDetailView","chart.ChartView","chart.CustomizeDateView", "chart.BarChartBabyMove", 

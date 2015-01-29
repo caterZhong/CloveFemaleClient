@@ -40,10 +40,6 @@ Ext.define('cfa.controller.NoteSearchAction',{
 			delBtn:{
 					    tap:'delNote',
 			},
-			/*删除的TitleBar*/
-			delBar:{
-					initialize:'delBarInit',
-			},
 			/*搜索结果列表*/
 			searchList:{
 						itemtap:'noteListTap',
@@ -66,8 +62,6 @@ Ext.define('cfa.controller.NoteSearchAction',{
 	//显示笔记搜索页面
 	showNoteSearchView:function(){
     	Ext.Viewport.setActiveItem(this.getNotesearchview());
-    	// Ext.Viewport.animateActiveItem(this.getNotesearchview(),{type:'fade',duration:300});/*direction:'left',*/
-    	// this.loadNoteBookData();
     },
 
     /*加载搜索结果*/
@@ -76,25 +70,26 @@ Ext.define('cfa.controller.NoteSearchAction',{
     	localStorage.keyword = keyWord;
     	var list = Ext.getCmp("searchnoteList");
     	var store = Ext.getStore('NoteStore');
-    	// list.setStore(store);
+    	
+        var showTipsModal = this.showTipsModal;
     	Ext.data.JsonP.request({
     		url:domain+'RandomNote/findNoteByKeyWord',
     		callbackKey:'callback',
     		callback:'callback',
     		params:{
-				'userId':'199762408FBC4D6C9455BB332D5FC877',
+				'userId':localStorage.userId,
 				'keyword': keyWord
 			},
     		callback:function(success,result){
     			if(success&&result.data != ""){
     				store.loadData(result.data);
     				list.setStore(store);
-    			}else if(result.data == ""){
+    			}else if(result.result==0 && result.data == ""){
     				store.removeAll();
-					alert("没有找到相关内容");
+                    showTipsModal("没有找到相关内容",2000);//输出提示
     			}else{
  					store.removeAll();
-    				alert("搜索失败");
+                    showTipsModal("搜索失败",2000);//输出提示
     			}
     		},
     	})	
@@ -139,12 +134,15 @@ Ext.define('cfa.controller.NoteSearchAction',{
 
     	list.removeCls("DelNoteList");//取消选中置白的样式
 
-    	//清空两个转载index和Id的数组
-    	delNoteList.splice(0,delNoteList.length);
-    	delNoteIdList.splice(0,delNoteIdList.length);
-
     	//恢复title
     	Ext.getCmp("nsDelBar").setTitle("已选择1个");
+    },
+
+     /*重置删除列表*/
+    resetDelNote:function(){
+        //清空两个装载index和Id的数组
+        delNoteList.splice(0,delNoteList.length);
+        delNoteIdList.splice(0,delNoteIdList.length);
     },
 
     /*笔记搜索结果列表的tap事件*/
@@ -183,10 +181,13 @@ Ext.define('cfa.controller.NoteSearchAction',{
 
     /*删除笔记*/
     delNote:function(){
+        var showTipsModal = this.showTipsModal;
     	if(delNoteIdList.length==0){
-    		Ext.Msg.alert("消息","请选择要删除的笔记");
+            showTipsModal("请选择要删除的笔记",2000);//输出提示
+    		// Ext.Msg.alert("消息","请选择要删除的笔记");
     	}else{
-    		var closeDelModel = this.closeDelModel;
+            var resetDelNote = this.resetDelNote;
+            this.closeDelModel();
     		Ext.data.JsonP.request({
 	    		url:domain+'RandomNote/delNote',
 	    		callbackKey:'callback',
@@ -197,23 +198,35 @@ Ext.define('cfa.controller.NoteSearchAction',{
 	    		callback:function(success,result){
 	    			if(result.result == 0){
 	    				var store = Ext.getCmp("searchnoteList").getStore();
-	    				for(var index in delNoteList){
-	    					store.removeAt(delNoteList[index]);
-	    				}
-	    				closeDelModel();
+                        delNoteList.sort(function(a,b){
+                            return a<b?1:-1;
+                        });
+                        for(var index in delNoteList){
+                            store.removeAt(delNoteList[index]);
+                        }
 	    			}else{
-	    				Ext.Msg.alert("消息","操作失败");
+                        showTipsModal("删除失败",2000);//输出提示
 	    			}
+                    resetDelNote();//重置删除列表
 	    		}
 			});
     	}
     },
 
-    /*nsDelBar的初始化时间
-	 *隐藏该titleBar
+    /*
+     *消息提示模态对话框显示
+     *tips：显示内容，timeout：消失时间
      */
-    delBarInit:function(titleBar,eOpts){
-    	titleBar.hide();
+    showTipsModal:function(tips,timeout){
+        var tipsModal = Ext.getCmp("nbSearchTipsModal");
+        tipsModal.setHtml(tips);
+        var width = tips.length*13 + 20;
+        var marginLeft = width/-2;
+        var MarginString = "0 0 0 "+ marginLeft;
+        tipsModal.setMargin(MarginString);
+        tipsModal.setWidth(width);
+        tipsModal.show();
+        setTimeout('Ext.getCmp("nbSearchTipsModal").hide()',timeout);
     },
 
 });

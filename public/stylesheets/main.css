@@ -96,62 +96,11 @@
 }
 */
 .notebookList{
-	height: 40px;
-}
-
-.slidenav-list.x-list .x-list-disclosure{
-	overflow: visible;
-	background-image: url(../images/delete32.png);
-  	width: 1.7em;
-  	height: 1.7em;
-  	background-color: #F7F7F7;
-  	background-position: center;
-  	/*display: none;*/
-  	display: none;
-}
-
-.slidenav-list.x-list .activeNb .x-list-disclosure{
-	display: block;
-}
-
-.slidenav-list.x-list .notebookListItem.activeNB .x-list-disclosure{
-	display: none;
-}
-
-.slidenav-list.x-list #test .x-list-disclosure{
-	display: block;
-}
-
-
-#test{
-	border:1px solid red;
-}
-
-
- .x-list-disclosure{
-	display: block;
-}
-.slidenav-list.x-list .x-list-disclosure::before{
-	content:"";
-}
-/*x-list-item x-stretched x-list-item-tpl notebookListItem x-list-item-relative*/
-
-.notebookList .x-list-indexed .x-list-disclosure {
-  margin-right: 1.3em;
-}
-
-.notebookList .x-item-selected .x-list-disclosure {
-  background: #fff none;
-}
-
-.bookDelImg{
-	float:right;
-	height: 32px;
-	display: none;
+	/*height: 40px;*/
 }
 
 .closeBtn-plain{
-	border-right: 1px solid gray
+	border-right: 1px solid gray;
 }
 
 .hideDeleteImg{
@@ -159,8 +108,8 @@
 }
 
 .notebookName{
-	height: 32px;
-	line-height: 32px;
+	/*height: 32px;*/
+	line-height: 30px;
 	/*border:1px solid red;*/
 }
 
@@ -212,7 +161,7 @@ to { -webkit-transform: translateX(0px); }
 
 .notebookListItem{
 	min-height: 0px;
-	max-height: 50px;
+	/*max-height: 50px;*/
 	padding-top:-5px;
 }
 
@@ -250,7 +199,47 @@ to { -webkit-transform: translateX(0px); }
 	max-height:20px;
 	font-size:13px;
 }
+
+.nbModelTf{
+	border:1px solid #ccc;
+	padding-left:8px;
+	margin-top:15px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	/*height: 200px;*/
+}
+
+.nbModelTf input{
+	font-size: 15px;
+	line-height: 30px;
+	
+}
+
+.nbTips{
+	margin-top:-5px;
+	font-size: 12px;
+	color:red;
+	padding-bottom: 5px;
+	/*padding:0px 15px;*/
+}
 /*笔记本操作模态对话框样式----结束*/
+
+/*信息提示样式*/
+.infTipsModal{
+	position: absolute;
+	bottom: 50px;
+	font-size: 13px;
+	background-color: #000;
+	color: #fff;
+	opacity: 0.5;
+	margin:0 auto;
+	left:50%;
+	margin-left:-40px;
+	line-height: 30px;
+	text-align: center;
+	z-index:999;
+}
+/*信息提示样式-----结束*/
 
 .noteTitile{
 	/*font-weight: bold;*/
@@ -479,21 +468,21 @@ to { -webkit-transform: translateX(0px); }
 .personalImg{
 	float:left;
 	padding-left:15px;
-	width:50px;
-	height: 50px;
-	border-radius: 25px;
+	width:60px;
+	height: 60px;
+	border-radius: 30px;
 	/*border:1px solid #ccc;*/
 }
 
 .personalImg>img{
-	width:50px;
-	border-radius: 25px;
+	width:60px;
+	border-radius: 30px;
 	border:1px solid #aaa;
 }
 
 .personalName{
 	font-size: 0.8em;
-	padding:8px 0px 0px 75px;
+	padding:8px 0px 0px 82px;
 	margin:0;
 	text-align: left;
 	font-weight: 700;
@@ -501,7 +490,7 @@ to { -webkit-transform: translateX(0px); }
 
 .personalId{
 	font-size: 0.3em;
-	padding:0px 0px 0px 75px;
+	padding:0px 0px 0px 82px;
 	color:#858383;
 	margin:0;
 	font-weight: normal;

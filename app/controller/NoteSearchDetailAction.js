@@ -3,19 +3,24 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
 	requires:['Ext.DataView','Ext.data.Store'],
 	config: {
 		refs: {
+            /*返回按钮---返回到搜索页面*/
 			backBtn: 'button[name="notesearchDetailBack_btn"]',
+            /*笔记按钮---切换到笔记详情页面*/
 			editBtn: 'button[name="notedetaileditBack_btn"]',
+            /*引用笔记搜索详情笔记页面*/
 			notesearchdetailview:{
-        		//引用新建笔记页面
+        		//引用笔记搜索详情笔记页面
                 selector: 'notesearchdetailview',
                 xtype: "notesearchdetailview",
                 autoCreate: true
         	}
 		},
 		control: {
+            /*返回按钮---返回到搜索页面*/
 			backBtn: {
 						tap : 'backToNotesearchview'
 			},
+            /*笔记按钮---切换到笔记详情页面*/
             editBtn: {
                         tap : 'showEditview'
             },
@@ -25,11 +30,12 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
 		}
 	},
 
-	//返回到随手记页面,同时删除新建笔记的页面
+	/*返回到随手记页面,同时删除新建笔记的页面*/
 	backToNotesearchview: function(){
 		this.redirectTo('searchnote');
 	},
 
+    /*切换到笔记详情页面--可编辑*/
     showEditview:function(){
         // this.redirectTo('notedetail');
         var noteId = localStorage.notesearchId;
@@ -44,12 +50,14 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
         this.redirectTo("notedetail");
     },
 
-	//显示搜索笔记详情页面
+	/*显示搜索笔记详情页面---即本页面*/
 	showNotesearchdetailview:function(){
         Ext.Viewport.setActiveItem(this.getNotesearchdetailview());
         var resultList = Ext.getCmp("notesearchdetailList");
         var store = resultList.getStore();
         store.removeAll();
+
+        var showTipsModal = this.showTipsModal;
     	
         var noteId = localStorage.notesearchId;
         var keyword = localStorage.keyword;
@@ -67,11 +75,27 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
                         store.loadData(result.data);
                     
                     }else{
-                        
-                        alert("加载数据失败");
+                        showTipsModal("加载数据失败",2000)
                     }
                 }
             })
     },
+
+     /*
+     *消息提示模态对话框显示
+     *tips：显示内容，timeout：消失时间
+     */
+    showTipsModal:function(tips,timeout){
+        var tipsModal = Ext.getCmp("nbsearchDetailTipsModal");
+        tipsModal.setHtml(tips);
+        var width = tips.length*13 + 20;
+        tipsModal.setWidth(width);
+        var marginLeft = width/-2;
+        var MarginString = "0 0 0 "+ marginLeft;
+        tipsModal.setMargin(MarginString);
+        tipsModal.show();
+        setTimeout('Ext.getCmp("nbsearchDetailTipsModal").hide()',timeout);
+    },
+    
 
 });

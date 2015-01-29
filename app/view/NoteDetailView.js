@@ -13,7 +13,21 @@ Ext.define("cfa.view.NoteDetailView",{
 				align:'stretch',
 				// pack:'justify'
 			},
-		items:[{
+		items:[{//数据加载提示Model
+						id:'nbDetailTipsModal',
+						xtype:'panel',
+						layout: "vbox",
+						modal:true,
+						name:'nbTipsModal',
+						hidden:true,
+						hideOnMaskTap:true,
+						// showAnimation:'pop',
+						hideAnimation:'fadeOut',
+						height:30,
+						minWidth:80,
+						html:'加载失败',
+						cls:'infTipsModal',
+					},{
 			xtype:'panel',
 			id:'noteDetailForm',
 			name:'noteDetailForm',
