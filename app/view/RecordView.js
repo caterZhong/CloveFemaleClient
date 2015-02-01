@@ -32,6 +32,7 @@ Ext.define("cfa.view.RecordView",{
 						{imgSrc:'public/images/note.png',itemMsg:'随手记'},
 						{imgSrc:'public/images/medicine.png',itemMsg:'小药箱'},
 						{imgSrc:'public/images/chart.png',itemMsg:'图表'},
+						{imgSrc:'public/images/note.png',itemMsg:'九宫解锁测试'},
 					]
 				},
 				itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',

@@ -1,0 +1,18 @@
+/* 九宫格解锁样式 */
+.dialBottomToolBar{
+	text-align: center ;
+}
+
+.dialBtn{
+	font-size: 25px;
+	width: 40%;
+	margin-left: 30px;
+	padding-left: 40px;
+	float: right;
+	height: 60%;
+	font-weight: lighter;
+}
+
+.dialBtn .disabled{
+	background:blue;
+}
