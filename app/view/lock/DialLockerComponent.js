@@ -425,7 +425,7 @@ LockPoint.prototype.resetFor2ndInput = function(){
 LockPoint.prototype.init = function(){
     if(LockPoint.prototype.canvasHeight > LockPoint.prototype.canvasWidth){
         ratio = 0.6 ;
-        hblankRatio = 0.35;
+        hblankRatio = 0.15;
     }else{
         ratio = 0.35 ;
     }
