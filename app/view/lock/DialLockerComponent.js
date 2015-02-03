@@ -75,7 +75,7 @@ function LockPoint(index, rowNum, colNum){
         var transy = parseInt(absy) - LockPoint.prototype.baseY ;
         // console.log("tanse : " + transx + " : " + transy) ;
         // console.log("distance : " + (Math.pow((transx - this.x), 2) + Math.pow((transy - this.y), 2))) ;
-        if(Math.pow((transx - this.x), 2) + Math.pow((transy - this.y), 2) <= LockPoint.prototype.radiusSquar){
+        if(Math.pow((transx - this.x), 2) + Math.pow((transy - this.y), 2) <= LockPoint.prototype.radiusSquar*1.2*1.2){
             return true ;
         }else{
             return false ;
@@ -152,6 +152,7 @@ LockPoint.prototype.points          = [] ;          //九宫格里所有点
 LockPoint.prototype.activePoints    = [] ;          //激活的点的数组
 LockPoint.prototype.pathEnded       = false ;       //路径已停止了吗
 LockPoint.prototype.path            = null ;        //对路径图形的引用
+LockPoint.prototype.tris            = [] ;        //对三角形图形的引用
 LockPoint.prototype.psw             = null ;        //密码
 LockPoint.prototype.psw1            = null ;        //密码
 LockPoint.prototype.psw2            = null ;        //密码
@@ -360,15 +361,79 @@ LockPoint.prototype.endDrag = function(){
 //ps为SVG数组
 //error指明是否为错误路径，默认为false，即正确
 LockPoint.prototype.drawPath = function(ps, error){
-    if(LockPoint.prototype.path == undefined){
-        var pstyle = LockPoint.prototype.lineStyleAlive ;
-        if(error != undefined && error == true){
-            pstyle = LockPoint.prototype.lineStyleError ;
+    var pstyle = LockPoint.prototype.lineStyleAlive ;
+    var fstyle = LockPoint.prototype.fillStyleAlive ;
+    if(error != undefined && error == true){
+        pstyle = LockPoint.prototype.lineStyleError ;
+        fstyle = LockPoint.prototype.fillStyleError ;
+    }
+    var aps = LockPoint.prototype.activePoints ;
+    if(LockPoint.prototype.tris.length == aps.length - 1){
+        for(i = 0 ; i < aps.length - 1 ; i++){
+            LockPoint.prototype.tris[i].setAttributes({
+                fillStyle:fstyle
+            });
         }
+    }else if(LockPoint.prototype.tris.length == aps.length - 2){
+        for(i = 0 ; i < aps.length - 2 ; i++){
+            LockPoint.prototype.tris[i].setAttributes({
+                fillStyle:fstyle
+            });
+        }
+        i = aps.length - 2 ; 
+
+        var dy = aps[i].y - aps[i+1].y ;    //因为绘图的直角坐标y轴是向下而不是向上的，所以y的计算要取反
+        var dx = aps[i+1].x - aps[i].x ;
+        var c = Math.sqrt(dy*dy + dx*dx) ;
+        //计算箭头角度
+        var rotationRads = 0 ;
+        var thos = Math.asin(dy/c) ;        //theta of sin
+        var thoc = Math.acos(dx/c) ;        //theta of cos
+        // console.log("x1:"+aps[i].x+",x2:"+aps[i+1].x+", y1:"+aps[i].y+",y2:"+aps[i+1].y) ;
+        // console.log("dx:"+dx+",dy="+dy+",sin="+thos+",cos="+thoc) ;
+
+        if(thos == 0 && thoc > 0){
+            rotationRads = thos + Math.PI ;
+        }else if(dx < 0 && dy < 0){
+            rotationRads = -thoc ;
+        }else if(dx < 0 && dy > 0){
+            rotationRads = thoc ;
+        }else{
+            rotationRads = thos ;
+        }
+
+        var ctx = aps[i].x + LockPoint.prototype.radius * 1.85 * Math.cos(-rotationRads) ; //center triangle x
+        var cty = aps[i].y + LockPoint.prototype.radius * 1.85 * Math.sin(-rotationRads) ; //center triangle y
+
+        // rotationRads = -rotationRads + Math.PI/2 ;//旋转的角度是用pi计算的，并且是整体中心自转，方向与正常的极坐标相反，这里是顺时针的
+        // rotationRads = Math.PI/2 ;
+        var dty = 7.22 ;    //三角形中心偏置值。三角形字符在绘制的时候是以左下角为原点计算的，但是我们要用三角形的中心为原点。
+        var dtx = 9.3 ;
+
+        LockPoint.prototype.tris.push( LockPoint.prototype.cmp.getSurface('overlay').add({
+            type: 'text',
+            text: '▲',
+            x: ctx - dtx ,
+            y: cty + dty ,
+            rotationRads: -rotationRads + Math.PI/2 ,//旋转的角度是用pi计算的，并且是整体中心自转，方向与正常的极坐标相反，这里是顺时针的
+            fontSize:20,
+            fillStyle: fstyle
+        }));
+    }
+    /*for(i = 0; i < aps.length - 1; i++){
+        LockPoint.prototype.tris.push( LockPoint.prototype.cmp.getSurface('overlay').add({
+            type: 'text',
+            text: '▲',
+            x: aps[i].x/2 + aps[i+1].x/2,
+            y: aps[i].y/2 + aps[i+1].y/2,
+            fontStyle: pstyle
+        }));
+    }*/
+    if(LockPoint.prototype.path == undefined){
         LockPoint.prototype.path = LockPoint.prototype.cmp.getSurface('overlay').add({
             type: 'path',
             path: ps,
-            lineWidth: LockPoint.prototype.radius * 2 ,
+            lineWidth: LockPoint.prototype.radius * 1.3 ,
             lineCap: 'round',
             lineJoin: 'round',
             strokeStyle: pstyle
@@ -439,6 +504,7 @@ LockPoint.prototype.init = function(){
     LockPoint.prototype.activePoints    = [] ;      //激活的点的数组
     LockPoint.prototype.pathEnded       = false ;       //路径已停止了吗
     LockPoint.prototype.path            = null ;        //对路径图形的引用
+    LockPoint.prototype.tris            = [] ;        //对三角形图形的引用
     LockPoint.prototype.psw             = null ;        //密码
     LockPoint.prototype.psw1             = null ;        //密码
     LockPoint.prototype.psw2             = null ;        //密码
