@@ -9,17 +9,22 @@
 
 .psnSim{
 	/*height: 73px;*/
-	height: 80px;
 	margin-top:20px;
+
 	/*margin-*/
+}
+
+/*头像所在的Btn*/
+.psnHeadBtn{
+	/*h*/
 }
 
 .personalImg{
 	float:left;
-	padding-left:15px;
+	/*padding-left:15px;*/
 	width:60px;
 	height: 60px;
-	border-radius: 30px;
+	/*border-radius: 30px;*/
 	/*border:1px solid #ccc;*/
 }
 
@@ -31,7 +36,7 @@
 
 .personalName{
 	font-size: 0.8em;
-	padding:8px 0px 0px 82px;
+	padding:10px 0px 0px 72px;
 	margin:0;
 	text-align: left;
 	font-weight: 700;
@@ -39,7 +44,7 @@
 
 .personalId{
 	font-size: 0.3em;
-	padding:0px 0px 0px 82px;
+	padding:0px 0px 0px 72px;
 	color:#858383;
 	margin:0;
 	font-weight: normal;
@@ -48,6 +53,7 @@
 
 .x-button.x-button-plain.psnSim, .x-toolbar .x-button.x-button-plain.psnSim{
 	height:73px; 
+	/*line-height: 73px;*/
 	background-color: white;
 	/*border-*/
 }
@@ -55,17 +61,23 @@
 .x-button.x-button-plain.psnMenu, .x-toolbar .x-button.x-button-plain.psnMenu{
 	height:40px; 
 	background-color: white;
-	/*border-*/
+}
+
+.x-button.x-button-plain.psnMenu,.x-button.x-button-plain.psnSim{
+	padding-left:10px;
+	padding-right: 10px;
 }
 
 .psnMenu{
 	margin-top: 20px;
+
 }
 
 .psnItemImg{
 	display: block;
-	padding-left: 15px;
-	padding-top:4px;
+	width:32px;
+	height: 32px;
+	overflow: hidden;
 	float:left;
 	
 }
@@ -76,7 +88,7 @@
 
 .psnItemTitle{
 	text-align: left;
-	padding:11px 0px 0px 50px;
+	padding:8px 0px 0px 38px;
 	font-size: 15px;
 
 }
@@ -86,3 +98,152 @@
 	background-color: #ccc;
 	background-image: none;
 }
+
+/*个人信息页面样式*/
+.psninfMenu{
+	margin:0;
+}
+
+.x-button.x-button-plain.psninfMenu{
+	/*border-top:1px solid red;*/
+}
+
+.psnInfItem{
+	height: 40px;
+	line-height: 40px;
+	/*margin-top: auto;
+	margin-bottom: auto;*/
+	padding-left:10px;
+	padding-right:10px;
+	/*vertical-align: middle;*/
+	border-bottom:1px solid #eee;
+	/*border:1px solid #eee;*/
+	text-align: left;
+	font-size: 15px;
+}
+
+.psnInfItemTitle{
+	float:left;
+}
+
+.psnSim .psnInfItem{
+	height: 73px;
+	line-height: 73px;
+}
+
+.psnInfcontent{
+	height:100%;
+	line-height: 40px;
+	max-width: 80%;
+	overflow: hidden;
+	float:right;
+	font-weight: normal;
+	color:#999;
+	font-size: 13px;
+	margin:0;
+	padding:0;
+}
+
+.psnSim .psnInfcontent{
+	padding-top:6.5px;
+	margin-right: -10px;
+}
+
+.infHeadImg{
+	width:60px;
+
+	display: block;
+	border-radius: 30px;
+	border:1px solid #aaa;
+}
+
+.sexModal.x-scroll-scroller{
+	min-height: 100px;
+	min-width: 100px;
+	overflow: hidden;
+}
+
+.sexLabel{
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 30px;
+}
+.bottomLine{
+	border-bottom: 1px solid #eee;
+}
+
+/*修改信息页面容器*/
+.modifyInfContainer{
+	background-color: #fff;
+}
+
+.infTxt{
+	/*border-bottom:1px solid #E55E5E;*/
+	/*border-left:1px solid #E55E5E;
+	border-right:1px solid #E55E5E;*/
+	/*padding-top:10px;
+	padding-bottom: 0px;*/
+	/*height: 20px;*/
+	font-size: 15px;
+	padding-right:17px;
+
+	/*margin:0 15px;*/
+}
+
+.infTxt input.x-input-el x-input-text x-form-field{
+	/*height:20px;
+	min-height: 0px;*/
+}
+
+.txtPanel{
+	/*border:1px solid red;*/
+	border-bottom:1px solid #E55E5E;
+	border:1px solid #ddd;
+	-webkit-border-radius:10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin:10px 15px 0 15px;
+}
+.wordNum{
+	position: absolute;
+	bottom: 3px;
+	right:2px;
+	z-index: 99px;
+	color:#aaa;
+	font-size:13px;
+	/*float:right;*/
+}
+
+/*修改信息建议*/
+.modifyTips{
+	font-size: 14px;
+	color:#aaa;
+	padding-left:20px;
+	padding-top:10px;
+}
+
+
+/*个人信息页面样式---结束*/
+
+/*--------------设置样式---------------*/
+.logoImg{
+	padding-top:20px;
+	/*border:1px solid red;*/
+}
+
+
+.edition{
+	font-size: 15px;
+	color:#888;
+}
+
+.copyright{
+	padding-top:20px;
+	font-size: 14px;
+	color:#888;
+}
+
+.center{
+	text-align: center;
+}
+/*------------设置样式结束-------------*/

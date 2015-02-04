@@ -21,7 +21,7 @@ Ext.define('cfa.controller.PersonalAction',{
 		},
 		control: {		
 			psnSim:{
-				tap:'testest',
+				tap:'showPsninfView',
 			},
 			/*金币按钮*/
 			coin:{
@@ -33,7 +33,7 @@ Ext.define('cfa.controller.PersonalAction',{
 			},
 			/*设置按钮*/
 			settings:{
-				tap:'testest',
+				tap:'showSettingView',
 			},
 		},
 		routes:{
@@ -41,15 +41,20 @@ Ext.define('cfa.controller.PersonalAction',{
 		}
 	},
 
-	/*切换到个人信息详细页面-----个人信息按钮tap事件*/
-	testest:function(){
-		alert("正在开发中");
-		// this.redirectTo("psninf");
-	},
-
 	/*显示我页面---即本页*/
 	showPersonalview:function(){
 		Ext.Viewport.setActiveItem(this.getPersonalview());
+	},
+
+	/*切换到个人信息详细页面-----个人信息按钮tap事件*/
+	showPsninfView:function(){
+		this.redirectTo("psninf");
+	},
+
+
+	/*切换到设置页面-----设置按钮tap事件*/
+	showSettingView:function(){
+		this.redirectTo("setting");
 	},
 
 });

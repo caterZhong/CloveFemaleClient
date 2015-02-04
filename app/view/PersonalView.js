@@ -1,8 +1,7 @@
 Ext.define("cfa.view.PersonalView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.Panel","cfa.view.me.PsnInfView"],
-	// views: ["cfa.view.me.PsnInfView"],
+	requires: ["Ext.TabPanel","Ext.Panel","cfa.view.me.PsnInfView","cfa.view.me.SettingView"],
 	
 	xtype: "personalview",
 	config:{
@@ -12,7 +11,6 @@ Ext.define("cfa.view.PersonalView",{
 			width: "100%",
 			height:'100%',
 			// id:'personalPanel',
-			// scrollable:'vertical',
 			scrollable:'vertical',
 			default:{
 				styleHtmlContent:true,

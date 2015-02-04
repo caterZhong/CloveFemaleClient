@@ -13,7 +13,7 @@ Ext.define("cfa.view.MainView", {
     	},
     	items: [{
     		xtype: "tabpanel",
-    		id:"tabpanel1",
+    		id:"modular_tabpanel",
     		ui:"dark",
     		tabBarPosition: "bottom",
     		
