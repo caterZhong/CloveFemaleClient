@@ -25,11 +25,11 @@ Ext.define('cfa.controller.PersonalAction',{
 			},
 			/*金币按钮*/
 			coin:{
-				tap:'testest',
+				tap:'showCoinView',
 			},
 			/*小工具按钮*/
 			tool:{
-				tap:'testest',
+				tap:'showToolView',
 			},
 			/*设置按钮*/
 			settings:{
@@ -51,6 +51,15 @@ Ext.define('cfa.controller.PersonalAction',{
 		this.redirectTo("psninf");
 	},
 
+	/*切换到金币页面-----金币按钮tap事件*/
+	showCoinView:function(){
+
+	},
+
+	/*切换到小工具页面-----小工具按钮tap事件*/
+	showToolView:function(){
+
+	},
 
 	/*切换到设置页面-----设置按钮tap事件*/
 	showSettingView:function(){

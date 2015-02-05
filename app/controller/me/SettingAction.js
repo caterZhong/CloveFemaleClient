@@ -3,6 +3,8 @@ Ext.define('cfa.controller.me.SettingAction',{
 	extend:'Ext.app.Controller',
 	config: {
 		refs: {
+			/*返回按钮----返回到设置页面(设置下所有页面的返回按钮)*/
+			back_btn:'button[name="backToSetingBtn"]',
 			/*提醒按钮*/
 			remindBtn:'button[name="remindBtn"]',
 			/*隐私按钮*/
@@ -23,13 +25,17 @@ Ext.define('cfa.controller.me.SettingAction',{
    	
 		},
 		control: {
+			/*返回按钮----返回到设置页面(设置下所有页面的返回按钮)*/
+			back_btn:{
+				tap:'backToSetting',
+			},
 			/*提醒按钮*/
 			remindBtn:{
-				tap:'',
+				tap:'showRemindView',
 			},
 			/*隐私按钮*/
 			privacyBtn:{
-				tap:'',
+				tap:'showPrivacyView',
 			},
 			/*账号与安全按钮*/
 			accountBtn:{
@@ -41,7 +47,7 @@ Ext.define('cfa.controller.me.SettingAction',{
 			},
 			/*退出按钮*/
 			exitBtn:{
-				tap:'',
+				tap:'showAccountView',
 			}
 		},
 		routes:{
@@ -54,6 +60,27 @@ Ext.define('cfa.controller.me.SettingAction',{
 	showSettingview:function(){
     	Ext.Viewport.setActiveItem(this.getSettingview());
     	// Ext.Viewport.animateActiveItem(this.getPsninfview(),{type:'slide',duration:300});
+    },
+
+     /*返回到设置页面------设置下所有页面的返回按钮tap事件*/
+    backToSetting:function(){
+    	this.redirectTo("setting");
+
+    },	
+
+    /*切换到提醒页面*/
+    showRemindView:function(){
+    	this.redirectTo("remind");
+    },
+
+     /*切换到隐私页面*/
+    showPrivacyView:function(){
+    	// this.redirectTo("privacy");
+    },
+
+     /*切换到账号与安全页面*/
+    showAccountView:function(){
+    	// this.redirectTo("account");
     },
 
     /*切换到关于软件页面*/

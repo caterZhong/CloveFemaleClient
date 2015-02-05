@@ -2,12 +2,10 @@ Ext.define("cfa.view.me.AboutView",{
 
 	extend: "Ext.Container",
 	requires: ["Ext.TabPanel","Ext.Panel",],
-	// views: [],
 	
 	xtype: "aboutview",
 	config:{
-			/*设置页面*/
-			// xtype:"panel",
+			/*关于软件页面*/
 			layout: "vbox",
 			width: "100%",
 			height:'100%',
@@ -25,7 +23,7 @@ Ext.define("cfa.view.me.AboutView",{
 				docked: "top",
 				items:[{
 					html:'返回',
-					name:'back_about',
+					name:'backToSetingBtn',
 					ui:'plain',
 				}],
 			},{//版本及图标
@@ -55,7 +53,7 @@ Ext.define("cfa.view.me.AboutView",{
 				ui: 'plain',
 				html:['<div class="psnInfItem"><div class="psnInfItemTitle">使用协议</div></div>']
 			},{
-				html:'<div class="copyright center"><div>***&nbsp;版权所有</div><div>Copyright &copy;2015-2019 TIK</div><div>All Rights Reserved</div></div>'
+				html:'<div class="copyright center"><div>TIK工作室&nbsp;&nbsp;版权所有</div><div>Copyright&nbsp;&nbsp;&copy;&nbsp;2015-2019&nbsp;&nbsp;TIK</div><div>All Rights Reserved</div></div>'
 			}]
 	}
 });

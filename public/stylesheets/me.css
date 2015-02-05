@@ -238,12 +238,140 @@
 }
 
 .copyright{
-	padding-top:20px;
-	font-size: 14px;
+	padding-top:30px;
+	font-size: 13px;
 	color:#888;
+	line-height: 16px;
 }
 
 .center{
 	text-align: center;
 }
+
+.togglePanel{
+	height: 45px !important;
+	padding:0 10px 0 10px;
+	/*margin-top: 20px;*/
+	background-color: #fff;
+}
+.toggle .x-thumb:after{
+	/*width:2.1em;
+	height: 2.1em;*/
+	top:0.08em;
+	/*left:0;*/
+}
+.x-field.toggle{
+	min-height: 45px;
+	font-size: 15px;
+	border-bottom:1px solid #eee;
+	line-height: 30px;
+
+}
+
+.toggle .x-toggle{
+	position: absolute;
+	right:10px;
+	/*height: 1.90em;*/
+	width:4.0em;
+}
+
+.toggle.x-toggle-off .x-thumb{
+	-webkit-transform: translate3d(30px, 0px, 0px) !important;
+}
+
+.toggle .x-component-outer{
+	padding-top: 6px;
+}
+
+.backLabel{
+	color:#000;
+}
+
+.picker{
+	background-color: #fff;
+	border:none;
+}
+
+.x-picker.picker{
+	background-image: none;
+}
+
+.picker .x-dataview-item{
+	text-align: center;
+}
+
+.picker .x-toolbar{
+	display: none;
+}
+
+.x-picker.picker .x-picker-inner{
+	background: none;
+}
+
+
+.picker .x-picker-slot{
+	border-left:0px;
+}
+
+
+/*.pickerStatic{
+	position: absolute;
+	top:0;
+	left:0;
+}*/
+
+.picker .x-picker-slot-title{
+	position: static;
+	line-height: 25px;
+	/*height: 1.3em;*/
+	background-color: #fff;
+	background-image: none;
+	/*box-shadow: none;*/
+	text-align: center;
+	border:none;
+}
+
+.x-panel.pickerBox{
+	/*height: 200px;
+	width:85%;*/
+	padding:0;
+	background-color: #fff;
+	/*border:1px solid red;*/
+}
+
+.picker{
+	top:0;
+}
+
+.pickerBtnBox{
+	border-top:1px solid #bbb;
+	position: absolute;
+	bottom: 0;
+}
+
+.pickerBtn.x-button{
+	height: 36px;
+	border-radius:0;
+	background-color:#eee;
+	border:none;
+	font-size: 15px;
+	font-weight: normal;
+	/*border:1px solid red;*/
+}
+
+.pickerBtn.x-button.x-button-pressing{
+	background-color: #ccc;
+	font-weight: normal;
+}
+
+.x-button-plain.btn-border-right{
+	border-right:1px solid #bbb;
+}
+
+/*picker颜色*/
+.picker .x-picker-bar{
+	/*border-top-color: #EA7B7B;
+	border-bottom-color: #EA7B7B;*/
+}
+
 /*------------设置样式结束-------------*/
