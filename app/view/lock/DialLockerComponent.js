@@ -169,7 +169,7 @@ LockPoint.prototype.setRadius = function(v){
 检验触摸事件，用于生成路径的起点
 */
 LockPoint.prototype.validateTouch = function(absx, absy){
-    // console.log("validate touch 1") ;
+    // console.log("validate touch 1 : transx : " + (absx - LockPoint.prototype.baseX) + " ; transy : " + (absy - LockPoint.prototype.baseY)) ;
     if(LockPoint.prototype.pathEnded == false){
         // console.log("validate touch 2") ;
         for(i = 0 ; i < LockPoint.prototype.points.length ; i++){
@@ -593,13 +593,19 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
             // console.log("component initialize") ;
             var canvas = Ext.getCmp('dial-locker-component') ;
             var len ;
-            if(screen.width < screen.height){
-                len = 0.92 * screen.width
+            var screenWidth = Math.round(screen.width / window.devicePixelRatio) ;      //要处以像素密度，否则打包之后在某些高分辨率设备上会计算错误
+            var screenHeight = Math.round(screen.height / window.devicePixelRatio) ;
+            if(screenWidth < screenHeight){
+                len = 0.92 * screenWidth
             }else{
-                len = 0.7 * (screen.width < screen.height ? screen.width : screen.height) ;
+                len = 0.7 * (screenWidth < screenHeight ? screenWidth : screenHeight) ;
             }
-            canvas.setHeight(screen.height - Ext.getCmp('dialLockTooBak').getHeight() - Ext.getCmp('dialBottomToolBar').getHeight()- window.dialHeadTextPadding - window.dialHeadTextHeight) ; 
-            canvas.setWidth(screen.width) ; 
+            // console.log("screen.width : " + screen.width + " ; screen.height : " + screen.height) ;
+            // console.log("screenWidth : " + screenWidth + " ; screenHeight : " + screenHeight) ;
+            // console.log("screen.pixelDepth : " + screen.pixelDepth + " ; window.devicePixelRatio : " + window.devicePixelRatio) ;
+            canvas.setHeight(screenHeight - Ext.getCmp('dialLockTooBak').getHeight() - Ext.getCmp('dialBottomToolBar').getHeight()- window.dialHeadTextPadding - window.dialHeadTextHeight) ; 
+            canvas.setWidth(screenWidth) ; 
+            // console.log("canvas.height : " + canvas.getHeight() + " ; canvas.width : " + canvas.getWidth()) ;
 
             LockPoint.prototype.baseX = 0 ;
             LockPoint.prototype.baseY = Ext.getCmp('dialLockTooBak').getHeight() + window.dialHeadTextPadding + window.dialHeadTextHeight ;
