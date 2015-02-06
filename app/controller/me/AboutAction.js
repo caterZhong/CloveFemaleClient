@@ -21,19 +21,19 @@ Ext.define('cfa.controller.me.AboutAction',{
 		control: {
 			/*评分按钮*/
 			scorebtn:{
-				tap:'',
+				tap:'toDo',
 			},
 			/*版本检测按钮*/
 			editionbtn:{
-				tap:'',
+				tap:'toDo',
 			},
 			/*责任声明按钮*/
 			responsibilitybtn:{
-				tap:'',
+				tap:'toDo',
 			},
 			/*使用协议按钮*/
 			agreementbtn:{
-				tap:'',
+				tap:'toDo',
 			}
 		},
 		routes:{
@@ -47,5 +47,9 @@ Ext.define('cfa.controller.me.AboutAction',{
     	Ext.Viewport.setActiveItem(this.getAboutview());
     	// Ext.Viewport.animateActiveItem(this.getPsninfview(),{type:'slide',duration:300});
     },
+
+    toDo:function(){
+    	alert("正在开发中");
+    }
 
 });

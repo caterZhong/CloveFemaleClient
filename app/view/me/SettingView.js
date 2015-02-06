@@ -1,7 +1,7 @@
 Ext.define("cfa.view.me.SettingView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.Panel","cfa.view.me.AboutView","cfa.view.me.RemindView"],
+	requires: ["Ext.TabPanel","Ext.Panel","cfa.view.me.AboutView","cfa.view.me.RemindView","cfa.view.me.PrivacyView"],
 	
 	xtype: "settingview",
 	config:{

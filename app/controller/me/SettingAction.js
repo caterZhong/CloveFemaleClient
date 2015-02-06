@@ -39,7 +39,7 @@ Ext.define('cfa.controller.me.SettingAction',{
 			},
 			/*账号与安全按钮*/
 			accountBtn:{
-				tap:'',
+				tap:'showAccountView',
 			},
 			/*关于软件按钮*/
 			aboutBtn:{
@@ -75,7 +75,7 @@ Ext.define('cfa.controller.me.SettingAction',{
 
      /*切换到隐私页面*/
     showPrivacyView:function(){
-    	// this.redirectTo("privacy");
+    	this.redirectTo("privacy");
     },
 
      /*切换到账号与安全页面*/

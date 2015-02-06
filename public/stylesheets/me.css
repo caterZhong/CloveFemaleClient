@@ -234,9 +234,10 @@
 
 .edition{
 	font-size: 15px;
+	width:100%;
 	color:#888;
-}
 
+}
 .copyright{
 	padding-top:30px;
 	font-size: 13px;
