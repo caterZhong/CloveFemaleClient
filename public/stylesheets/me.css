@@ -134,7 +134,8 @@
 .psnInfcontent{
 	height:100%;
 	line-height: 40px;
-	max-width: 80%;
+	min-width: 0;
+	max-width: 73%;
 	overflow: hidden;
 	float:right;
 	font-weight: normal;
@@ -375,4 +376,71 @@
 	border-bottom-color: #EA7B7B;*/
 }
 
+/*账号与安全*/
+.btnGroupTitle{
+	font-size: 14px;
+	padding:17px 0 10px 25px; 
+	color:#999;
+}
+
 /*------------设置样式结束-------------*/
+
+/*------------登录样式-------------*/
+.loginLogoBox{
+	/*border:1px solid red;*/
+
+	margin:0px auto 0 auto;
+	height: 64px;
+}
+
+.img-left{
+	float:left;
+	/*border:1px solid red;*/
+}
+
+.img-right{
+	/*float:right;*/
+	position: absolute;
+	top:0;
+	right: 0;
+	/*border:1px solid red;*/
+}
+
+.loginWayBox{
+	margin:0 auto;
+	font-size: 14px;
+	padding-top:40px;
+	color:#888;
+}
+
+.logidFieldset{
+	font-size: 16px;
+	padding-top:18px;
+	margin-bottom: 0px;
+	/*border:1px solid red;*/
+}
+.loginBtnBox{
+	padding: 0.7em 0.5em 0;
+	/*border:1px solid skyblue;*/
+}
+
+.loginBtn{
+	/*border:1px solid skyblue;*/
+	margin-bottom:0;
+	font-size: 16px;
+}
+
+.x-button.x-button-plain.findPassword{
+	/*width:100%;*/
+	color:#888;/*#39382E;*/
+	font-size: 15px;
+	font-weight: normal;
+	text-align: right;
+	border:0;
+	position: absolute;
+	/*top:0;*/
+	right:0.1em;
+	/*float:right;*/
+}
+
+/*------------登录样式结束-------------*/

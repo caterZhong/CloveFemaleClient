@@ -3,6 +3,8 @@ Ext.define('cfa.controller.PersonalAction',{
 	requires:['Ext.DataView'],
 	config: {
 		refs: {
+			/*返回按钮----返回到我页面(我页面中各个菜单按钮点击后进入的页面中的返回按钮)*/
+			back_btn:'button[name="backToMeBtn"]',
 			/*个人信息按钮*/
 			psnSim:'button[name="psnSim"]',
 			/*金币按钮*/
@@ -19,7 +21,11 @@ Ext.define('cfa.controller.PersonalAction',{
                 autoCreate: true,
         	}
 		},
-		control: {		
+		control: {	
+			/*返回按钮----返回到我页面*/
+			back_btn:{
+				tap:'backToMe',
+			},	
 			psnSim:{
 				tap:'showPsninfView',
 			},
@@ -46,9 +52,17 @@ Ext.define('cfa.controller.PersonalAction',{
 		Ext.Viewport.setActiveItem(this.getPersonalview());
 	},
 
-	/*切换到个人信息详细页面-----个人信息按钮tap事件*/
+	/*返回到我页面---返回按钮的tap事件*/
+    backToMe:function(){
+    	modular = MINE;//返回的页面的我tab
+    	this.redirectTo("main"); //返回的main页面
+    },
+
+
+	/*已经登录用户切换到个人信息详细页面,否则切换到登录页面-----个人信息按钮tap事件*/
 	showPsninfView:function(){
-		this.redirectTo("psninf");
+		this.redirectTo("login");
+		// this.redirectTo("psninf");
 	},
 
 	/*切换到金币页面-----金币按钮tap事件*/

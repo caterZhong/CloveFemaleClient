@@ -1,7 +1,7 @@
 Ext.define("cfa.view.me.SettingView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.Panel","cfa.view.me.AboutView","cfa.view.me.RemindView","cfa.view.me.PrivacyView"],
+	requires: ["Ext.TabPanel","Ext.Panel","cfa.view.me.AboutView","cfa.view.me.RemindView","cfa.view.me.PrivacyView","cfa.view.me.AccountView"],
 	
 	xtype: "settingview",
 	config:{
@@ -24,7 +24,7 @@ Ext.define("cfa.view.me.SettingView",{
 				docked: "top",
 				items:[{
 					html:'返回',
-					name:'back_psnInf',
+					name:'backToMeBtn',
 					ui:'plain',
 				}],
 			},{//提醒

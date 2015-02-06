@@ -47,7 +47,7 @@ Ext.define('cfa.controller.me.SettingAction',{
 			},
 			/*退出按钮*/
 			exitBtn:{
-				tap:'showAccountView',
+				tap:'logout',
 			}
 		},
 		routes:{
@@ -80,12 +80,17 @@ Ext.define('cfa.controller.me.SettingAction',{
 
      /*切换到账号与安全页面*/
     showAccountView:function(){
-    	// this.redirectTo("account");
+    	this.redirectTo("account");
     },
 
     /*切换到关于软件页面*/
     showAboutView:function(){
         this.redirectTo("about");
+    },
+
+    /*登出*/
+    logout:function(){
+    	alert("正在开发中");
     },
 
 

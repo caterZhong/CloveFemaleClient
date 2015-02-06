@@ -26,9 +26,23 @@ Ext.define("cfa.view.me.PrivacyView",{
 					name:'backToSetingBtn',
 					ui:'plain',
 				}],
-			},{//开通笔记密码保护
+			},{//进入软件密码保护
 				xtype:'panel',
 				margin:'20 0 0 0',
+				cls:'togglePanel',
+				items:[{
+					xtype:'togglefield',
+					label:'进入软件密码保护',
+					labelWidth:'60%',
+					width:'100%',
+					height:40,
+					cls:'toggle',
+					labelCls:'backLabel',
+					// name:'remindBtn',
+					ui: 'plain',
+				}]
+			},{//开通笔记密码保护
+				xtype:'panel',	
 				cls:'togglePanel',
 				items:[{
 					xtype:'togglefield',

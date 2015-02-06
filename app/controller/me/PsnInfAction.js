@@ -3,8 +3,6 @@ Ext.define('cfa.controller.me.PsnInfAction',{
 	extend:'Ext.app.Controller',
 	config: {
 		refs: {
-			/*返回按钮----返回到我页面*/
-			back_btn:'button[name="back_psnInf"]',
 			/*性别按钮*/
 			sexBtn:'button[name="sexBtn"]',
 			/*昵称按钮*/
@@ -31,10 +29,7 @@ Ext.define('cfa.controller.me.PsnInfAction',{
    	
 		},
 		control: {
-			/*返回按钮----返回到我页面*/
-			back_btn:{
-				tap:'backToMe',
-			},
+			
 			/*性别按钮*/
 			sexBtn:{
 				tap:'showSexModal',
@@ -77,12 +72,6 @@ Ext.define('cfa.controller.me.PsnInfAction',{
 	showPsnInfview:function(){
     	Ext.Viewport.setActiveItem(this.getPsninfview());
     	// Ext.Viewport.animateActiveItem(this.getPsninfview(),{type:'slide',duration:300});
-    },
-
-    /*返回到我页面---返回按钮的tap事件*/
-    backToMe:function(){
-    	modular = MINE;//返回的页面的我tab
-    	this.redirectTo("main"); //返回的main页面
     },
 
     /*展示修改性别modal----性别按钮的tap事件*/
