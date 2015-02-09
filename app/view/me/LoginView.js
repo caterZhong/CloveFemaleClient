@@ -72,11 +72,13 @@ Ext.define("cfa.view.me.LoginView",{
 	            items: [{
 	                xtype: 'textfield',
 	                name : 'firstName',
+	                id:'accountNumField',
 	                label: '用户名',
 	                placeHolder:'邮箱/手机号/丁香号',
 	            },{
 	                xtype: 'passwordfield',
 	                name : 'lastName',
+	                id:'passwordfield',
 	                label: '密&nbsp;&nbsp;&nbsp;码',
 	                placeHolder:'请输入密码',
 	            }]
@@ -86,6 +88,7 @@ Ext.define("cfa.view.me.LoginView",{
 				cls:'loginBtnBox',
 				items:[{
 					xtype:'button',
+					name:'loginBtn',
 	            	text:'登录',
 	            	cls:'subBtn loginBtn',
 				},{

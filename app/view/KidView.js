@@ -7,21 +7,40 @@ Ext.define("cfa.view.KidView",{
 	xtype:"kidview",
 
 	config:{
-		xtype:"panel",
 		layout: "vbox",
 		width: "100%",
 		items: [{
-			xtype: "toolbar",
-			title: "小宝成长", 
-			docked: "top",
-			items:[{
-				id:'kidBackBtn',
-				text:'返回'
-			}]
-		},{
 			xtype:'panel',
-			cls:'panelTips',
-			html:'孩子的成长记录'			
+			layout: "vbox",
+			width: "100%",
+			items:[{//标题
+				xtype: "toolbar",
+				title: "小宝成长", 
+				docked: "top",
+				zIndex:2,
+				items:[{
+					id:'kidBackBtn',
+					text:'返回'
+				}]
+			},{//tips
+				xtype:'panel',
+				cls:'panelTips',
+				html:'孩子的成长记录'			
+			},{//dataview菜单
+				xtype:"dataview",
+				id:"kidMenu",
+				cls:'recordMenu',
+				store:{
+					fields:['imgSrc','itemMsg'],
+					data:[
+						{imgSrc:'public/images/kid.png',itemMsg:'孩子诞生'},
+						{imgSrc:'public/images/health.png',itemMsg:'身体指标'},
+						{imgSrc:'public/images/score.png',itemMsg:'成绩表单'},
+						{imgSrc:'public/images/yimiao.png',itemMsg:'疫苗接种'},
+					]
+				},
+				itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
+			}]
 		},
     	/*身体指标开始*/
 		{
@@ -382,22 +401,8 @@ Ext.define("cfa.view.KidView",{
 					]
 				}]
 			}]
-		},
+		}
 		/*疫苗接种结束*/
-		{
-			xtype:"dataview",
-			id:"kidMenu",
-			cls:'recordMenu',
-			store:{
-				fields:['imgSrc','itemMsg'],
-				data:[
-					{imgSrc:'public/images/kid.png',itemMsg:'孩子诞生'},
-					{imgSrc:'public/images/health.png',itemMsg:'身体指标'},
-					{imgSrc:'public/images/score.png',itemMsg:'成绩表单'},
-					{imgSrc:'public/images/yimiao.png',itemMsg:'疫苗接种'},
-				]
-			},
-			itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
-		}]
+		]
 	}
 });

@@ -338,6 +338,7 @@
 	width:85%;*/
 	padding:0;
 	background-color: #fff;
+	z-index: 1100 !important;
 	/*border:1px solid red;*/
 }
 

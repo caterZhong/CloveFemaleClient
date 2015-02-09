@@ -18,33 +18,49 @@ Ext.define("cfa.view.me.MuteTimeView",{
 				styleHtmlContent:true,
 			},
 			items: [
-			{
-				xtype: "toolbar",
-				title: "静音设置", 
-				docked: "top",
+			{	
+				xtype:'panel',
+				layout: "vbox",
+				width: "100%",
+				height:'100%',
+				fullscreen: true,
+				// showAnimation:'pop',
+				hideAnimation:'popOut',
+				// scrollable:'vertical',
+				default:{
+					styleHtmlContent:true,
+				},
 				items:[{
-					html:'返回',
-					name:'backbtn_mute',
-					ui:'plain',
-				}],
-			},{//开始时间段
-				xtype:'button',
-				name:'startTimeBtn',
-				cls:'psnMenu',
-				ui: 'plain',
-				html:['<div class="psnInfItem"><div class="psnInfItemTitle">开始</div><div id="startTime" class="psnInfcontent">23:00</div></div>']
-			},{//结束时间段
-				xtype:'button',
-				name:'endTimeBtn',
-				cls:'psnMenu psninfMenu',
-				ui: 'plain',
-				html:['<div class="psnInfItem"><div class="psnInfItemTitle">结束</div><div id="endTime" class="psnInfcontent">8:30</div></div>']
+					xtype: "toolbar",
+					title: "静音设置", 
+					docked: "top",
+					zIndex:2,
+					items:[{
+						html:'返回',
+						name:'backbtn_mute',
+						ui:'plain',
+					}],
+				},{//开始时间段
+					xtype:'button',
+					name:'startTimeBtn',
+					cls:'psnMenu',
+					ui: 'plain',
+					html:['<div class="psnInfItem"><div class="psnInfItemTitle">开始</div><div id="startTime" class="psnInfcontent">23:00</div></div>']
+				},{//结束时间段
+					xtype:'button',
+					name:'endTimeBtn',
+					cls:'psnMenu psninfMenu',
+					ui: 'plain',
+					html:['<div class="psnInfItem"><div class="psnInfItemTitle">结束</div><div id="endTime" class="psnInfcontent">8:30</div></div>']
+				}]
+				
 			},{
 				xtype:'panel',
 				name:'pickerBox',
 				id:'pickerBox',
 				cls:'pickerBox',
 				modal:true,
+				zIndex:99,
 				centered:true,
 				hidden:true,
 				layout:'vbox',
@@ -177,12 +193,8 @@ Ext.define("cfa.view.me.MuteTimeView",{
 						width:'50%',
 						ui:'plain',
 					}]
-				}
-				],
+				}],
 			}],
 	},
 
-	// getTimeselection:function(){
-
-	// }
 });
