@@ -11,7 +11,7 @@ Ext.define("cfa.store.chart.LineBabyMoveStore", {
         index : 0 ,
 	    proxy: {
 	        type: 'jsonp',
-	        url : domain + 'ChartTest/getLineBabyMoveStore',
+	        url : domain + 'FgChartTest/getLineBabyMoveStore',
 	        extraParams:{
                 'startDate': Ext.Date.format(window.dataDate1, "Y-m-d"),
                 'endDate': Ext.Date.format(window.dataDate2, "Y-m-d")

@@ -42,7 +42,7 @@ Ext.define("cfa.view.KidView",{
 			},{
 				xtype:'formpanel',
 				id:'healthForm',
-				url : domain+'BabyGrowth/addBodyIndex',
+				url : domain+'FgBabyGrowth/addBodyIndex',
 				name:'healthForm',
 				scrollable:'vertical',
 				items:[
@@ -125,7 +125,7 @@ Ext.define("cfa.view.KidView",{
 				xtype:'formpanel',
 				id:'birthForm',
 				scrollable:'vertical',
-				url:domain+'BabyAction/addBaby',
+				url:domain+'FgBabyAction/addBaby',
 				items:[
 				{
 					xtype:'fieldset',
@@ -215,7 +215,7 @@ Ext.define("cfa.view.KidView",{
 				id:'scoreForm',
 				cls:'babyForm',
 				scrollable:'vertical',
-				url:domain+'BabyGrowth/addGradeCondition',
+				url:domain+'FgBabyGrowth/addGradeCondition',
 				items:[
 				{
 					xtype:'fieldset',
@@ -330,7 +330,7 @@ Ext.define("cfa.view.KidView",{
 				id:'vaccineForm',
 				cls:'babyForm',
 				scrollable:'vertical',
-				url:domain+'BabyGrowth/addVaccination',
+				url:domain+'FgBabyGrowth/addVaccination',
 				items:[
 				{
 					xtype:'fieldset',

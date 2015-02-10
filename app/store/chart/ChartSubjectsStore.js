@@ -10,7 +10,7 @@ Ext.define("cfa.store.chart.ChartSubjectsStore", {
                 {text: '英语', value: '3'}],
 	    proxy: {
 	        type: 'jsonp',
-	        url : domain + 'ChartTest/getSubjects',
+	        url : domain + 'FgChartTest/getSubjects',
 	        extraParams:{
 	        	'userid' : '12345',
 	        }

@@ -44,7 +44,7 @@ Ext.define("cfa.view.PregnantView",{
 				id:'mensesForm',
 				cls:'babyForm',
 				scrollable:'vertical',
-				url:domain+'MensesAction/addMenses',
+				url:domain+'FgMensesAction/addMenses',
 				items:[
 				{
 					xtype:'fieldset',
@@ -240,7 +240,7 @@ Ext.define("cfa.view.PregnantView",{
 					flex:1,
 				}],
 				getUrl: function(){
-					return domain+"TemperatureAction/addTemperature" ;
+					return domain+"FgTemperatureAction/addTemperature" ;
 				},
 				reset: function(){
 					Ext.getCmp('tValue').setValue('37') ;
@@ -292,7 +292,7 @@ Ext.define("cfa.view.PregnantView",{
 				id 			: 'weightForm',
 				cls 		: 'babyForm',
 				scrollable 	: 'vertical',
-				url 		: domain+'GestationalWeightAction/addWeight',
+				url 		: domain+'FgGestationalWeightAction/addWeight',
 				items 		: [
 				{
 					xtype:'fieldset',
@@ -456,7 +456,7 @@ Ext.define("cfa.view.PregnantView",{
 	 				html:'次/小时'
 	 			}],
 	 			getUrl: function(){
-	 				return domain+"FetalMovementAction/addMovement" ;
+	 				return domain+"FgFetalMovementAction/addMovement" ;
 	 			},
 	 			reset: function(){
 	 				Ext.getCmp('movementNum').setValue('0') ;

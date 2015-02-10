@@ -11,7 +11,7 @@ Ext.define("cfa.store.chart.LineGesWeightStore", {
         index : 0 ,
 	    proxy: {
 	        type: 'jsonp',
-	        url : domain + 'ChartTest/getLineGesWeightStore',
+	        url : domain + 'FgChartTest/getLineGesWeightStore',
 	        extraParams:{
                 'startDate': Ext.Date.format(window.dataDate1, "Y-m-d"),
                 'endDate': Ext.Date.format(window.dataDate2, "Y-m-d")

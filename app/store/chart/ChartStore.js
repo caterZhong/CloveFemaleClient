@@ -10,7 +10,7 @@ Ext.define("cfa.store.chart.ChartStore", {
         index : 0 ,
 	    proxy: {
 	        type: 'jsonp',
-	        url : domain + 'ChartTest/getSomeData2',
+	        url : domain + 'FgChartTest/getSomeData2',
 	        extraParams:{
 	        	'whoami':'I\'m ChartStore',
 	        	'name':'i am name',
