@@ -7,27 +7,47 @@ Ext.define("cfa.view.PregnantView",{
 	xtype:"pregnantview",
 
 	config:{
-		xtype:"panel",
 		layout: "vbox",
 		width: "100%",
 		items: [{
-			xtype: "toolbar",
-			title: "助孕记录", 
-			docked: "top",
-			items:[{
-				id:'pregnantBackBtn',
-				text:'返回'
-			}]
-		},{
 			xtype:'panel',
-			cls:'panelTips',
-			html:'助孕的记录'			
-		},
-    	/*月经开始*/
-		{
+			// xtype:"panel",
+			layout: "vbox",
+			width: "100%",
+			items:[{//标题
+				xtype: "toolbar",
+				title: "助孕记录",
+				// masked:true,
+				docked: "top",
+				zIndex:2, 
+				items:[{
+					id:'pregnantBackBtn',
+					text:'返回'
+				}]
+			},{//提示
+				xtype:'panel',
+				cls:'panelTips',
+				html:'助孕的记录'			
+			},{//菜单选项
+				xtype:"dataview",
+				id:"pregnantMenu",
+				cls:'recordMenu',
+				store:{
+					fields:['imgSrc','itemMsg'],
+					data:[
+						{imgSrc:'public/images/kid.png',itemMsg:'月经'},
+						{imgSrc:'public/images/health.png',itemMsg:'基础体温'},
+						{imgSrc:'public/images/score.png',itemMsg:'孕重'},
+						{imgSrc:'public/images/yimiao.png',itemMsg:'胎动'},
+					]
+				},
+				itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
+			}]	
+		},{/*月经开始*/
 			id:'mensesModal',
 			xtype:'panel',
 			layout: "vbox",
+			zIndex:1100,
 			modal:true,
 			hidden:true,
 			hideOnMaskTap:true,
@@ -35,6 +55,7 @@ Ext.define("cfa.view.PregnantView",{
 			minHeight:381,
 			height:'60%',
 			width:'90%',
+			zIndex:99, 
 			items:[{
 				xtype:'panel',
 				cls:'modalPanel',
@@ -488,7 +509,7 @@ Ext.define("cfa.view.PregnantView",{
 					]
 
 			}]
-		},
+		}
 		// {	
 		// 	layout:'hbox',
 		// 	id:'movementModal',
@@ -504,20 +525,6 @@ Ext.define("cfa.view.PregnantView",{
 		// 	}]
 		// },
 		/*胎动结束*/
-		{
-			xtype:"dataview",
-			id:"pregnantMenu",
-			cls:'recordMenu',
-			store:{
-				fields:['imgSrc','itemMsg'],
-				data:[
-					{imgSrc:'public/images/kid.png',itemMsg:'月经'},
-					{imgSrc:'public/images/health.png',itemMsg:'基础体温'},
-					{imgSrc:'public/images/score.png',itemMsg:'孕重'},
-					{imgSrc:'public/images/yimiao.png',itemMsg:'胎动'},
-				]
-			},
-			itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
-		}]
+		]
 	}
 });

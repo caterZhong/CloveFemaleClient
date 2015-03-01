@@ -9,17 +9,22 @@
 
 .psnSim{
 	/*height: 73px;*/
-	height: 80px;
 	margin-top:20px;
+
 	/*margin-*/
+}
+
+/*头像所在的Btn*/
+.psnHeadBtn{
+	/*h*/
 }
 
 .personalImg{
 	float:left;
-	padding-left:15px;
+	/*padding-left:15px;*/
 	width:60px;
 	height: 60px;
-	border-radius: 30px;
+	/*border-radius: 30px;*/
 	/*border:1px solid #ccc;*/
 }
 
@@ -31,7 +36,7 @@
 
 .personalName{
 	font-size: 0.8em;
-	padding:8px 0px 0px 82px;
+	padding:10px 0px 0px 72px;
 	margin:0;
 	text-align: left;
 	font-weight: 700;
@@ -39,7 +44,7 @@
 
 .personalId{
 	font-size: 0.3em;
-	padding:0px 0px 0px 82px;
+	padding:0px 0px 0px 72px;
 	color:#858383;
 	margin:0;
 	font-weight: normal;
@@ -48,6 +53,7 @@
 
 .x-button.x-button-plain.psnSim, .x-toolbar .x-button.x-button-plain.psnSim{
 	height:73px; 
+	/*line-height: 73px;*/
 	background-color: white;
 	/*border-*/
 }
@@ -55,17 +61,23 @@
 .x-button.x-button-plain.psnMenu, .x-toolbar .x-button.x-button-plain.psnMenu{
 	height:40px; 
 	background-color: white;
-	/*border-*/
+}
+
+.x-button.x-button-plain.psnMenu,.x-button.x-button-plain.psnSim{
+	padding-left:10px;
+	padding-right: 10px;
 }
 
 .psnMenu{
 	margin-top: 20px;
+
 }
 
 .psnItemImg{
 	display: block;
-	padding-left: 15px;
-	padding-top:4px;
+	width:32px;
+	height: 32px;
+	overflow: hidden;
 	float:left;
 	
 }
@@ -76,7 +88,7 @@
 
 .psnItemTitle{
 	text-align: left;
-	padding:11px 0px 0px 50px;
+	padding:8px 0px 0px 38px;
 	font-size: 15px;
 
 }
@@ -86,3 +98,350 @@
 	background-color: #ccc;
 	background-image: none;
 }
+
+/*个人信息页面样式*/
+.psninfMenu{
+	margin:0;
+}
+
+.x-button.x-button-plain.psninfMenu{
+	/*border-top:1px solid red;*/
+}
+
+.psnInfItem{
+	height: 40px;
+	line-height: 40px;
+	/*margin-top: auto;
+	margin-bottom: auto;*/
+	padding-left:10px;
+	padding-right:10px;
+	/*vertical-align: middle;*/
+	border-bottom:1px solid #eee;
+	/*border:1px solid #eee;*/
+	text-align: left;
+	font-size: 15px;
+}
+
+.psnInfItemTitle{
+	float:left;
+}
+
+.psnSim .psnInfItem{
+	height: 73px;
+	line-height: 73px;
+}
+
+.psnInfcontent{
+	height:100%;
+	line-height: 40px;
+	min-width: 0;
+	max-width: 73%;
+	overflow: hidden;
+	float:right;
+	font-weight: normal;
+	color:#999;
+	font-size: 13px;
+	margin:0;
+	padding:0;
+}
+
+.psnSim .psnInfcontent{
+	padding-top:6.5px;
+	margin-right: -10px;
+}
+
+.infHeadImg{
+	width:60px;
+
+	display: block;
+	border-radius: 30px;
+	border:1px solid #aaa;
+}
+
+.sexModal.x-scroll-scroller{
+	min-height: 100px;
+	min-width: 100px;
+	overflow: hidden;
+}
+
+.sexLabel{
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 30px;
+}
+.bottomLine{
+	border-bottom: 1px solid #eee;
+}
+
+/*修改信息页面容器*/
+.modifyInfContainer{
+	background-color: #fff;
+}
+
+.infTxt{
+	/*border-bottom:1px solid #E55E5E;*/
+	/*border-left:1px solid #E55E5E;
+	border-right:1px solid #E55E5E;*/
+	/*padding-top:10px;
+	padding-bottom: 0px;*/
+	/*height: 20px;*/
+	font-size: 15px;
+	padding-right:17px;
+
+	/*margin:0 15px;*/
+}
+
+.infTxt input.x-input-el x-input-text x-form-field{
+	/*height:20px;
+	min-height: 0px;*/
+}
+
+.txtPanel{
+	/*border:1px solid red;*/
+	border-bottom:1px solid #E55E5E;
+	border:1px solid #ddd;
+	-webkit-border-radius:10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin:10px 15px 0 15px;
+}
+.wordNum{
+	position: absolute;
+	bottom: 3px;
+	right:2px;
+	z-index: 99px;
+	color:#aaa;
+	font-size:13px;
+	/*float:right;*/
+}
+
+/*修改信息建议*/
+.modifyTips{
+	font-size: 14px;
+	color:#aaa;
+	padding-left:20px;
+	padding-top:10px;
+}
+
+
+/*个人信息页面样式---结束*/
+
+/*--------------设置样式---------------*/
+.logoImg{
+	padding-top:20px;
+	/*border:1px solid red;*/
+}
+
+
+.edition{
+	font-size: 15px;
+	width:100%;
+	color:#888;
+
+}
+.copyright{
+	padding-top:30px;
+	font-size: 13px;
+	color:#888;
+	line-height: 16px;
+}
+
+.center{
+	text-align: center;
+}
+
+.togglePanel{
+	height: 45px !important;
+	padding:0 10px 0 10px;
+	/*margin-top: 20px;*/
+	background-color: #fff;
+}
+.toggle .x-thumb:after{
+	/*width:2.1em;
+	height: 2.1em;*/
+	top:0.08em;
+	/*left:0;*/
+}
+.x-field.toggle{
+	min-height: 45px;
+	font-size: 15px;
+	border-bottom:1px solid #eee;
+	line-height: 30px;
+
+}
+
+.toggle .x-toggle{
+	position: absolute;
+	right:10px;
+	/*height: 1.90em;*/
+	width:4.0em;
+}
+
+.toggle.x-toggle-off .x-thumb{
+	-webkit-transform: translate3d(30px, 0px, 0px) !important;
+}
+
+.toggle .x-component-outer{
+	padding-top: 6px;
+}
+
+.backLabel{
+	color:#000;
+}
+
+.picker{
+	background-color: #fff;
+	border:none;
+}
+
+.x-picker.picker{
+	background-image: none;
+}
+
+.picker .x-dataview-item{
+	text-align: center;
+}
+
+.picker .x-toolbar{
+	display: none;
+}
+
+.x-picker.picker .x-picker-inner{
+	background: none;
+}
+
+
+.picker .x-picker-slot{
+	border-left:0px;
+}
+
+
+/*.pickerStatic{
+	position: absolute;
+	top:0;
+	left:0;
+}*/
+
+.picker .x-picker-slot-title{
+	position: static;
+	line-height: 25px;
+	/*height: 1.3em;*/
+	background-color: #fff;
+	background-image: none;
+	/*box-shadow: none;*/
+	text-align: center;
+	border:none;
+}
+
+.x-panel.pickerBox{
+	/*height: 200px;
+	width:85%;*/
+	padding:0;
+	background-color: #fff;
+	z-index: 1100 !important;
+	/*border:1px solid red;*/
+}
+
+.picker{
+	top:0;
+}
+
+.pickerBtnBox{
+	border-top:1px solid #bbb;
+	position: absolute;
+	bottom: 0;
+}
+
+.pickerBtn.x-button{
+	height: 36px;
+	border-radius:0;
+	background-color:#eee;
+	border:none;
+	font-size: 15px;
+	font-weight: normal;
+	/*border:1px solid red;*/
+}
+
+.pickerBtn.x-button.x-button-pressing{
+	background-color: #ccc;
+	font-weight: normal;
+}
+
+.x-button-plain.btn-border-right{
+	border-right:1px solid #bbb;
+}
+
+/*picker颜色*/
+.picker .x-picker-bar{
+	/*border-top-color: #EA7B7B;
+	border-bottom-color: #EA7B7B;*/
+}
+
+/*账号与安全*/
+.btnGroupTitle{
+	font-size: 14px;
+	padding:17px 0 10px 25px; 
+	color:#999;
+}
+
+/*------------设置样式结束-------------*/
+
+/*------------登录样式-------------*/
+.loginLogoBox{
+	/*border:1px solid red;*/
+
+	margin:0px auto 0 auto;
+	height: 64px;
+}
+
+.img-left{
+	float:left;
+	/*border:1px solid red;*/
+}
+
+.img-right{
+	/*float:right;*/
+	position: absolute;
+	top:0;
+	right: 0;
+	/*border:1px solid red;*/
+}
+
+.loginWayBox{
+	margin:0 auto;
+	font-size: 14px;
+	padding-top:40px;
+	color:#888;
+}
+
+.logidFieldset{
+	font-size: 16px;
+	padding-top:18px;
+	margin-bottom: 0px;
+	/*border:1px solid red;*/
+}
+.loginBtnBox{
+	padding: 0.7em 0.5em 0;
+	/*border:1px solid skyblue;*/
+}
+
+.loginBtn{
+	/*border:1px solid skyblue;*/
+	margin-bottom:0;
+	font-size: 16px;
+}
+
+.x-button.x-button-plain.findPassword{
+	/*width:100%;*/
+	color:#888;/*#39382E;*/
+	font-size: 15px;
+	font-weight: normal;
+	text-align: right;
+	border:0;
+	position: absolute;
+	/*top:0;*/
+	right:0.1em;
+	/*float:right;*/
+}
+
+/*------------登录样式结束-------------*/
