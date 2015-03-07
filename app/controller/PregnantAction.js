@@ -22,7 +22,15 @@ Ext.define('cfa.controller.PregnantAction',{
         	submitWeightFormBtn		 : "#submitWeightFormBtn",
 
         	movementForm 			 : "#movementForm",
-        	submitMovementFormBtn	 : "#submitMovementFormBtn"
+        	submitMovementFormBtn	 : "#submitMovementFormBtn",
+            /*温度picker*/
+            tmpPicker:'picker[name="tmpPicker"]',
+            /*温度pickerbox的cancel按钮*/
+            cancelBtn_tmp:'button[name="cancelBtn_tmp"]',
+            /*孕重pickerbox的cancel按钮*/
+            cancelBtn_weight:'button[name="cancelBtn_weight"]',
+            /*胎动pickerbox的cancel按钮*/
+            cancelBtn_move:'button[name="cancelBtn_move"]',
 
 		},
 		control: {
@@ -47,6 +55,22 @@ Ext.define('cfa.controller.PregnantAction',{
 			submitMovementFormBtn:{
 				tap:"submitMovementForm"
 			},
+            /*温度picker*/
+            tmpPicker:{
+                change:'tmpPickerChange',
+            },
+            /*温度pickerbox的cancel按钮*/
+            cancelBtn_tmp:{
+                tap:'hideTmpModal',
+            },
+            /*孕重pickerbox的cancel按钮*/
+            cancelBtn_weight:{
+                tap:'hideWeightModal',
+            },
+            /*胎动pickerbox的cancel按钮*/
+            cancelBtn_move:{
+                 tap:'hideMoveModal',
+            }
 		},
 		routes:{
 			'pregnant':'showPregnantview'
@@ -149,8 +173,21 @@ Ext.define('cfa.controller.PregnantAction',{
      		name : '' ,
      		type : ''
      	}).saveRecord(form, params) ;
-     }
+     },
 
+    /*隐藏温度的temperatureModal---cancelBtn_tmp的tap事件*/
+    hideTmpModal:function(){
+        Ext.getCmp("temperatureModal").hide();
+    },
 
-    // $('.floatTips').click(tapTestEvent);
+    /*隐藏温度的weightModal---cancelBtn_weight的tap事件*/
+    hideWeightModal:function(){
+        Ext.getCmp("weightModal").hide();
+    },
+
+    /*隐藏胎动的weightModal---cancelBtn_move的tap事件*/
+    hideMoveModal:function(){
+        Ext.getCmp("movementModal").hide();
+    },
+
 });

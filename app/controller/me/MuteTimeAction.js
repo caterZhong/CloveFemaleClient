@@ -45,7 +45,7 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
 			},
 			/*pickerBox*/
 			pickerBox:{
-				initialize:'setTimeNow',
+				// initialize:'setTimeNow',
 				show:'setTimeNow',
 			},
 		},
