@@ -28,7 +28,7 @@ window.dialHeadTextHeight = 70 ;
                     docked: 'top',
                     height:47,
                     title:'图案解锁',
-                    id:'dialLockTooBak',
+                    id:'dialLockToolBar',
                     items: [
                         {
                             text: '返回',

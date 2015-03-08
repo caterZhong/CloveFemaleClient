@@ -506,8 +506,8 @@ LockPoint.prototype.init = function(){
     LockPoint.prototype.path            = null ;        //对路径图形的引用
     LockPoint.prototype.tris            = [] ;        //对三角形图形的引用
     LockPoint.prototype.psw             = null ;        //密码
-    LockPoint.prototype.psw1             = null ;        //密码
-    LockPoint.prototype.psw2             = null ;        //密码
+    LockPoint.prototype.psw1            = null ;        //密码
+    LockPoint.prototype.psw2            = null ;        //密码
     for(i = 0 ; i < 9 ; i++){
         var point = new LockPoint(i, 3, 3) ;
         point.drawPoint() ;
@@ -556,7 +556,7 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
     Ext.define('cfa.view.lock.DialLockerComponent', {
         extend: 'Ext.draw.Component',
         config: {
-            background: 'white',
+            background: 'pink',
             width:400,
             height:400,
             cantered:true,
@@ -593,8 +593,13 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
             // console.log("component initialize") ;
             var canvas = Ext.getCmp('dial-locker-component') ;
             var len ;
-            var screenWidth = Math.round(screen.width / window.devicePixelRatio) ;      //要处以像素密度，否则打包之后在某些高分辨率设备上会计算错误
-            var screenHeight = Math.round(screen.height / window.devicePixelRatio) ;
+            var screenWidth = screen.width ;      
+            var screenHeight = screen.height ;
+
+            //要除以像素密度，否则打包之后在某些高分辨率设备上会计算错误
+            // screenWidth = Math.round(screenWidth / window.devicePixelRatio) ;
+            // screenHeight = Math.round(screenHeight / window.devicePixelRatio) ;
+
             if(screenWidth < screenHeight){
                 len = 0.92 * screenWidth
             }else{
@@ -603,12 +608,14 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
             // console.log("screen.width : " + screen.width + " ; screen.height : " + screen.height) ;
             // console.log("screenWidth : " + screenWidth + " ; screenHeight : " + screenHeight) ;
             // console.log("screen.pixelDepth : " + screen.pixelDepth + " ; window.devicePixelRatio : " + window.devicePixelRatio) ;
-            canvas.setHeight(screenHeight - Ext.getCmp('dialLockTooBak').getHeight() - Ext.getCmp('dialBottomToolBar').getHeight()- window.dialHeadTextPadding - window.dialHeadTextHeight) ; 
+            // console.log("Ext.getCmp('dialLockToolBar').getHeight() : " + Ext.getCmp('dialLockToolBar').getHeight() + " ; Ext.getCmp('dialBottomToolBar').getHeight() : " + Ext.getCmp('dialBottomToolBar').getHeight()) ;
+            // console.log("window.dialHeadTextPadding : " + window.dialHeadTextPadding + " ; window.dialHeadTextHeight : " + window.dialHeadTextHeight) ;
+            canvas.setHeight(screenHeight - Ext.getCmp('dialLockToolBar').getHeight() - Ext.getCmp('dialBottomToolBar').getHeight()- window.dialHeadTextPadding - window.dialHeadTextHeight) ; 
             canvas.setWidth(screenWidth) ; 
             // console.log("canvas.height : " + canvas.getHeight() + " ; canvas.width : " + canvas.getWidth()) ;
 
             LockPoint.prototype.baseX = 0 ;
-            LockPoint.prototype.baseY = Ext.getCmp('dialLockTooBak').getHeight() + window.dialHeadTextPadding + window.dialHeadTextHeight ;
+            LockPoint.prototype.baseY = Ext.getCmp('dialLockToolBar').getHeight() + window.dialHeadTextPadding + window.dialHeadTextHeight ;
             LockPoint.prototype.canvasWidth = canvas.getWidth() ;
             LockPoint.prototype.canvasHeight = canvas.getHeight() ;
             LockPoint.prototype.cmp = this ;
