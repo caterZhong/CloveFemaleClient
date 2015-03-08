@@ -139,6 +139,7 @@ LockPoint.prototype.canvasHeight    = 100 ;     //canvas的高
 LockPoint.prototype.surface         = null ;    //Ext.draw.Surface
 LockPoint.prototype.radius          = 10 ;      //范围半径
 LockPoint.prototype.radiusSquar     = 100 ;     //半径的平方
+LockPoint.prototype.lineWidth       = LockPoint.prototype.radius * 1.3 * 0.5 ;  //路径的宽度
 LockPoint.prototype.cmp             = null ;    //对绘图组件的引用
 // LockPoint.prototype.sprite          = null ;    //
 LockPoint.prototype.strokeStyle     = new Ext.draw.Color(224, 224, 224) ;       //圆点外框颜色
@@ -218,17 +219,20 @@ LockPoint.prototype.validateDrag = function(absx, absy){
                 //先判断是否跨点了，例如从左上角连到右下角，那么中间的点应该自动加上
                 var lastIndex = LockPoint.prototype.activePoints[LockPoint.prototype.activePoints.length - 1].index ;
                 //只有三种情况：同行、同列、同对角线
+                var tindex = 0 ;
                 if(Math.abs(i - lastIndex) == 2 && Math.floor(i/3) == Math.floor(lastIndex/3)){
                     //同行
-                    if(LockPoint.prototype.points[(i > lastIndex ? i : lastIndex) - 1].alive == false){
-                        LockPoint.prototype.points[(i > lastIndex ? i : lastIndex) - 1].activate() ;
-                        LockPoint.prototype.activePoints.push(LockPoint.prototype.points[(i > lastIndex ? i : lastIndex) - 1]) ;
+                    tindex = (i > lastIndex ? i : lastIndex) - 1 ;
+                    if(LockPoint.prototype.points[tindex].alive == false){
+                        LockPoint.prototype.points[tindex].activate() ;
+                        LockPoint.prototype.activePoints.push(LockPoint.prototype.points[tindex]) ;
                     }
                 }else if(Math.abs(i - lastIndex) == 6 && i % 3 == lastIndex % 3){
                     //同列
-                    if(LockPoint.prototype.points[(i > lastIndex ? i : lastIndex) - 3].alive == false){
-                        LockPoint.prototype.points[(i > lastIndex ? i : lastIndex) - 3].activate() ;
-                        LockPoint.prototype.activePoints.push(LockPoint.prototype.points[(i > lastIndex ? i : lastIndex) - 3]) ;
+                    tindex = (i > lastIndex ? i : lastIndex) - 3 ;
+                    if(LockPoint.prototype.points[tindex].alive == false){
+                        LockPoint.prototype.points[tindex].activate() ;
+                        LockPoint.prototype.activePoints.push(LockPoint.prototype.points[tindex]) ;
                     }
                 }else if((i == 0 && lastIndex == 8) || (i == 8 && lastIndex == 0)){
                     //左上到右下的对角线
@@ -247,6 +251,7 @@ LockPoint.prototype.validateDrag = function(absx, absy){
                 LockPoint.prototype.activePoints.push(LockPoint.prototype.points[i]) ;
                 LockPoint.prototype.points[i].activate() ;
                 LockPoint.prototype.drawPath(LockPoint.prototype.generatePathPoints()) ;
+                // LockPoint.prototype.points[i].activate() ;
                 break ;
             }
         }
@@ -362,19 +367,19 @@ LockPoint.prototype.endDrag = function(){
 //error指明是否为错误路径，默认为false，即正确
 LockPoint.prototype.drawPath = function(ps, error){
     var pstyle = LockPoint.prototype.lineStyleAlive ;
-    var fstyle = LockPoint.prototype.fillStyleAlive ;
+    // var fstyle = LockPoint.prototype.fillStyleAlive ;
     if(error != undefined && error == true){
         pstyle = LockPoint.prototype.lineStyleError ;
-        fstyle = LockPoint.prototype.fillStyleError ;
+        // fstyle = LockPoint.prototype.fillStyleError ;
     }
-    var aps = LockPoint.prototype.activePoints ;
-    if(LockPoint.prototype.tris.length == aps.length - 1){
+    // var aps = LockPoint.prototype.activePoints ;
+    /*if(LockPoint.prototype.tris.length == aps.length - 1){
         for(i = 0 ; i < aps.length - 1 ; i++){
             LockPoint.prototype.tris[i].setAttributes({
                 fillStyle:fstyle
             });
         }
-    }else if(LockPoint.prototype.tris.length == aps.length - 2){
+    }*//*else if(LockPoint.prototype.tris.length == aps.length - 2){
         for(i = 0 ; i < aps.length - 2 ; i++){
             LockPoint.prototype.tris[i].setAttributes({
                 fillStyle:fstyle
@@ -402,13 +407,13 @@ LockPoint.prototype.drawPath = function(ps, error){
             rotationRads = thos ;
         }
 
-        var ctx = aps[i].x + LockPoint.prototype.radius * 1.85 * Math.cos(-rotationRads) ; //center triangle x
-        var cty = aps[i].y + LockPoint.prototype.radius * 1.85 * Math.sin(-rotationRads) ; //center triangle y
+        // var ctx = aps[i].x + LockPoint.prototype.radius * 1.85 * Math.cos(-rotationRads) ; //center triangle x
+        // var cty = aps[i].y + LockPoint.prototype.radius * 1.85 * Math.sin(-rotationRads) ; //center triangle y
 
         // rotationRads = -rotationRads + Math.PI/2 ;//旋转的角度是用pi计算的，并且是整体中心自转，方向与正常的极坐标相反，这里是顺时针的
         // rotationRads = Math.PI/2 ;
-        var dty = 7.22 ;    //三角形中心偏置值。三角形字符在绘制的时候是以左下角为原点计算的，但是我们要用三角形的中心为原点。
-        var dtx = 9.3 ;
+        // var dty = 7.22 ;    //三角形中心偏置值。三角形字符在绘制的时候是以左下角为原点计算的，但是我们要用三角形的中心为原点。
+        // var dtx = 9.3 ;
 
         LockPoint.prototype.tris.push( LockPoint.prototype.cmp.getSurface('overlay').add({
             type: 'text',
@@ -419,7 +424,7 @@ LockPoint.prototype.drawPath = function(ps, error){
             fontSize:20,
             fillStyle: fstyle
         }));
-    }
+    }*/
     /*for(i = 0; i < aps.length - 1; i++){
         LockPoint.prototype.tris.push( LockPoint.prototype.cmp.getSurface('overlay').add({
             type: 'text',
@@ -433,7 +438,7 @@ LockPoint.prototype.drawPath = function(ps, error){
         LockPoint.prototype.path = LockPoint.prototype.cmp.getSurface('overlay').add({
             type: 'path',
             path: ps,
-            lineWidth: LockPoint.prototype.radius * 1.3 ,
+            lineWidth: LockPoint.prototype.lineWidth ,
             lineCap: 'round',
             lineJoin: 'round',
             strokeStyle: pstyle
@@ -518,11 +523,14 @@ LockPoint.prototype.init = function(){
 
 LockPoint.prototype.changePathToError = function(){
     var aps = LockPoint.prototype.activePoints ;
+    /*for(i = 0 ; i < aps.length ; i++){
+        aps[i].changeToError() ;
+    }*/
+    var ps = LockPoint.prototype.generatePathPoints() ;
+    LockPoint.prototype.drawPath(ps, true) ;
     for(i = 0 ; i < aps.length ; i++){
         aps[i].changeToError() ;
     }
-    var ps = LockPoint.prototype.generatePathPoints() ;
-    LockPoint.prototype.drawPath(ps, true) ;
 }
 
 LockPoint.prototype.setRadius(20) ;     //设置半径为20
