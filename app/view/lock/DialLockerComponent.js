@@ -556,7 +556,7 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
     Ext.define('cfa.view.lock.DialLockerComponent', {
         extend: 'Ext.draw.Component',
         config: {
-            background: 'pink',
+            background: 'white',
             width:400,
             height:400,
             cantered:true,
