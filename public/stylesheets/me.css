@@ -445,3 +445,49 @@
 }
 
 /*------------登录样式结束-------------*/
+
+/*------------注册样式开始--------------------*/
+.monthbox{
+	/*border:1px solid green;*/
+	/*padding-left:1%;*/
+	margin:0 auto;
+	background-color: #fff;
+}
+
+.weekBox{
+	/*border:1px solid red;*/
+	/*word-wrap: break-word;*/
+	/*margin:0 auto;*/
+	background-color: #fff;
+	margin-left:1%;
+	/*padding:0 1%;*/
+	/*margin:0 auto;*/
+}
+
+.datebox{
+	/*background-color: yellow;*/
+	/*border:1px solid gray;*/
+	/*margin:0 auto;*/
+
+}
+
+.x-button.x-button-plain.dateBtn{
+	/*border:1px solid #EA7B7B;*/
+	/*background-color: #E24949;*/
+	color:#272822;
+	border-radius:20px;
+	text-align: center;
+	/*margin:1px 0px 0px 1px;*/
+	margin:0 auto;
+}
+
+.x-button.x-button-plain.activeDayBtn{
+	color:#FFFFEA;
+	background-color: #E24949;
+	border-radius:20px;
+	text-align: center;
+	/*margin:1px 0px 0px 1px;*/
+	margin:0 auto;
+}
+/*dateBtn
+*//*------------注册样式结束--------------------*/

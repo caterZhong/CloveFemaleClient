@@ -92,7 +92,7 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
     /*设置时间*/
     setTime:function(){
     	var timePicker = Ext.getCmp("timePicker");
-    	value = timePicker.getValues();
+    	value = timePicker.getValues();//获取到timepicker的vlaue，包括时(value.hour)和分(value.minute)两个字段
     	var timeselection = this.getMutetimeview().timeselection;
     	var time;
     	if("start" == timeselection){
@@ -106,7 +106,6 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
     		time.dom.innerHTML = value.hour + ":" + value.minute;
     	}
     	Ext.getCmp("pickerBox").hide();
-
     },
 
     /*设置picker的时间为当前时间*/
