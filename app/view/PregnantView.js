@@ -158,7 +158,7 @@ Ext.define("cfa.view.PregnantView",{
 						{
 							cls:'subBtn',
 							id:'mensesFormSubmitBtn',
-							text:'提交'
+							text:'保存'
 							// handler:function(){
 							// 	healthForm.submit();
 							// }

@@ -31,6 +31,7 @@ Ext.define('cfa.controller.me.RegisterAction',{
     changeDay:function(){
     	var monthbox = Ext.getCmp("dateunit");
     	monthbox.initMonth();
+    	// monthbox.setMonth(2015,2);
     	// var first = Ext.getCmp("firstWeek");
     	// var firstDay = Ext.getCmp("firstDay");
     	// console.log(first.getItems());
