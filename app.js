@@ -20,7 +20,7 @@ Ext.application({
 		"chart.LineChartBabyMove", "chart.LineChartGesWeight", "chart.LineChartGrade",
 		"chart.LineChartHeight", "chart.LineChartTemp", "chart.PieChartBabyMove", "chart.PieChartGrade",
 		"chart.PieChartTemp","lock.DialLocker", "lock.DialLockerComponent","me.LoginView","me.RegisterView",
-		"DateUnit"],
+		"DateUnit","TipsPanel"],
 	models:["NoteModel","NoteGroupModel","SimpleNoteBookModel","NoteDetailModel", "RecordModel"],
 	
 	stores: ["NoteStore","NoteGroupStore","SimpleNoteBookStore","NoteDetailStore","NoteSearchDetailStore","NbMenuStore",

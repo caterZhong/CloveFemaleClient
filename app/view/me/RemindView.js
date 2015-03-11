@@ -26,12 +26,16 @@ Ext.define("cfa.view.me.RemindView",{
 					name:'backToSetingBtn',
 					ui:'plain',
 				}],
+			},{
+				xtype:'tipspanel',
+				id:'tipsBox_rm',
 			},{//生理记录提醒
 				xtype:'panel',
 				margin:'20 0 0 0',
 				cls:'togglePanel',
 				items:[{
 					xtype:'togglefield',
+					name:'toggle_phy',
 					label:'生理记录提醒',
 					labelWidth:'60%',
 					width:'100%',
@@ -47,6 +51,7 @@ Ext.define("cfa.view.me.RemindView",{
 				cls:'togglePanel',
 				items:[{
 					xtype:'togglefield',
+					name:'toggle_med',
 					label:'药品到期提醒',
 					labelWidth:'60%',
 					width:'100%',
@@ -61,6 +66,7 @@ Ext.define("cfa.view.me.RemindView",{
 				cls:'togglePanel',
 				items:[{
 					xtype:'togglefield',
+					name:'toggle_vac',
 					label:'疫苗接种提醒',
 					labelWidth:'60%',
 					width:'100%',
@@ -76,6 +82,7 @@ Ext.define("cfa.view.me.RemindView",{
 				cls:'togglePanel',
 				items:[{
 					xtype:'togglefield',
+					name:'toggle_voice',
 					label:'提醒声音',
 					labelWidth:'60%',
 					width:'100%',
