@@ -508,7 +508,6 @@ Ext.define("cfa.view.DateUnit",{
 	//初始化当前月份
 	initMonth:function(){
 		var today = new Date();
-		console.log(today.getDate());
 		this.setMonth(today.getFullYear(),today.getMonth()+1);
 		var todayBtn = Ext.getCmp("dayBtn_" + (today.getDate()-1));
 		todayBtn.setCls("activeDayBtn");
