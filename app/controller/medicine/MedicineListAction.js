@@ -4,7 +4,7 @@
  * @author boxizen
  * @since 2015/01/15
  */
-Ext.define('cfa.controller.MedicineListAction',{
+Ext.define('cfa.controller.medicine.MedicineListAction',{
 	extend:'Ext.app.Controller',
 	
 	requires:['Ext.data.Store'],

@@ -6,7 +6,7 @@
  */
 var medboxSelectIndex = null;
 var selectMode = 0;
-Ext.define('cfa.controller.MedicineAction',{
+Ext.define('cfa.controller.medicine.MedicineAction',{
 	extend:'Ext.app.Controller',
 	
 	requires:['Ext.data.Store'],

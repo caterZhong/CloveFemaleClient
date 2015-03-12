@@ -1,8 +1,8 @@
-Ext.define("cfa.view.MedicineView",{
+Ext.define("cfa.view.medicine.MedicineView",{
 
 	extend:"Ext.Container",
 
-	requires:["Ext.data.Store","cfa.view.MedicineListView"],
+	requires:["Ext.data.Store"],
 	
 	xtype:"medicineview",
 	

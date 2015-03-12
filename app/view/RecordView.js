@@ -1,14 +1,14 @@
 Ext.define("cfa.view.RecordView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store","cfa.view.MedicineView"],
+	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store"],
 	
 	xtype: "recordview",
 	config:{
 			/*记录控主页*/
 			xtype:"panel",
 			layout: "vbox",
-			width: "100%",
+			height: "100%",
 			id:"recordmainview",
 			items: [{
 				xtype: "toolbar",

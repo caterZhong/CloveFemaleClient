@@ -1,4 +1,4 @@
-Ext.define("cfa.view.MedicineListView",{
+Ext.define("cfa.view.medicine.MedicineListView",{
 
 	extend:"Ext.Container",
 

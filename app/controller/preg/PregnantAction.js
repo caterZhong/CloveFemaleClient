@@ -1,4 +1,4 @@
-Ext.define('cfa.controller.PregnantAction',{
+Ext.define('cfa.controller.preg.PregnantAction',{
 	extend:'Ext.app.Controller',
 	requires:['Ext.DataView'],
 	config: {

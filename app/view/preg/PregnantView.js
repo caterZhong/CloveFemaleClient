@@ -1,8 +1,8 @@
-Ext.define("cfa.view.PregnantView",{
+Ext.define("cfa.view.preg.PregnantView",{
 
 	extend:"Ext.Container",
 
-	requires:["Ext.DataView","Ext.Panel","Ext.data.Store","cfa.controller.PregnantAction","Ext.form.FormPanel","Ext.field.DatePicker","Ext.form.FieldSet","Ext.field.Select","Ext.data.JsonP","Ext.field.Radio"],
+	requires:["Ext.DataView","Ext.Panel","Ext.data.Store","cfa.controller.preg.PregnantAction","Ext.form.FormPanel","Ext.field.DatePicker","Ext.form.FieldSet","Ext.field.Select","Ext.data.JsonP","Ext.field.Radio"],
 	
 	xtype:"pregnantview",
 
@@ -11,27 +11,31 @@ Ext.define("cfa.view.PregnantView",{
 		width: "100%",
 		items: [{
 			xtype:'panel',
-			// xtype:"panel",
 			layout: "vbox",
-			width: "100%",
+			height: "100%",
 			items:[{//标题
-				xtype: "toolbar",
+				xtype: "titlebar",
 				title: "助孕记录",
-				// masked:true,
 				docked: "top",
 				zIndex:2, 
 				items:[{
 					id:'pregnantBackBtn',
-					text:'返回'
+					text:'返回',
+					ui:'plain'
+				},{
+					id:'pregAna',
+					text:'分析',
+					ui:'plain',
+					align:'right'
 				}]
-			},{//提示
+			},{
 				xtype:'panel',
-				cls:'panelTips',
-				html:'助孕的记录'			
+				html:'dasddddddddddd'
 			},{//菜单选项
-				xtype:"dataview",
+				xtype:"list",
 				id:"pregnantMenu",
-				cls:'recordMenu',
+				width:'100%',
+				height:'100%',
 				store:{
 					fields:['imgSrc','itemMsg'],
 					data:[
@@ -41,9 +45,11 @@ Ext.define("cfa.view.PregnantView",{
 						{imgSrc:'public/images/yimiao.png',itemMsg:'胎动'},
 					]
 				},
-				itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',
+				itemTpl:'<div class="pregMenuItem"><img src="{imgSrc}" /><span class="pregTitle">{itemMsg}</span><div class="more">></div></div>',
 			}]	
-		},{/*月经开始*/
+		},
+		
+		{/*月经开始*/
 			id:'mensesModal',
 			xtype:'panel',
 			layout: "vbox",

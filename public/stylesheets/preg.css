@@ -1,0 +1,19 @@
+.pregMenuItem{
+	padding-left:20px;
+	height:50px;
+}
+.pregMenuItem img{
+	float:left;
+}
+.pregMenuItem .pregTitle{
+	font-size: 15px;
+	color:#585656;
+	line-height: 50px;
+	padding-left:15px;
+}
+.pregMenuItem .more{
+	font-weight: normal;
+	line-height: 50px;
+	font-size:15px;
+	color:#585656;
+}
