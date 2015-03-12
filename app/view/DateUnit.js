@@ -508,8 +508,9 @@ Ext.define("cfa.view.DateUnit",{
 	//初始化当前月份
 	initMonth:function(){
 		var today = new Date();
+		console.log(today.getDate());
 		this.setMonth(today.getFullYear(),today.getMonth()+1);
-		var todayBtn = Ext.getCmp("dayBtn_" + today.getDay());
+		var todayBtn = Ext.getCmp("dayBtn_" + (today.getDate()-1));
 		todayBtn.setCls("activeDayBtn");
 	},
 
@@ -518,8 +519,8 @@ Ext.define("cfa.view.DateUnit",{
 		var firstDay = new Date(Year,Month-1,1)
 		var day = firstDay.getDay();
 		var dayCount = this.DayNumOfMonth(Year,Month);
-		if(day+dayCount >=35){
-			Ext.getCmp("monthBox").setHeight(240);
+		if(day+dayCount >35){
+			this.setHeight(240);
 		}
 		for(var i = 0; i < day; i++){
 			var dayBtn = Ext.getCmp("dayBtn_" + i);

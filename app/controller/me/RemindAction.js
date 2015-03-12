@@ -54,6 +54,11 @@ Ext.define('cfa.controller.me.RemindAction',{
     	// Ext.Viewport.animateActiveItem(this.getPsninfview(),{type:'slide',duration:300});
     },
 
+    /*查询数据库中的设置数据，并在页面上更新相应的数据*/
+    showSettingsData:function(){
+        
+    },
+
     /*显示静音设置页面-----静音时间段按钮tap事件*/
     showMuteTimeView:function(){
     	this.redirectTo('mute');
@@ -61,7 +66,6 @@ Ext.define('cfa.controller.me.RemindAction',{
 
     /*改变生理记录提醒状态-----toggle_phy的change事件*/
     changePhy:function(toggle, newValue, oldValue, eOpts){
-    	console.log(newValue);
     	var tipsPanel = Ext.getCmp("tipsBox_rm");
     	Ext.data.JsonP.request({
             url:domain+'SettingOp/modifyPhy',
@@ -74,7 +78,7 @@ Ext.define('cfa.controller.me.RemindAction',{
     				tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
                 }else{
                     //操作失败
-                    tipsPanel.showTipsModal(操作失败,2000,"tipsBox_rm");
+                    tipsPanel.showTipsModal("操作失败",2000,"tipsBox_rm");
                 }  
                 
             }
@@ -84,7 +88,6 @@ Ext.define('cfa.controller.me.RemindAction',{
 
     /*改变药品到期提醒状态-----toggle_med的change事件*/
     changeMed:function(toggle, newValue, oldValue, eOpts){
-    	console.log(newValue);
     	var tipsPanel = Ext.getCmp("tipsBox_rm");
     	Ext.data.JsonP.request({
             url:domain+'SettingOp/modifyMed',
@@ -97,7 +100,7 @@ Ext.define('cfa.controller.me.RemindAction',{
     				tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
                 }else{
                     //操作失败
-                    tipsPanel.showTipsModal(操作失败,2000,"tipsBox_rm");
+                    tipsPanel.showTipsModal("操作失败",2000,"tipsBox_rm");
                 }  
                 
             }
@@ -107,7 +110,6 @@ Ext.define('cfa.controller.me.RemindAction',{
 
     /*改变疫苗接种提醒状态-----toggle_vac的change事件*/
     changeVac:function(toggle, newValue, oldValue, eOpts){
-    	console.log(newValue);
     	var tipsPanel = Ext.getCmp("tipsBox_rm");
     	Ext.data.JsonP.request({
             url:domain+'SettingOp/modifyVac',
@@ -120,7 +122,7 @@ Ext.define('cfa.controller.me.RemindAction',{
     				tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
                 }else{
                     //操作失败
-                    tipsPanel.showTipsModal(操作失败,2000,"tipsBox_rm");
+                    tipsPanel.showTipsModal("操作失败",2000,"tipsBox_rm");
                 }  
                 
             }
@@ -130,7 +132,6 @@ Ext.define('cfa.controller.me.RemindAction',{
 
     /*改变提醒声音开启状态-----toggle_voice的change事件*/
     changeVoice:function(toggle, newValue, oldValue, eOpts){
-    	console.log(newValue);
     	var tipsPanel = Ext.getCmp("tipsBox_rm");
     	Ext.data.JsonP.request({
             url:domain+'SettingOp/modifyVoice',
@@ -143,7 +144,7 @@ Ext.define('cfa.controller.me.RemindAction',{
     				tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
                 }else{
                     //操作失败
-                    tipsPanel.showTipsModal(操作失败,2000,"tipsBox_rm");
+                    tipsPanel.showTipsModal("操作失败",2000,"tipsBox_rm");
                 }  
                 
             }

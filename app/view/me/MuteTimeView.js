@@ -40,6 +40,9 @@ Ext.define("cfa.view.me.MuteTimeView",{
 						name:'backbtn_mute',
 						ui:'plain',
 					}],
+				},{
+					xtype:'tipspanel',
+					id:'tipsBox_mutetime',
 				},{//开始时间段
 					xtype:'button',
 					name:'startTimeBtn',

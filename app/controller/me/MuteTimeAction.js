@@ -95,17 +95,37 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
     	value = timePicker.getValues();//获取到timepicker的vlaue，包括时(value.hour)和分(value.minute)两个字段
     	var timeselection = this.getMutetimeview().timeselection;
     	var time;
-    	if("start" == timeselection){
+        var newTime = new Date();
+        newTime.setHours(value.hour);
+        newTime.setMinutes(value.minute);
+        console.log(newTime);
+        var result = false;
+    	if("start" == timeselection){//设置开始时间
     		time = Ext.get("startTime");
+            result = this.modifyStartTime(newTime);//修改数据库提醒开始时间
     		
-    	}else{
+    	}else{//设置结束时间
     		time = Ext.get("endTime");
+            var tipsPanel = Ext.getCmp("tipsBox_mutetime");
+            var startTimeString = Ext.get("startTime").dom.innerHTML.split(':');
+            var startHours = startTimeString[0];
+            var startMinute = startTimeString[1];
+            var startTime = new Date();
+            startTime.setHours(startHours);
+            startTime.setMinutes(startMinute);
+            if(newTime>startTime){
+                result = this.modifyEndTime(newTime);//修改数据库提醒结束时间
+            }else{
+                tipsPanel.showTipsModal("结束时间必须大于开始时间",2000,"tipsBox_mutetime");
+                result = false;
+            }
     	}
     	//在这里修改数据库数据
-    	if(time!=null){
+    	if(result != false && time!=null){
     		time.dom.innerHTML = value.hour + ":" + value.minute;
+            Ext.getCmp("pickerBox").hide();
     	}
-    	Ext.getCmp("pickerBox").hide();
+    	
     },
 
     /*设置picker的时间为当前时间*/
@@ -115,6 +135,64 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
     	var hour = time.getHours(); 
     	var minute = time.getMinutes();
     	timePicker.setValue({'hour':hour,'minute':minute});
-    }
+    },
+
+    /*修改数据库开始时间*/
+    modifyStartTime:function(remindStart){
+        Ext.data.JsonP.request({
+            url:domain+'SettingOp/modifyRemindS',
+            callbackKey:'callback',
+            callback:'callback',
+            params:{
+                'userId':localStorage.userId,
+                'remindStart':remindStart, 
+            },
+            callback:function(success,result){  
+                if(success&&result.result==0){
+                    tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
+                    if("修改成功" == result.data){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    //操作失败
+                    tipsPanel.showTipsModal("操作失败",2000,"tipsBox_rm");
+                    return false;
+                }  
+                
+            }
+
+        });
+    },
+
+    /*修改数据库结束时间*/
+    modifyEndTime:function(remindEnd){
+        Ext.data.JsonP.request({
+            url:domain+'SettingOp/modifyRemindE',
+            callbackKey:'callback',
+            callback:'callback',
+            params:{
+                'userId':localStorage.userId,
+                'remindEnd':remindEnd, 
+            },
+            callback:function(success,result){  
+                if(success&&result.result==0){
+                    tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
+                    if("修改成功" == result.data){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    //操作失败
+                    tipsPanel.showTipsModal("操作失败",2000,"tipsBox_rm");
+                    return false;
+                }  
+                
+            }
+
+        });
+    },
 
 });
