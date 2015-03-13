@@ -11,13 +11,13 @@ Ext.application({
 	requires: ['Ext.MessageBox', 'cfa.view.ColorPatterns', 'Ext.util.HashMap'],
 
 
-	controllers: ["MainAction", "RecordAction", "KidAction", "preg.PregnantAction", "NotebookAction", "NewNoteAction", "NoteSearchAction", "NoteSearchDetailAction",
+	controllers: ["MainAction", "RecordAction", "kid.KidAction", "preg.PregnantAction", "NotebookAction", "NewNoteAction", "NoteSearchAction", "NoteSearchDetailAction",
 		"NoteDetailAction", "cfa.controller.medicine.MedicineAction", "cfa.controller.medicine.MedicineListAction", "chart.ChartAction", "chart.CustomizeDateAction", "PersonalAction",
 		"me.PsnInfAction", "me.SettingAction", "me.AboutAction", "me.RemindAction", "me.MuteTimeAction", "me.PrivacyAction", "me.AccountAction", "me.LoginAction",
 		"me.RegisterAction"
 	],
 
-	views: ["MainView", "RecordView", "KidView", "preg.PregnantView", "NotebookView", "SlideNav",
+	views: ["MainView", "RecordView", "kid.KidView", "preg.PregnantView", "NotebookView", "SlideNav",
 		"NotebookFirstView", "NewNoteView", "NoteSearchView", "NoteDetailView", "NoteSearchDetailView", "chart.ChartView",
 		"chart.CustomizeDateView", "chart.BarChartBabyMove", "chart.BarChartGrade", "chart.BarChartTemp",
 		"chart.LineChartBabyMove", "chart.LineChartGesWeight", "chart.LineChartGrade",
@@ -30,7 +30,7 @@ Ext.application({
 	stores: ["NoteStore", "NoteGroupStore", "SimpleNoteBookStore", "NoteDetailStore", "NoteSearchDetailStore", "NbMenuStore",
 		"chart.ChartStore", "chart.LineBabyMoveStore", "chart.LineGesWeightStore",
 		"chart.LineGradeStore", "chart.LineHeightStore", "chart.LineTempStore", "chart.PieBabyMoveStore",
-		"chart.PieGradeStore", "chart.PieTempStore", "chart.ChartSubjectsStore", "medicine.medBoxStore", "medicine.medDetailStore", "medicine.medSingleStore"
+		"chart.PieGradeStore", "chart.PieTempStore", "chart.ChartSubjectsStore", "medicine.medBoxStore", "medicine.medDetailStore", "medicine.medSingleStore","preg.pregDetailStore"
 	],
 
 

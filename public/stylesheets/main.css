@@ -453,3 +453,8 @@ to { -webkit-transform: translateX(0px); }
 	font-size: 1.1em;
 	padding-bottom:5px;
 }
+
+/* 日期控件 */
+#weekBox.hide{
+	height:10px;
+}

@@ -1,4 +1,4 @@
-Ext.define('cfa.controller.KidAction',{
+Ext.define('cfa.controller.kid.KidAction',{
 	extend:'Ext.app.Controller',
 	config: {
 		refs: {
@@ -54,6 +54,9 @@ Ext.define('cfa.controller.KidAction',{
 	//显示小宝成长页面
 	showKidview:function(){
     	Ext.Viewport.setActiveItem(this.getKidview());
+    	/* 初始化日期控件 */
+		var monthbox = Ext.getCmp("dateunit");
+		monthbox.initMonth();
     },
     //根据小宝成长菜单点击显示不同输入模板
     showModel:function(dataview,index,item,record,e){

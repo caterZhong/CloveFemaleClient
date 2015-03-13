@@ -1,3 +1,4 @@
+var activeDateBtn = null;
 Ext.define("cfa.view.preg.PregnantView",{
 
 	extend:"Ext.Container",
@@ -28,24 +29,29 @@ Ext.define("cfa.view.preg.PregnantView",{
 					ui:'plain',
 					align:'right'
 				}]
-			},{
-				xtype:'panel',
-				html:'dasddddddddddd'
+			},
+			//日期控件
+			{
+				xtype:'dateunit',
+				name:'dateunit',
+				id:'dateunit',
+				width:'100%'
 			},{//菜单选项
 				xtype:"list",
 				id:"pregnantMenu",
+				name:'pregnantMenu',
 				width:'100%',
 				height:'100%',
 				store:{
-					fields:['imgSrc','itemMsg'],
+					fields:['imgSrc','itemMsg','itemNum'],
 					data:[
-						{imgSrc:'public/images/kid.png',itemMsg:'月经'},
-						{imgSrc:'public/images/health.png',itemMsg:'基础体温'},
-						{imgSrc:'public/images/score.png',itemMsg:'孕重'},
-						{imgSrc:'public/images/yimiao.png',itemMsg:'胎动'},
+						{imgSrc:'public/images/kid.png',itemMsg:'月经',itemNum:'pregItem-0'},
+						{imgSrc:'public/images/health.png',itemMsg:'基础体温',itemNum:'pregItem-1'},
+						{imgSrc:'public/images/score.png',itemMsg:'孕重',itemNum:'pregItem-2'},
+						{imgSrc:'public/images/yimiao.png',itemMsg:'胎动',itemNum:'pregItem-3'},
 					]
 				},
-				itemTpl:'<div class="pregMenuItem"><img src="{imgSrc}" /><span class="pregTitle">{itemMsg}</span><div class="more">></div></div>',
+				itemTpl:'<div class="pregMenuItem"><img src="{imgSrc}" /><span class="pregTitle">{itemMsg}</span><div class="more" id="{itemNum}">...</div></div>',
 			}]	
 		},
 		
@@ -87,13 +93,13 @@ Ext.define("cfa.view.preg.PregnantView",{
 							label:'颜色',
 							options:[{
 								text:'暗红',
-								value:'1'
+								value:'暗红'
 							},{
 								text:'鲜红',
-								value:'2'
+								value:'鲜红'
 							},{
 								text:'浅红',
-								value:'3'
+								value:'浅红'
 							}]
 						},{
 							xtype:'selectfield',
@@ -102,13 +108,13 @@ Ext.define("cfa.view.preg.PregnantView",{
 							label:'经量',
 							options:[{
 								text:'小',
-								value:'1'
+								value:'小量'
 							},{
 								text:'中',
-								value:'2'
+								value:'中量'
 							},{
 								text:'大',
-								value:'3'
+								value:'大量'
 							}]
 
 						},{
@@ -118,10 +124,10 @@ Ext.define("cfa.view.preg.PregnantView",{
 							label:'色块',
 							options:[{
 								text:'有',
-								value:'1'
+								value:'有色块'
 							},{
 								text:'无',
-								value:'2'
+								value:'无色块'
 							}]
 						},{
 							xtype:'selectfield',
@@ -130,10 +136,10 @@ Ext.define("cfa.view.preg.PregnantView",{
 							label:'痛经',
 							options:[{
 								text:'是',
-								value:'1'
+								value:'有痛经'
 							},{
 								text:'否',
-								value:'2'
+								value:'无痛经'
 							}]
 						},{
 							xtype:'selectfield',
@@ -142,10 +148,10 @@ Ext.define("cfa.view.preg.PregnantView",{
 							label:'稠度',
 							options:[{
 								text:'稠',
-								value:'1'
+								value:'稠'
 							},{
 								text:'稀',
-								value:'2'
+								value:'稀'
 							}]
 						}
 					]
@@ -211,6 +217,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 					height:228,
 					cls:'picker',
 					slots:[{
+						id:'tempInpart',
 						name:'intpart',
 						value:36,
 						title:'时',
@@ -336,7 +343,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 				getUrl: function(){
 					return domain+"FgTemperatureAction/addTemperature" ;
 				},
-				reset: function(){//tvalue为体温,提交按钮id:submitTemperatureFormBtn,重置按钮handler:Ext.getCmp('temperatureForm').reset() ;
+				reset: function(){//tvalue为体温,提交按mcolor钮id:submitTemperatureFormBtn,重置按钮handler:Ext.getCmp('temperatureForm').reset() ;
 					Ext.getCmp("tmpPicker").setValue({'intpart':36,'floatpart':80});
 				}
 			},{//装载确定取消按钮的panel

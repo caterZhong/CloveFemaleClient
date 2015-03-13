@@ -1,8 +1,8 @@
-Ext.define("cfa.view.KidView",{
+Ext.define("cfa.view.kid.KidView",{
 
 	extend:"Ext.Container",
 
-	requires:["Ext.DataView","Ext.Panel","Ext.data.Store","cfa.controller.KidAction","Ext.form.FormPanel","Ext.field.DatePicker","Ext.form.FieldSet","Ext.field.Select","Ext.data.JsonP","Ext.field.Radio"],
+	requires:["Ext.DataView","Ext.Panel","Ext.data.Store","cfa.controller.kid.KidAction","Ext.form.FormPanel","Ext.field.DatePicker","Ext.form.FieldSet","Ext.field.Select","Ext.data.JsonP","Ext.field.Radio"],
 	
 	xtype:"kidview",
 
@@ -14,18 +14,28 @@ Ext.define("cfa.view.KidView",{
 			layout: "vbox",
 			width: "100%",
 			items:[{//标题
-				xtype: "toolbar",
+				xtype: "titlebar",
 				title: "小宝成长", 
 				docked: "top",
 				zIndex:2,
 				items:[{
 					id:'kidBackBtn',
 					text:'返回'
+				},{
+					id:'pregAna',
+					text:'分析',
+					align:'right'
 				}]
 			},{//tips
 				xtype:'panel',
 				cls:'panelTips',
 				html:'孩子的成长记录'			
+			},//日期控件
+			{
+				xtype:'dateunit',
+				name:'dateunit',
+				id:'dateunit',
+				width:'100%'
 			},{//dataview菜单
 				xtype:"dataview",
 				id:"kidMenu",
