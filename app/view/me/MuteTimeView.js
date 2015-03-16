@@ -75,6 +75,7 @@ Ext.define("cfa.view.me.MuteTimeView",{
 					xtype:'picker',
 					useTitles:true,
 					id:'timePicker',
+					name:'timePicker',
 					modal:false,
 					cancelButton:false,
 					doneButton:false,

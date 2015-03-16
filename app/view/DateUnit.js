@@ -8,10 +8,13 @@ Ext.define("cfa.view.DateUnit", {
 	requires: ["Ext.TabPanel", "Ext.Panel", ],
 
 	xtype: "dateunit",
+	// id:'monthBox',
 	config: {
-		xtype: 'panel',
+		// xtype: 'panel',
 		name: 'monthBox',
-		id: 'monthBox',
+		id: 'dateunit',
+		// id:'testestr',
+		testes:'asdf',
 		width: '100%',
 		height: 295,
 		normalHeight:295,
@@ -27,18 +30,39 @@ Ext.define("cfa.view.DateUnit", {
 				iconCls: 'arrow_left',
 				docked: 'left',
 				name: 'datePrev',
-				ui: 'plain'
+				ui: 'plain',
+
 			}, {
 				xtype: 'button',
 				iconCls: 'arrow_right',
 				docked: 'right',
 				name: 'dateAfter',
-				ui: 'plain'
+				ui: 'plain',
+				// listeners:{
+					// tap:function(){
+					// 	console.log("next");
+					// 	var dateunit = Ext.getCmp('monthBox');
+					// 	// console.log(dateunit.testStr);
+					// 	var dayBtn = Ext.getCmp('crtDateBtn');
+					// 	var dateStr = dayBtn.getText();
+					// 	console.log(dateStr);
+					// 	cyear = dateStr.substring(0, 4);
+					// 	cmonth = dateStr.substring(5, 7);
+					// 	if (cmonth == 12) {
+					// 		cyear = parseInt(cyear) + parseInt(1);
+					// 		cmonth = 1;
+					// 	} else {
+					// 		cmonth = parseInt(cmonth) + parseInt(1);
+					// 	}
+					// 	dateunit.setMonth(cyear, cmonth);
+					// }
+
+				// },
 			},{
 				xtype:'button',
 				ui:'plain',
 				centered : 'Boolean',
-				id:'crtDateBtn',
+				// id:'crtDateBtn',
 				text: '2015年3月',
 				align:'center',
 				name: 'crtDate',
@@ -48,6 +72,38 @@ Ext.define("cfa.view.DateUnit", {
 			width: '100%',
 			minWidth: 260,
 			layout: 'hbox',
+			// id:'testPanel',
+			testStr:'asdf23',
+		// 	setMonth: function(Year, Month) {
+		// var firstDay = new Date(Year, Month - 1, 1)
+		// var day = firstDay.getDay();
+		// var dayCount = 31;
+		// if (day + dayCount > 35) {
+		// 	this.setHeight(330);
+		// 	this.normalHeight = 330;
+		// }else{
+		// 	this.setHeight(295);
+		// 	this.normalHeight = 295;
+		// }
+	// 	for (var i = 0; i < day; i++) {
+	// 		var dayBtn = Ext.getCmp("dayBtn_" + i);
+	// 		dayBtn.setText("");
+	// 	};
+	// 	for (var i = 0; i < dayCount; i++) {
+	// 		var dayBtn = Ext.getCmp("dayBtn_" + (day + i));
+	// 		dayBtn.setText(i + 1);
+	// 	};
+	// 	for (var i = dayCount + day; i < 35; i++) {
+	// 		var dayBtn = Ext.getCmp("dayBtn_" + i);
+	// 		dayBtn.setText("");
+	// 	};
+	// 	/* 添加顶部年月显示 */
+	// 	var dtBtn = Ext.getCmp('crtDateBtn');
+	// 	if(Month>=10)
+	// 		dtBtn.setText(Year+"年"+Month+"月");
+	// 	else
+	// 		dtBtn.setText(Year+"年 "+Month+"月");
+	// },
 			defaults: {
 				xtype: 'panel',
 				width: '14%',
@@ -88,7 +144,7 @@ Ext.define("cfa.view.DateUnit", {
 			minWidth: 260,
 			layout: "hbox",
 			cls: 'weekBox',
-			id: 'firstWeek',
+			// id: 'firstWeek',
 			defaults: {
 				xtype: 'panel',
 				width: '14%',
@@ -96,7 +152,7 @@ Ext.define("cfa.view.DateUnit", {
 				cls: 'datebox',
 			},
 			items: [{
-				id: "firstDay",
+				// id: "firstDay",
 				items: [{
 					xtype: 'button',
 					text: '1',
@@ -104,7 +160,8 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_0",
+					btnId: "dayBtn_0",
+					// name:''
 					name:'dateBtn'
 				}]
 			}, {
@@ -115,7 +172,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_1",
+					btnId: "dayBtn_1",
 					name:'dateBtn'
 				}]
 			}, {
@@ -126,7 +183,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_2",
+					btnId: "dayBtn_2",
 					name:'dateBtn'
 				}]
 			}, {
@@ -137,7 +194,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_3",
+					btnId: "dayBtn_3",
 					name:'dateBtn'
 				}]
 			}, {
@@ -148,7 +205,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_4",
+					btnId: "dayBtn_4",
 					name:'dateBtn'
 				}]
 			}, {
@@ -159,7 +216,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_5",
+					btnId: "dayBtn_5",
 					name:'dateBtn'
 				}]
 			}, {
@@ -170,7 +227,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_6",
+					btnId: "dayBtn_6",
 					name:'dateBtn'
 				}]
 			}],
@@ -194,7 +251,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_7",
+					btnId: "dayBtn_7",
 					name:'dateBtn'
 				}]
 			}, {
@@ -205,7 +262,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_8",
+					btnId: "dayBtn_8",
 					name:'dateBtn'
 				}]
 			}, {
@@ -216,7 +273,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_9",
+					btnId: "dayBtn_9",
 					name:'dateBtn'
 				}]
 			}, {
@@ -227,7 +284,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_10",
+					btnId: "dayBtn_10",
 					name:'dateBtn'
 				}]
 			}, {
@@ -238,7 +295,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_11",
+					btnId: "dayBtn_11",
 					name:'dateBtn'
 				}]
 			}, {
@@ -249,7 +306,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_12",
+					btnId: "dayBtn_12",
 					name:'dateBtn'
 				}]
 			}, {
@@ -260,7 +317,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_13",
+					btnId: "dayBtn_13",
 					name:'dateBtn'
 				}]
 			}],
@@ -284,7 +341,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_14",
+					btnId: "dayBtn_14",
 					name:'dateBtn'
 				}]
 			}, {
@@ -295,7 +352,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_15",
+					btnId: "dayBtn_15",
 					name:'dateBtn'
 				}]
 			}, {
@@ -306,7 +363,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_16",
+					btnId: "dayBtn_16",
 					name:'dateBtn'
 				}]
 			}, {
@@ -317,7 +374,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_17",
+					btnId: "dayBtn_17",
 					name:'dateBtn'
 				}]
 			}, {
@@ -328,7 +385,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_18",
+					btnId: "dayBtn_18",
 					name:'dateBtn'
 				}]
 			}, {
@@ -339,7 +396,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_19",
+					btnId: "dayBtn_19",
 					name:'dateBtn'
 				}]
 			}, {
@@ -350,7 +407,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_20",
+					btnId: "dayBtn_20",
 					name:'dateBtn'
 				}]
 			}],
@@ -374,7 +431,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_21",
+					btnId: "dayBtn_21",
 					name:'dateBtn'
 				}]
 			}, {
@@ -385,7 +442,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_22",
+					btnId: "dayBtn_22",
 					name:'dateBtn'
 				}]
 			}, {
@@ -396,7 +453,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_23",
+					btnId: "dayBtn_23",
 					name:'dateBtn'
 				}]
 			}, {
@@ -407,7 +464,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_24",
+					btnId: "dayBtn_24",
 					name:'dateBtn'
 				}]
 			}, {
@@ -418,7 +475,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_25",
+					btnId: "dayBtn_25",
 					name:'dateBtn'
 				}]
 			}, {
@@ -429,7 +486,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_26",
+					btnId: "dayBtn_26",
 					name:'dateBtn'
 				}]
 			}, {
@@ -440,7 +497,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_27",
+					btnId: "dayBtn_27",
 					name:'dateBtn'
 				}]
 			}],
@@ -464,7 +521,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_28",
+					btnId: "dayBtn_28",
 					name:'dateBtn'
 				}]
 			}, {
@@ -474,7 +531,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_29",
+					btnId: "dayBtn_29",
 					name:'dateBtn'
 				}]
 			}, {
@@ -484,7 +541,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_30",
+					btnId: "dayBtn_30",
 					name:'dateBtn'
 				}]
 			}, {
@@ -494,7 +551,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_31",
+					btnId: "dayBtn_31",
 					name:'dateBtn'
 				}]
 			}, {
@@ -504,7 +561,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_32",
+					btnId: "dayBtn_32",
 				}]
 			}, {
 				items: [{
@@ -513,7 +570,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_33",
+					btnId: "dayBtn_33",
 				}]
 			}, {
 				items: [{
@@ -522,7 +579,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_34",
+					btnId: "dayBtn_34",
 				}]
 			}],
 		}, {
@@ -545,7 +602,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_35",
+					btnId: "dayBtn_35",
 				}]
 			}, {
 				items: [{
@@ -554,7 +611,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_36",
+					btnId: "dayBtn_36",
 				}]
 			}, {
 				items: [{
@@ -563,7 +620,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_37",
+					btnId: "dayBtn_37",
 				}]
 			}, {
 				items: [{
@@ -572,7 +629,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_38",
+					btnId: "dayBtn_38",
 				}]
 			}, {
 				items: [{
@@ -581,7 +638,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_39",
+					btnId: "dayBtn_39",
 				}]
 			}, {
 				items: [{
@@ -590,7 +647,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_40",
+					btnId: "dayBtn_40",
 				}]
 			}, {
 				items: [{
@@ -599,7 +656,7 @@ Ext.define("cfa.view.DateUnit", {
 					width: 40,
 					height: 40,
 					cls: 'dateBtn',
-					id: "dayBtn_41",
+					btnId: "dayBtn_41",
 				}]
 			}],
 		},{
@@ -613,7 +670,7 @@ Ext.define("cfa.view.DateUnit", {
 				name: 'dateFlex',
 				ui: 'plain',
 				text:'ˆ',
-				id:'dateFlex'
+				// id:'dateFlex'
 			}]
 		}],
 		
@@ -625,7 +682,9 @@ Ext.define("cfa.view.DateUnit", {
 			activeDateBtn.removeCls("activeDayBtn");
 		var today = new Date();
 		this.setMonth(today.getFullYear(), today.getMonth() + 1);
-		var todayBtn = Ext.getCmp("dayBtn_" + (today.getDate() - 1));
+		// var todayBtn = Ext.getCmp("dayBtn_" + (today.getDate() - 1));
+		var btnNum = "dayBtn_" + (today.getDate() - 1);
+		var todayBtn =this.query("button[btnId="+ btnNum +"]")[0]
 		todayBtn.addCls("activeDayBtn");
 		activeDateBtn = todayBtn;
 		/* 获取当前日期 */
@@ -654,20 +713,29 @@ Ext.define("cfa.view.DateUnit", {
 			this.setHeight(295);
 			this.normalHeight = 295;
 		}
+		// console.log(this.query("button[btnId='dayBtn_0']")[0]);
 		for (var i = 0; i < day; i++) {
-			var dayBtn = Ext.getCmp("dayBtn_" + i);
+			// var dayBtn = Ext.getCmp("dayBtn_" + i);
+			var btnNum = 'dayBtn_'+i;
+			var dayBtn = this.query("button[btnId="+ btnNum +"]")[0];
 			dayBtn.setText("");
 		};
 		for (var i = 0; i < dayCount; i++) {
-			var dayBtn = Ext.getCmp("dayBtn_" + (day + i));
+			// var dayBtn = Ext.getCmp("dayBtn_" + (day + i));
+
+			var btnNum = "dayBtn_" + (day + i);
+			var dayBtn = this.query("button[btnId="+ btnNum +"]")[0];
 			dayBtn.setText(i + 1);
 		};
 		for (var i = dayCount + day; i < 35; i++) {
-			var dayBtn = Ext.getCmp("dayBtn_" + i);
+			// var dayBtn = Ext.getCmp("dayBtn_" + i);
+			var btnNum = 'dayBtn_' + i;
+			var dayBtn = this.query("button[btnId="+ btnNum +"]")[0];
 			dayBtn.setText("");
 		};
 		/* 添加顶部年月显示 */
-		var dtBtn = Ext.getCmp('crtDateBtn');
+		// var dtBtn = Ext.getCmp('crtDateBtn');
+		var dtBtn = this.query("button[name='crtDate']")[0];
 		if(Month>=10)
 			dtBtn.setText(Year+"年"+Month+"月");
 		else
@@ -681,4 +749,6 @@ Ext.define("cfa.view.DateUnit", {
 		d.setDate(d.getDate() + 32 - d.getDate());
 		return (32 - d.getDate());
 	},
+
+	
 });

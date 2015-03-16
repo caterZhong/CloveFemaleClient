@@ -14,6 +14,8 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
 			cancelBtn:'button[name="cancelBtn"]',
 			/*pickerBox*/
 			pickerBox:'panel[name="pickerBox"]',
+            /*时间picker*/
+            timePicker:'picker[name="timePicker"]',
 			/*引用静音设置页面*/
 			mutetimeview:{
                 selector: 'mutetimeview',
@@ -48,6 +50,14 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
 				// initialize:'setTimeNow',
 				show:'setTimeNow',
 			},
+            /*时间picker*/
+            timePicker:{
+                pick:'testest',
+            },
+            /*引用静音设置页面*/
+            mutetimeview:{
+                initialize:'showMuteTimeData',
+            }
 		},
 		routes:{
 			'mute':'showMuteTimeview',
@@ -59,6 +69,10 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
 	showMuteTimeview:function(){
     	Ext.Viewport.setActiveItem(this.getMutetimeview());
     	// Ext.Viewport.animateActiveItem(this.getPsninfview(),{type:'slide',duration:300});
+    },
+
+    testest:function( picker, The, slot, eOpts ){
+        console.log(slot.getValue() +" --"+The.hour);
     },
 
 	/*返回提醒页面----返回按钮tap事件*/
@@ -194,5 +208,17 @@ Ext.define('cfa.controller.me.MuteTimeAction',{
 
         });
     },
+
+    /*显示静音时间数据*/
+    showMuteTimeData:function(){
+        var startTime = localStorage.muteTimeS;//静音开始时间
+        var endTime = localStorage.muteTimeE;//静音开始时间
+        if(typeof(startTime) != "undefined"){
+            Ext.getCmp("startTime").dom.innerHTML = endTime;
+        }
+        if(typeof(endTime) != "undefined"){
+           Ext.getCmp("endTime").dom.innerHTML = endTime;
+        }
+    }
 
 });

@@ -13,7 +13,7 @@ Ext.define('cfa.controller.me.RegisterAction',{
 		},
 		control: {
 			monthBox:{
-				initialize:'changeDay',
+				// initialize:'changeDay',
 			},
 		},
 		routes:{

@@ -94,7 +94,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
                 callbackKey:'callback',
                 callback:'callback',
                 params:{
-                    'userId':'199762408FBC4D6C9455BB332D5FC877',
+                    'userId':localStorage.userId,//'199762408FBC4D6C9455BB332D5FC877',
                     'noteId':noteId,
                 },
                 callback:function(success,result){                   

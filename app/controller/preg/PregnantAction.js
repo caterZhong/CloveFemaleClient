@@ -52,11 +52,20 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 			/* 日期按钮 */
 			dateBtn: "button[name='dateBtn']",
 			
-			/* 日期伸缩按钮 */
-			dateFlex: "#dateFlex",
-			
 			/* 月经分析按钮 */
-			pregMenseAnaBtn: "#pregMenseAnaBtn"
+			pregMenseAnaBtn: "#pregMenseAnaBtn",
+
+			/* 日期伸缩按钮 */
+			dateFlex: "button[name='dateFlex']",//#dateFlex"
+
+			/*基础温度picker所在的容器*/
+			tmpPickerBox:"panel[name='temperatureModal']",
+
+			/*孕重picker所在的容器*/
+			weiPickerBox:"panel[name='weightModal']",
+
+			/*胎动picker所在的容器*/
+			movePickerBox:"panel[name='movementModal']",
 		},
 		control: {
 			backBtn: {
@@ -81,8 +90,22 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 				tap: "submitMovementForm"
 			},
 			/*温度picker*/
-			tmpPicker: {
-				change: 'tmpPickerChange',
+			tmpPickerBox: {
+				show: function(){
+					Ext.getCmp("tmpPicker").setValue({'tempInpart':36,'tempFloat':80});
+				},
+			},
+			/*孕重picker所在的容器*/
+			weiPickerBox:{
+				show: function(){
+					Ext.getCmp("weiPicker").setValue({'weightIntpart':50,'weightFloat':5})
+				},
+			},
+			/*胎动picker所在的容器*/
+			movePickerBox:{
+				show: function(){
+					Ext.getCmp("mPicker").setValue({'mTimes':5});
+				},
 			},
 			/*温度pickerbox的cancel按钮*/
 			cancelBtn_tmp: {
@@ -103,9 +126,17 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 			},
 			/* 日期向前按钮 */
 			dateBefore: {
-				tap: function() {
-					var dateunit = Ext.getCmp('dateunit');
-					var dayBtn = Ext.getCmp('crtDateBtn');
+				tap: function(button) {
+					// var dateunit = button.up();
+					// console.log(dateunit.testes);
+					// var dayBtn = Ext.ComponentQuery.query("button[name='crtDate']", dateunit);;
+
+					// var dateunit = Ext.getCmp('dateunit');
+					// var dayBtn = Ext.getCmp('crtDateBtn');
+					
+					var dateunit = button.up("#dateunit");
+					var dayBtn =  dateunit.query("button[name='crtDate']")[0];
+					// up("panel[name='monthBox']");
 					var dateStr = dayBtn.getText();
 					cyear = dateStr.substring(0, 4);
 					cmonth = dateStr.substring(5, 7);
@@ -120,9 +151,12 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 			},
 			/* 日期向后按钮 */
 			dateAfter: {
-				tap: function() {
-					var dateunit = Ext.getCmp('dateunit');
-					var dayBtn = Ext.getCmp('crtDateBtn');
+				tap: function(button) {
+					// console.log("after");
+					// var dateunit = Ext.getCmp('dateunit');
+					// var dayBtn = Ext.getCmp('crtDateBtn');
+					var dateunit = button.up("#dateunit");
+					var dayBtn =  dateunit.query("button[name='crtDate']")[0];
 					var dateStr = dayBtn.getText();
 					cyear = dateStr.substring(0, 4);
 					cmonth = dateStr.substring(5, 7);
@@ -138,11 +172,15 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 			/* 日期伸缩按钮 */
 			dateFlex: {
 				tap: function(button, e, eOpts) {
+					var dateunit = button.up("#dateunit");
 					if (button.getText() == "ˆ") {
-						Ext.getCmp('dateunit').hideBox();
+						// Ext.getCmp('dateunit').hideBox();
+						
+						dateunit.hideBox();
 						button.setText('ˇ');
 					} else {
-						Ext.getCmp('dateunit').showBox();
+						// Ext.getCmp('dateunit').showBox();
+						dateunit.showBox();
 						button.setText('ˆ');
 					}
 				},
@@ -223,6 +261,7 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 	submitTemperatureForm: function() {
 		var tempPicker = Ext.getCmp("tmpPicker");
     	var value = tempPicker.getValues();//获取到timepicker的vlaue，包括时(value.hour)和分(value.minute)两个字段
+		console.log(value.tempInpart+"."+value.tempFloat);
 		var form = this.getTemperatureForm() ;
      	var params = {
      		'model.tValue'	: value.tempInpart+"."+value.tempFloat,
@@ -244,8 +283,10 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 			return;
 		}*/
 		var wPicker = Ext.getCmp('weiPicker');
-		var value1 = wPicker.innerItems[0].selectedNode.textContent;
-		var value2 = wPicker.innerItems[1].selectedNode.textContent;
+		var values = wPicker.getValues();
+		var value1 = values.weightIntpart;//wPicker.innerItems[0].selectedNode.textContent;
+		var value2 = values.weightFloat;//wPicker.innerItems[1].selectedNode.textContent;
+		console.log(value1+"."+value2);
 		var params = {
 			'model.wValue': value1+"."+value2,
 			'model.userId': localStorage.userId,
@@ -260,7 +301,9 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 
 	submitMovementForm: function() {
 		var mPicker = Ext.getCmp('mPicker');
-		var num = mPicker.innerItems[0].selectedNode.textContent;
+		var values = mPicker.getValues();
+		var num = values.mTimes;//mPicker.innerItems[0].selectedNode.textContent;
+		console.log(num);
 		var form = this.getMovementForm();
 		var params = {
 			'model.num': num,

@@ -34,7 +34,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 			{
 				xtype:'dateunit',
 				name:'dateunit',
-				id:'dateunit',
+				// id:'dateunit',
 				width:'100%'
 			},{//菜单选项
 				xtype:"list",
@@ -198,6 +198,7 @@ Ext.define("cfa.view.preg.PregnantView",{
         /*基础体温开始*/
 		{
 			id:'temperatureModal',
+			name:'temperatureModal',
 			xtype:'panel',
 			layout: "vbox",
 			modal:true,
@@ -248,11 +249,13 @@ Ext.define("cfa.view.preg.PregnantView",{
 					width:'100%',
 					height:228,
 					cls:'picker',
+					value:{'tempInpart':36,'tempFloat':80},
 					slots:[{
-						id:'tempInpart',
+						// id:'tempInpart',
 						name:'tempInpart',
 						value:36,
-						title:'时',
+						// text:'36',
+						// title:'时',
 						data:[
 							{text:'35',value:35},
 							{text:'36',value:36},
@@ -266,7 +269,8 @@ Ext.define("cfa.view.preg.PregnantView",{
 					},{
 						name:'tempFloat',
 						value:80,
-						title:'分',
+						// text:'80',
+						// title:'分',
 						data:[
 							{text:'00',value:0},
 							{text:'01',value:1},
@@ -376,7 +380,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 					return domain+"FgTemperatureAction/addTemperature" ;
 				},
 				reset: function(){//tvalue为体温,提交按mcolor钮id:submitTemperatureFormBtn,重置按钮handler:Ext.getCmp('temperatureForm').reset() ;
-					Ext.getCmp("tmpPicker").setValue({'intpart':36,'floatpart':80});
+					Ext.getCmp("tmpPicker").setValue({'tempInpart':36,'tempFloat':80});
 				}
 			},{//装载确定取消按钮的panel
 				xtype:'panel',
@@ -405,6 +409,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 		/*孕重开始*//*wvalue*/
 		{
 			id 				: 'weightModal',
+			name            : 'weightModal',
 			xtype 			: 'panel',
 			layout 			: "vbox",
 			modal 			: true,
@@ -592,6 +597,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 		/*胎动开始*/
 		{
 			id:'movementModal',
+			name:'movementModal',
 			cls:'modal',
 			xtype:'panel',
 			layout: "vbox",

@@ -1,3 +1,5 @@
+var muteStartTime = "null";
+var muteEndTime = "null";
 Ext.define('cfa.controller.me.RemindAction',{
 	extend:'Ext.app.Controller',
 	config: {
@@ -40,7 +42,10 @@ Ext.define('cfa.controller.me.RemindAction',{
 			/*静音时间段按钮*/
 			muteBtn:{
 				tap:'showMuteTimeView',//显示静音设置页面
-			}
+			},
+            remindview:{
+                initialize:'showSettingsData',
+            }
 		},
 		routes:{
 			'remind':'showRemindview',
@@ -54,18 +59,73 @@ Ext.define('cfa.controller.me.RemindAction',{
     	// Ext.Viewport.animateActiveItem(this.getPsninfview(),{type:'slide',duration:300});
     },
 
-    /*查询数据库中的设置数据，并在页面上更新相应的数据*/
+    /*查询缓存中的设置数据，并在页面上更新相应的数据*/
     showSettingsData:function(){
+        var phy = localStorage.rm_phy; //生理记录提醒
+        var med = localStorage.rm_med; //药品到期提醒
+        var vac = localStorage.rm_vac; //疫苗接种提醒
+        var voice = localStorage.rm_voice; //提醒声音
+        var startTime = localStorage.muteTimeS;//静音开始时间
+        var endTime = localStorage.muteTimeE;//静音开始时间
+        if(typeof(phy) != "undefined"){
+            Ext.getCmp("toggle_phy").setValue(phy);
+        }
+        if(typeof(med) != "undefined"){
+            Ext.getCmp("toggle_med").setValue(med);
+        }
+        if(typeof(vac) != "undefined"){
+            Ext.getCmp("toggle_vac").setValue(vac);
+        }
+        if(typeof(voice) != "undefined"){
+            Ext.getCmp("toggle_voice").setValue(voice);
+        }
+        if(typeof(startTime) != "undefined" && typeof(endTime) != "undefined"){
+           Ext.get("muteBtn").dom.innerHTML = muteStartTime + "-" + muteEndTime;
+        }
         
+        // var tipsPanel = Ext.getCmp("tipsBox_rm");
+        // Ext.data.JsonP.request({
+        //     url:domain+'SettingOp/selectSettings',
+        //     callbackKey:'callback',
+        //     callback:'callback',
+        //     params:{
+        //         'userId':localStorage.userId,
+        //     },
+        //     callback:function(success,result){  
+        //         if(success&&result.result==0){
+        //             Ext.getCmp("toggle_phy").setValue(result.data.physiology);
+        //             Ext.getCmp("toggle_med").setValue(result.data.medicine);
+        //             Ext.getCmp("toggle_vac").setValue(result.data.vaccine);
+        //             Ext.getCmp("toggle_voice").setValue(result.data.voice);
+        //             muteStartTime= result.data.remindStart.getHours() + ":" + result.data.remindStart.getMinutes();
+        //             muteEndTime =  result.data.remindEnd.getHours() + ":" + result.data.remindEnd.getMinutes();
+        //             Ext.get("muteBtn").dom.innerHTML = muteStartTime + "-" + muteEndTime;
+        //         }else{
+        //             //操作失败(为判断原因1、数据库操作出错 2、网络连接问题 3、没有找到此用户设置)
+        //             tipsPanel.showTipsModal("操作失败",2000,"tipsBox_rm");
+        //         }  
+                
+        //     }
+
+        // });
     },
 
     /*显示静音设置页面-----静音时间段按钮tap事件*/
     showMuteTimeView:function(){
+        // var toggle = Ext.query("{cls=toggled}");//toggled
+        // console.log(toggle.getValue());
+        // var i = localStorage.wer;
+        // console.log(i);
+        // if("null"=muteStartTime){
+        //     var tipsPanel = Ext.getCmp("tipsBox_rm");
+        //     tipsPanel.showTipsModal("",2000,"tipsBox_rm");
+        // }
     	this.redirectTo('mute');
     },
 
     /*改变生理记录提醒状态-----toggle_phy的change事件*/
     changePhy:function(toggle, newValue, oldValue, eOpts){
+        // console.log("12");
     	var tipsPanel = Ext.getCmp("tipsBox_rm");
     	Ext.data.JsonP.request({
             url:domain+'SettingOp/modifyPhy',
@@ -75,6 +135,8 @@ Ext.define('cfa.controller.me.RemindAction',{
             },
             callback:function(success,result){  
                 if(success&&result.result==0){
+                    // Ext.getCmp();
+                    localStorage.rm_phy = newValue;
     				tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
                 }else{
                     //操作失败
@@ -97,6 +159,7 @@ Ext.define('cfa.controller.me.RemindAction',{
             },
             callback:function(success,result){  
                 if(success&&result.result==0){
+                    localStorage.rm_med = newValue;
     				tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
                 }else{
                     //操作失败
@@ -119,6 +182,7 @@ Ext.define('cfa.controller.me.RemindAction',{
             },
             callback:function(success,result){  
                 if(success&&result.result==0){
+                    localStorage.rm_vac = newValue;
     				tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
                 }else{
                     //操作失败
@@ -141,6 +205,7 @@ Ext.define('cfa.controller.me.RemindAction',{
             },
             callback:function(success,result){  
                 if(success&&result.result==0){
+                    localStorage.rm_voice = newValue;
     				tipsPanel.showTipsModal(result.data,2000,"tipsBox_rm");
                 }else{
                     //操作失败

@@ -36,7 +36,9 @@ Ext.define("cfa.view.me.RemindView",{
 				items:[{
 					xtype:'togglefield',
 					name:'toggle_phy',
+					id:'toggle_phy',
 					label:'生理记录提醒',
+					value:1,
 					labelWidth:'60%',
 					width:'100%',
 					height:40,
@@ -52,7 +54,9 @@ Ext.define("cfa.view.me.RemindView",{
 				items:[{
 					xtype:'togglefield',
 					name:'toggle_med',
+					id:'toggle_med',
 					label:'药品到期提醒',
+					value:1,
 					labelWidth:'60%',
 					width:'100%',
 					height:40,
@@ -67,7 +71,9 @@ Ext.define("cfa.view.me.RemindView",{
 				items:[{
 					xtype:'togglefield',
 					name:'toggle_vac',
+					id:'toggle_vac',
 					label:'疫苗接种提醒',
+					value:1,
 					labelWidth:'60%',
 					width:'100%',
 					height:40,
@@ -83,6 +89,7 @@ Ext.define("cfa.view.me.RemindView",{
 				items:[{
 					xtype:'togglefield',
 					name:'toggle_voice',
+					id:'toggle_voice',
 					label:'提醒声音',
 					labelWidth:'60%',
 					width:'100%',
@@ -95,6 +102,7 @@ Ext.define("cfa.view.me.RemindView",{
 			},{//静音时间段
 				xtype:'button',
 				name:'muteBtn',
+				id:'muteBtn',
 				cls:'psnMenu psninfMenu',
 				ui: 'plain',
 				html:['<div class="psnInfItem"><div class="psnInfItemTitle">静音时间段</div><div class="psnInfcontent">23:00-8:30</div></div>']
