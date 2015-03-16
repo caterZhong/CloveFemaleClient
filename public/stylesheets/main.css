@@ -458,3 +458,9 @@ to { -webkit-transform: translateX(0px); }
 #weekBox.hide{
 	height:10px;
 }
+
+/* 提交表单上方按钮 */
+.formTitleBtn{
+	color:#EA7B7B;
+	font-size:14px;
+}

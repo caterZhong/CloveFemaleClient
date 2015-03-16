@@ -65,18 +65,34 @@ Ext.define("cfa.view.preg.PregnantView",{
 			hideOnMaskTap:true,
 			centered:true,
 			// minHeight:361,
-			height:350,
+			height:320,
 			width:'90%',
 			zIndex:99, 
 			items:[{
 				xtype:'panel',
 				cls:'modalPanel',
-				html:'月经记录'	
+				html:'月经记录',
+				items:[
+				{
+					xtype:'button',
+					id:'pregMenseAnaBtn',
+					cls:'formTitleBtn',
+					text:'分析',
+					ui:'plain',
+					docked:'left'
+				},{
+					xtype:'button',
+					id:'pregMenseDelBtn',
+					cls:'formTitleBtn',
+					text:'删除',
+					ui:'plain',
+					docked:'right'
+				}]
 			},{
 				xtype:'formpanel',
 				id:'mensesForm',
 				// cls:'Form',
-				height:243,
+				height:200,
 				scrollable:'vertical',
 				url:domain+'FgMensesAction/addMenses',
 				items:[
@@ -160,7 +176,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 					xtype:'panel',
 					docked: "bottom",
 					layout:{
-						type:'hbox',
+						type:'vbox',
 						pack:'end'
 					},
 					defaults:{
@@ -195,7 +211,23 @@ Ext.define("cfa.view.preg.PregnantView",{
 			items:[{
 				xtype:'panel',
 				cls:'modalPanel',
-				html:'基础体温记录'	
+				html:'基础体温记录'	,
+				items:[
+				{
+					xtype:'button',
+					id:'pregTempAnaBtn',
+					cls:'formTitleBtn',
+					text:'分析',
+					ui:'plain',
+					docked:'left'
+				},{
+					xtype:'button',
+					id:'pregTempDelBtn',
+					cls:'formTitleBtn',
+					text:'删除',
+					ui:'plain',
+					docked:'right'
+				}]
 			},{
 				xtype	: 'panel',
 				layout	: "hbox",
@@ -218,7 +250,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 					cls:'picker',
 					slots:[{
 						id:'tempInpart',
-						name:'intpart',
+						name:'tempInpart',
 						value:36,
 						title:'时',
 						data:[
@@ -232,7 +264,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 							{text:'42',value:42},
 						]
 					},{
-						name:'floatpart',
+						name:'tempFloat',
 						value:80,
 						title:'分',
 						data:[
@@ -386,11 +418,27 @@ Ext.define("cfa.view.preg.PregnantView",{
 			items 			: [{
 				xtype 	:'panel',
 				cls 	:'modalPanel',
-				html 	:'孕重记录'	
+				html 	:'孕重记录',
+				items:[
+				{
+					xtype:'button',
+					id:'pregWeightAnaBtn',
+					cls:'formTitleBtn',
+					text:'分析',
+					ui:'plain',
+					docked:'left'
+				},{
+					xtype:'button',
+					id:'pregWeightDelBtn',
+					cls:'formTitleBtn',
+					text:'删除',
+					ui:'plain',
+					docked:'right'
+				}]
 			},{
 				xtype	: 'panel',
 				layout	: "hbox",
-				id		: 'temperatureForm',
+				id		: 'weightForm',
 				items 	:[{
 					xtype:'panel',
 					name:'pickerBox',
@@ -400,15 +448,16 @@ Ext.define("cfa.view.preg.PregnantView",{
 					width:'100%',
 					items:[{
 						xtype:'picker',
-						id:'wPicker',
+						id:'weiPicker',
 						modal:false,
 						cancelButton:false,
 						doneButton:false,
 						width:'100%',
 						height:228,
 						cls:'picker',
+					
 						slots:[{
-							name:'intpart',
+							name:'weightIntpart',
 							value:50,
 							data:[
 								{text:'20',value:20},
@@ -493,7 +542,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 								{text:'99',value:99},
 							]
 						},{
-							name:'floatpart',
+							name:'weightFloat',
 							value:5,
 							data:[
 								{text:'00',value:0},
@@ -510,6 +559,12 @@ Ext.define("cfa.view.preg.PregnantView",{
 						}]
 					}],
 				}],
+				getUrl: function(){
+					return domain+"FgGestationalWeightAction/addWeight" ;
+				},
+				reset: function(){//tvalue为体温,提交按mcolor钮id:submitTemperatureFormBtn,重置按钮handler:Ext.getCmp('temperatureForm').reset() ;
+					Ext.getCmp("weiPicker").setValue({'weightIntpart':50,'weightFloat':05});
+				}
 			},{//装载确定取消按钮的panel
 				xtype:'panel',
 				layout:'hbox',
@@ -525,7 +580,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 				},{
 					xtype:'button',
 					// name:'doneBtn_tmp',
-					// id:'submitTemperatureFormBtn',
+					id:'submitWeightFormBtn',
 					cls:'pickerBtn',
 					text:'确定',
 					width:'50%',
@@ -550,7 +605,23 @@ Ext.define("cfa.view.preg.PregnantView",{
 			items:[{ 
 				xtype:'panel',
 				cls:'modalPanel',
-				html:'胎动记录'	
+				html:'胎动记录',
+				items:[
+				{
+					xtype:'button',
+					id:'pregMovAnaBtn',
+					cls:'formTitleBtn',
+					text:'分析',
+					ui:'plain',
+					docked:'left'
+				},{
+					xtype:'button',
+					id:'pregMovDelBtn',
+					cls:'formTitleBtn',
+					text:'删除',
+					ui:'plain',
+					docked:'right'
+				}]
 				// items:[{
 				// 	html:"<div class='movementHeader'><div class='floatTips'>Tips</div><div class='movementTitle'>胎动记录</div></div>",
 					
@@ -558,7 +629,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 			},{
 				xtype	: 'panel',
 				layout	: "hbox",
-				id		: 'temperatureForm',
+				id		: 'movementForm',
 				items 	:[{
 					xtype:'panel',
 					name:'pickerBox',
@@ -568,7 +639,7 @@ Ext.define("cfa.view.preg.PregnantView",{
 					width:'100%',
 					items:[{
 						xtype:'picker',
-						id:'wPicker',
+						id:'mPicker',
 						modal:false,
 						cancelButton:false,
 						doneButton:false,
@@ -576,8 +647,8 @@ Ext.define("cfa.view.preg.PregnantView",{
 						height:228,
 						cls:'picker',
 						slots:[{
-							name:'times',
-							value:7,
+							id:'mTimes',
+							name:'mTimes',
 							data:[
 								{text:'5',value:5},
 								{text:'6',value:6},
@@ -601,7 +672,8 @@ Ext.define("cfa.view.preg.PregnantView",{
 	 				return domain+"FgFetalMovementAction/addMovement" ;
 	 			},
 	 			reset: function(){
-	 				Ext.getCmp('movementNum').setValue('0') ;
+	 				//Ext.getCmp('movementNum').setValue('0') ;
+	 				Ext.getCmp("mPicker").setValue({'mTimes':5});
 	 			}
 	 			// html:'胎动记录'	
 			},{//装载确定取消按钮的panel
@@ -618,8 +690,8 @@ Ext.define("cfa.view.preg.PregnantView",{
 					ui:'plain',
 				},{
 					xtype:'button',
-					// name:'doneBtn_tmp',
-					// id:'submitTemperatureFormBtn',
+					name:'doneBtn_tmp',
+					id:'submitMovementFormBtn',
 					cls:'pickerBtn',
 					text:'确定',
 					width:'50%',

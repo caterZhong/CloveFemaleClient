@@ -53,7 +53,10 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 			dateBtn: "button[name='dateBtn']",
 			
 			/* 日期伸缩按钮 */
-			dateFlex: "#dateFlex"
+			dateFlex: "#dateFlex",
+			
+			/* 月经分析按钮 */
+			pregMenseAnaBtn: "#pregMenseAnaBtn"
 		},
 		control: {
 			backBtn: {
@@ -149,6 +152,12 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 			dateBtn: {
 				tap: 'changeDateEvent'
 			},
+			/* 月经分析按钮 */
+			pregMenseAnaBtn:{
+				tap: function(){
+					window.location.href = "http://www.baidu.com"
+				}
+			}
 		},
 		routes: {
 			'pregnant': 'showPregnantview'
@@ -212,49 +221,57 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 	},
 
 	submitTemperatureForm: function() {
-		/*var form = this.getTemperatureForm() ;
+		var tempPicker = Ext.getCmp("tmpPicker");
+    	var value = tempPicker.getValues();//获取到timepicker的vlaue，包括时(value.hour)和分(value.minute)两个字段
+		var form = this.getTemperatureForm() ;
      	var params = {
-     		'model.tValue'	: Ext.getCmp('tValue').getValue(),
+     		'model.tValue'	: value.tempInpart+"."+value.tempFloat,
             'model.userId' 	: localStorage.userId,
             'model.dateStr'		: cyear+"-"+cmonth+"-"+cday
      	} ;
      	Ext.create('cfa.model.RecordModel',{
      		name : '' ,
      		type : ''
-     	}).saveRecord(form, params) ;*/
-		console.log(Ext.getCmp('tempInpart').getValue());
+     	}).saveRecord(form, params) ;
+     	this.loadPregMsg();
 	},
 
 	submitWeightForm: function() {
 		var form = this.getWeightForm();
-		var wValue = parseFloat(Ext.getCmp('wValue').getValue());
+		/*var wValue = parseFloat(Ext.getCmp('wValue').getValue());
 		if (isNaN(wValue) || wValue <= 0) {
 			Ext.Msg.alert("ERROR", "请输入为正数的孕重数值");
 			return;
-		}
+		}*/
+		var wPicker = Ext.getCmp('weiPicker');
+		var value1 = wPicker.innerItems[0].selectedNode.textContent;
+		var value2 = wPicker.innerItems[1].selectedNode.textContent;
 		var params = {
-			'model.wDate': Ext.getCmp('wDate').getValue(),
-			'model.wValue': wValue,
+			'model.wValue': value1+"."+value2,
 			'model.userId': localStorage.userId,
-			'model.mDate': new Date(cyear, cmonth, cday)
+			'model.dateStr': cyear + "-" + cmonth + "-" + cday
 		};
 		Ext.create('cfa.model.RecordModel', {
 			name: '',
 			type: ''
 		}).saveRecord(form, params);
+		this.loadPregMsg();
 	},
 
 	submitMovementForm: function() {
+		var mPicker = Ext.getCmp('mPicker');
+		var num = mPicker.innerItems[0].selectedNode.textContent;
 		var form = this.getMovementForm();
 		var params = {
-			'model.num': Ext.getCmp('movementNum').getValue(),
+			'model.num': num,
 			'model.userId': localStorage.userId,
-			'model.mDate': new Date(cyear, cmonth, cday)
+			'model.dateStr': cyear + "-" + cmonth + "-" + cday
 		};
 		Ext.create('cfa.model.RecordModel', {
 			name: '',
 			type: ''
 		}).saveRecord(form, params);
+		this.loadPregMsg();
 	},
 
 	/*隐藏温度的temperatureModal---cancelBtn_tmp的tap事件*/
@@ -295,6 +312,7 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 			success: function(result) {
 				if (result.result == 0) {
 					//输出月经信息
+					console.log(result.data);
 					if (typeof(result.data.mense) == "undefined")
 						document.getElementById('pregItem-0').innerHTML = "...";
 					else {
@@ -302,6 +320,19 @@ Ext.define('cfa.controller.preg.PregnantAction', {
 					}
 					if (typeof(result.data.temp) == "undefined")
 						document.getElementById('pregItem-1').innerHTML = "...";
+					else{
+						document.getElementById('pregItem-1').innerHTML = result.data.temp.tValue+" ℃";
+					}
+					if (typeof(result.data.weight) == "undefined")
+						document.getElementById('pregItem-2').innerHTML = "...";
+					else{
+						document.getElementById('pregItem-2').innerHTML = result.data.weight.wValue+" 克";
+					}
+					if (typeof(result.data.condition) == "undefined")
+						document.getElementById('pregItem-3').innerHTML = "...";
+					else{
+						document.getElementById('pregItem-3').innerHTML = result.data.condition.num+" 次";
+					}
 				} else {
 					Ext.Msg.alert("添加失败!");
 					console.log(result);
