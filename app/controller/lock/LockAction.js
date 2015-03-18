@@ -31,8 +31,10 @@ Ext.define('cfa.controller.lock.LockAction',{
     	locker.setToSetup(false) ;
     	if(window.dialLockType == "swLock"){
     		locker.hideReturnBtnOrNot(true) ;
+    		locker.setInfo("请绘制图案以解锁软件") ;
     	}else{
     		locker.hideReturnBtnOrNot(false) ;
+    		locker.setInfo("请绘制图案以解锁随手记") ;
     	}
 		var redirecter = this;
 		//设置获取密码之后的响应方法

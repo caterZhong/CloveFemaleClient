@@ -58,7 +58,7 @@ window.dialHeadTextHeight = 60 ;
                     items:[
                     ]
                 },{
-                    html:'<center id="dialHeadText">&nbsp;</center>',
+                    html:'<center id="dialHeadText">'+ (window.dialLockHeadText != undefined ? window.dialLockHeadText : '&nbsp;') + '</center>',
                     style:'background:white;height:'+ window.dialHeadTextHeight +'px;padding-top:'+window.dialHeadTextPadding+'px;',
                     docked:'top'
                 },
@@ -97,7 +97,10 @@ window.dialHeadTextHeight = 60 ;
 
         //设置屏幕上的提示文本
         setInfo: function(text){
-            document.getElementById('dialHeadText').innerHTML = text ;
+            if(document.getElementById('dialHeadText') != undefined){
+                document.getElementById('dialHeadText').innerHTML = text ;
+            }
+            window.dialLockHeadText = text ;
         },
 
         //重置密码器

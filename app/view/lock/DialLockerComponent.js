@@ -645,12 +645,14 @@ LockPoint.prototype.setRadius(window.innerHeight < 600 ? 14 : 20) ;     //设置
             var father = this ;
             setTimeout(function(){
                 father.initDraw() ;
-                if(LockPoint.prototype.toSetup){
-                    father.setInfo("绘制解锁图案") ;
+                if(window.dialLockHeadText != undefined){}
+                else if(LockPoint.prototype.toSetup){
+                    window.dialLockHeadText = "绘制解锁图案" ;
                 }else{
                     // father.setInfo("请绘制图案 height : " + canvas.getHeight() + " ; width : " + canvas.getWidth()) ;
-                    father.setInfo("请绘制图案") ;
+                    window.dialLockHeadText = "请绘制图案" ;
                 }
+                father.setInfo(window.dialLockHeadText) ;
                 // LockPoint.prototype.init();
                 //必须等到画面出来才能画东西，所以设置个定时，确保画面出来之后才调用
             }, 500) ;

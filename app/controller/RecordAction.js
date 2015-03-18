@@ -54,6 +54,11 @@ Ext.define('cfa.controller.RecordAction',{
 		        */
 				locker.setToSetup(false) ;
 
+				//显示返回按钮
+				locker.hideReturnBtnOrNot(false) ;
+
+				locker.setInfo("测试九宫格解锁") ;
+
 				//设置获取密码之后的响应方法
         		//方法的参数是密码字符串
 				locker.setSuccessCallback(function(passwd){
