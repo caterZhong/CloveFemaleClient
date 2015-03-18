@@ -14,7 +14,7 @@ Ext.application({
 	controllers: ["MainAction", "RecordAction", "kid.KidAction", "preg.PregnantAction", "NotebookAction", "NewNoteAction", "NoteSearchAction", "NoteSearchDetailAction",
 		"NoteDetailAction", "cfa.controller.medicine.MedicineAction", "cfa.controller.medicine.MedicineListAction", "chart.ChartAction", "chart.CustomizeDateAction", "PersonalAction",
 		"me.PsnInfAction", "me.SettingAction", "me.AboutAction", "me.RemindAction", "me.MuteTimeAction", "me.PrivacyAction", "me.AccountAction", "me.LoginAction",
-		"me.RegisterAction"
+		"me.RegisterAction","lock.LockAction"
 	],
 
 	views: ["MainView", "RecordView", "kid.KidView", "preg.PregnantView", "NotebookView", "SlideNav",

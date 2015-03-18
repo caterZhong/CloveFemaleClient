@@ -34,7 +34,7 @@ Ext.define("cfa.view.kid.KidView",{
 			{
 				xtype:'dateunit',
 				name:'dateunit',
-				id:'dateunit',
+				// id:'dateunit',
 				width:'100%'
 			},{//dataview菜单
 				xtype:"dataview",

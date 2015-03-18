@@ -38,7 +38,8 @@ Ext.define("cfa.view.me.PrivacyView",{
 					height:40,
 					cls:'toggle',
 					labelCls:'backLabel',
-					// name:'remindBtn',
+					name:'toggle_swPwd',
+					id:'toggle_swPwd',
 					ui: 'plain',
 				}]
 			},{//开通笔记密码保护
@@ -52,7 +53,8 @@ Ext.define("cfa.view.me.PrivacyView",{
 					height:40,
 					cls:'toggle',
 					labelCls:'backLabel',
-					// name:'remindBtn',
+					name:'toggle_notePwd',
+					id:'toggle_notePwd',
 					ui: 'plain',
 				}]
 				

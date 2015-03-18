@@ -327,7 +327,6 @@ Ext.define('cfa.controller.NotebookAction',{
 	    				}
 	    			}else{
 	 					showTipsModal("加载数据失败",2000);
-	    				// alert("加载数据失败");
 	    			}
 	    		}
 			})
