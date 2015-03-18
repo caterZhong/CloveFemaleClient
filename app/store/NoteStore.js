@@ -1,13 +1,14 @@
 Ext.define('cfa.store.NoteStore', {
 	extend: 'Ext.data.Store',
 	requires:['cfa.model.NoteModel','Ext.data.reader.Json','Ext.data.proxy.JsonP'],
-	model:'cfa.model.NoteModel',
-	autoLoad:true,
-
-	sorters:Ext.create('Ext.util.Sorter',{
+	config:{
+		model:'cfa.model.NoteModel',
+		autoLoad:true,
+		sorters:Ext.create('Ext.util.Sorter',{
 				property:'date',
 				direction:'desc',
 			}),
+	},
 	// proxy:{
 	// 	type:'jsonp',
 	// 	url:domain+'RandomNote/findNoteByUserId',
