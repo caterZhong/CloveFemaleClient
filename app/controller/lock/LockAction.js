@@ -43,7 +43,7 @@ Ext.define('cfa.controller.lock.LockAction',{
 				locker.warn("密码不正确，请重试") ;
 			}else{
 				// //退出密码器
-				locker.destroy();
+				locker.dispose();
 				// isInit = false;
 				var nextPage = localStorage.nextPage;
 				redirecter.redirectTo(nextPage);

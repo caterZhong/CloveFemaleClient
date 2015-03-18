@@ -497,7 +497,14 @@ LockPoint.prototype.init = function(){
         ratio = 0.6 ;
         hblankRatio = 0.15;
     }else{
-        ratio = 0.35 ;
+        if(window.innerHeight < 600){
+            //低像素设备
+            ratio = 0.73 ;
+            LockPoint.prototype.radius = LockPoint.prototype.radius * 0.7 ;
+            console.log("ratio = 0.73") ;
+        }else{
+            ratio = 0.35 ;
+        }
     }
     pointsAreaWidth = Math.round(ratio * (LockPoint.prototype.canvasWidth < LockPoint.prototype.canvasHeight ? LockPoint.prototype.canvasWidth : LockPoint.prototype.canvasHeight )) ;
     if(hblankRatio * LockPoint.prototype.canvasHeight + pointsAreaWidth > LockPoint.prototype.canvasHeight - LockPoint.prototype.radius * 2){
@@ -565,8 +572,8 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
         extend: 'Ext.draw.Component',
         config: {
             background: 'white',
-            width:400,
-            height:400,
+            // width:400,
+            // height:400,
             cantered:true,
             listeners: {
                 element: 'element',
@@ -601,12 +608,18 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
             // console.log("component initialize") ;
             var canvas = Ext.getCmp('dial-locker-component') ;
             var len ;
-            var screenWidth = screen.width ;      
-            var screenHeight = screen.height ;
+            // var screenWidth = screen.availWidth ;      
+            // var screenHeight = screen.availHeight ;
+
+            //小米强制使用innerWidth和innerHeight
+            var screenWidth = window.innerWidth ;      
+            var screenHeight = window.innerHeight ;
 
             //要除以像素密度，否则打包之后在某些高分辨率设备上会计算错误
+            //(在一加上测试是不能处以像素密度的，浏览器给出的长宽和各个组件的长宽使用的比例是一致的)
             // screenWidth = Math.round(screenWidth / window.devicePixelRatio) ;
             // screenHeight = Math.round(screenHeight / window.devicePixelRatio) ;
+            // alert("screen.availWidth:" + screen.availWidth + " ; screen.width : " + screen.width + "; window.devicePixelRatio:" + window.devicePixelRatio + "\nscreen.availHeight:" + screen.availHeight) ;
 
             if(screenWidth < screenHeight){
                 len = 0.92 * screenWidth
@@ -618,8 +631,10 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
             // console.log("screen.pixelDepth : " + screen.pixelDepth + " ; window.devicePixelRatio : " + window.devicePixelRatio) ;
             // console.log("Ext.getCmp('dialLockToolBar').getHeight() : " + Ext.getCmp('dialLockToolBar').getHeight() + " ; Ext.getCmp('dialBottomToolBar').getHeight() : " + Ext.getCmp('dialBottomToolBar').getHeight()) ;
             // console.log("window.dialHeadTextPadding : " + window.dialHeadTextPadding + " ; window.dialHeadTextHeight : " + window.dialHeadTextHeight) ;
-            canvas.setHeight(screenHeight - Ext.getCmp('dialLockToolBar').getHeight() - Ext.getCmp('dialBottomToolBar').getHeight()- window.dialHeadTextPadding - window.dialHeadTextHeight) ; 
+
+            canvas.setHeight(screenHeight - Ext.getCmp('dialLockToolBar').getHeight() - Ext.getCmp('dialBottomToolBar').getHeight()- window.dialHeadTextPadding - window.dialHeadTextHeight + 10) ; 
             canvas.setWidth(screenWidth) ; 
+
             // console.log("canvas.height : " + canvas.getHeight() + " ; canvas.width : " + canvas.getWidth()) ;
 
             LockPoint.prototype.baseX = 0 ;
@@ -634,6 +649,7 @@ LockPoint.prototype.setRadius(20) ;     //设置半径为20
                 if(LockPoint.prototype.toSetup){
                     father.setInfo("绘制解锁图案") ;
                 }else{
+                    // father.setInfo("请绘制图案 height : " + canvas.getHeight() + " ; width : " + canvas.getWidth()) ;
                     father.setInfo("请绘制图案") ;
                 }
                 // LockPoint.prototype.init();

@@ -1,6 +1,6 @@
 //<feature charts>
 window.dialHeadTextPadding = 10 ;
-window.dialHeadTextHeight = 70 ;
+window.dialHeadTextHeight = 60 ;
 (function () {
 
     // var seed = .5, count = 0;
@@ -102,6 +102,18 @@ window.dialHeadTextHeight = 70 ;
         //同时屏幕上会增加“重试”、“取消”两个按钮
         warn: function(text){
             LockPoint.prototype.showError(text) ;
+        },
+
+        //销毁密码器
+        dispose: function(){
+            var locker = Ext.getCmp('dial-locker') ;
+            locker.hide() ;
+            console.log("locker.hide()") ;
+            setTimeout(function(){
+                //必须延迟一点调用destroy，否则在安卓的浏览器上会出错
+                locker.destroy() ;
+                console.log("locker.destroy()") ;
+            }, 50) ;
         }
     });
 })();
