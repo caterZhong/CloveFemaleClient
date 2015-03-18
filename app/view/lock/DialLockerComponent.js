@@ -137,7 +137,7 @@ LockPoint.prototype.baseY           = 0 ;       //canvas原点相对页面的Y�
 LockPoint.prototype.canvasWidth     = 100 ;     //canvas的宽
 LockPoint.prototype.canvasHeight    = 100 ;     //canvas的高
 LockPoint.prototype.surface         = null ;    //Ext.draw.Surface
-LockPoint.prototype.radius          = 10 ;      //范围半径
+LockPoint.prototype.radius          = (window.innerHeight < 600 ? 10 : 7) ;      //范围半径
 LockPoint.prototype.radiusSquar     = 100 ;     //半径的平方
 LockPoint.prototype.lineWidth       = LockPoint.prototype.radius * 1.3 * 0.5 ;  //路径的宽度
 LockPoint.prototype.cmp             = null ;    //对绘图组件的引用
@@ -500,8 +500,7 @@ LockPoint.prototype.init = function(){
         if(window.innerHeight < 600){
             //低像素设备
             ratio = 0.73 ;
-            LockPoint.prototype.radius = LockPoint.prototype.radius * 0.7 ;
-            console.log("ratio = 0.73") ;
+            // LockPoint.prototype.radius = 7 ;
         }else{
             ratio = 0.35 ;
         }
@@ -540,7 +539,7 @@ LockPoint.prototype.changePathToError = function(){
     }
 }
 
-LockPoint.prototype.setRadius(20) ;     //设置半径为20
+LockPoint.prototype.setRadius(window.innerHeight < 600 ? 14 : 20) ;     //设置半径
 
 //<feature charts>
 (function () {

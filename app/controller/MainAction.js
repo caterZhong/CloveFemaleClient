@@ -45,6 +45,7 @@ Ext.define('cfa.controller.MainAction',{
     	// this.softwareController();//进入控制器
     	if(typeof(isOpenSwPwd)!="undefined" && isOpenSwPwd == 1){
     		localStorage.nextPage = "main";
+    		window.dialLockType = "swLock" ;
     		this.redirectTo("lock");//进入控制器
     	} 
 

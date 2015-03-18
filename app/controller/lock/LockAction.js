@@ -29,6 +29,11 @@ Ext.define('cfa.controller.lock.LockAction',{
     initPwd:function(locker,eOpts){
     	console.log("adf");
     	locker.setToSetup(false) ;
+    	if(window.dialLockType == "swLock"){
+    		locker.hideReturnBtnOrNot(true) ;
+    	}else{
+    		locker.hideReturnBtnOrNot(false) ;
+    	}
 		var redirecter = this;
 		//设置获取密码之后的响应方法
         //方法的参数是密码字符串

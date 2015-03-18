@@ -28,6 +28,7 @@ Ext.define('cfa.controller.RecordAction',{
     	// this.softwareController();//进入控制器
     	if(typeof(isOpenNotePwd)!="undefined" && isOpenNotePwd == 1){
     		localStorage.nextPage = "notebook";
+    		window.dialLockType = "nbLock" ;
     		this.redirectTo("lock");
     	}else{
     		this.redirectTo("notebook");

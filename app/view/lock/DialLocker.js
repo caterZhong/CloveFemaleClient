@@ -1,6 +1,7 @@
 //<feature charts>
 window.dialHeadTextPadding = 10 ;
 window.dialHeadTextHeight = 60 ;
+
 (function () {
 
     // var seed = .5, count = 0;
@@ -32,6 +33,7 @@ window.dialHeadTextHeight = 60 ;
                     items: [
                         {
                             text: '返回',
+                            id  : 'dialLockReturnBtn',
                             handler: function () {
                                 /*var draw = Ext.getCmp('dial-locker-component');
                                 draw.getSurface().destroy();
@@ -39,7 +41,8 @@ window.dialHeadTextHeight = 60 ;
                                 draw.renderFrame();*/
                                 Ext.getCmp('dial-locker').destroy() ;
                             }
-                        }/*,
+                        }
+                        /*,
                         {
                             text: 'Reset',
                             id:'dialResetBtn'
@@ -85,6 +88,11 @@ window.dialHeadTextHeight = 60 ;
         //默认是退出密码器，设置之后会覆盖默认的方法
         setCancelCallback: function(method){
           Ext.getCmp("dial-locker-component").cancelCallback = method ;  
+        },
+
+        //是否隐藏返回按钮，默认true
+        hideReturnBtnOrNot: function(hidden){
+            Ext.getCmp('dialLockReturnBtn').setHidden(hidden) ;
         },
 
         //设置屏幕上的提示文本
