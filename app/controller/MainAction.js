@@ -43,10 +43,10 @@ Ext.define('cfa.controller.MainAction',{
     	var isOpenSwPwd = localStorage.isOpenSwPwd;//获取isOpenSwPwd的最新状态
     	console.log("初始化软件---" + isOpenSwPwd);
     	// this.softwareController();//进入控制器
-    	// if(typeof(isOpenSwPwd)!="undefined" && isOpenSwPwd == 1){
+    	if(typeof(isOpenSwPwd)!="undefined" && isOpenSwPwd == 1){
     		localStorage.nextPage = "main";
     		this.redirectTo("lock");//进入控制器
-    	// } 
+    	} 
 
     },
    

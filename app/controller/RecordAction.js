@@ -24,8 +24,15 @@ Ext.define('cfa.controller.RecordAction',{
 
 	//随手记页面进入控制，当设置了密码保护的时候，先进入手势密码界面，在输入正确的情况下进入随手记页面
     randomNoteC:function(){
-    	localStorage.nextPage = "notebook";
-    	this.redirectTo("lock");
+    	var isOpenNotePwd = localStorage.isOpenNotePwd;//获取isOpenSwPwd的最新状态
+    	// this.softwareController();//进入控制器
+    	if(typeof(isOpenNotePwd)!="undefined" && isOpenNotePwd == 1){
+    		localStorage.nextPage = "notebook";
+    		this.redirectTo("lock");
+    	}else{
+    		this.redirectTo("notebook");
+    	} 
+    	
     },
 
 	//进入记录控点击不同菜单进入下一级菜单
