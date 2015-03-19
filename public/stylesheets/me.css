@@ -1,4 +1,15 @@
 /*我的样式*/
+.x-button.x-button-plain.btnToLogin{
+	/*float:right;*/
+	position: absolute;
+	right:10px;
+	top:43px;
+	/*border:1px solid gray;*/
+	background-color: #ddd;
+	color:#989797;
+	font-size:15px;
+}
+
 .x-button.psnSim{
 	border-radius: 0; /*去除button的圆角*/
 }

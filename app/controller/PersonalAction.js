@@ -13,6 +13,8 @@ Ext.define('cfa.controller.PersonalAction',{
 			tool:'button[name="tool"]',
 			/*设置按钮*/
 			settings:'button[name="settings"]',
+			/*登录按钮-----切换到登录页面*/
+			btnToLogin:'button[name="btnToLogin"]',
 			/*我页面*/
 			personalview:{
         		//引用我页面
@@ -41,6 +43,10 @@ Ext.define('cfa.controller.PersonalAction',{
 			settings:{
 				tap:'showSettingView',
 			},
+			/*登录按钮-----切换到登录页面*/
+			btnToLogin:{
+				tap:'showLoginView',
+			}
 		},
 		routes:{
 			'personal':'showPersonalview'
@@ -61,7 +67,7 @@ Ext.define('cfa.controller.PersonalAction',{
 
 	/*已经登录用户切换到个人信息详细页面,否则切换到登录页面-----个人信息按钮tap事件*/
 	showPsninfView:function(){
-		this.redirectTo("login");
+		this.redirectTo("psninf");
 		// this.redirectTo("psninf");
 	},
 
@@ -75,9 +81,13 @@ Ext.define('cfa.controller.PersonalAction',{
 
 	},
 
-	/*切换到设置页面-----设置按钮tap事件*/
+	/*切换到个人信息设置页面-----设置按钮tap事件*/
 	showSettingView:function(){
 		this.redirectTo("setting");
 	},
 
+	/*切换到登录页面-----登录按钮tap事件*/
+	showLoginView:function(){
+		this.redirectTo("login");
+	},
 });
