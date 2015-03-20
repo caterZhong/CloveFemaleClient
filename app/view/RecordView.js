@@ -1,7 +1,10 @@
 Ext.define("cfa.view.RecordView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store"],
+	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store","cfa.view.kid.KidView",
+	 		   "cfa.view.preg.PregnantView", "cfa.view.note.NotebookView", "cfa.view.note.SlideNav",
+	 		   "cfa.view.medicine.MedicineListView","cfa.view.medicine.MedicineView","cfa.view.chart.ChartView",
+	 		   "cfa.view.DateUnit",],
 	
 	xtype: "recordview",
 	config:{
