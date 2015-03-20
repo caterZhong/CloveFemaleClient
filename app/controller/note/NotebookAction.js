@@ -1,6 +1,6 @@
 var delNoteList = new Array();
 var delNoteIdList = new Array();
-Ext.define('cfa.controller.NotebookAction',{
+Ext.define('cfa.controller.note.NotebookAction',{
 	extend:'Ext.app.Controller',
 	requires:['Ext.DataView','Ext.data.JsonP','Ext.data.reader.Json','Ext.data.Store'],
 	config: {
@@ -204,7 +204,7 @@ Ext.define('cfa.controller.NotebookAction',{
     		var resetDelNote = this.resetDelNote;
     		this.closeDelModel();
     		Ext.data.JsonP.request({
-	    		url:domain+'RandomNote/delNote',
+	    		url:domain+'CNoteAction/delNote',
 	    		callbackKey:'callback',
 	    		callback:'callback',
 	    		params:{
@@ -285,7 +285,7 @@ Ext.define('cfa.controller.NotebookAction',{
     	var store = list.getStore();
     	var showTipsModal = this.showTipsModal;
 		Ext.data.JsonP.request({
-	    	url:domain+'RandomNote/findNoteByUserId',
+	    	url:domain+'CNoteAction/findNoteByUserId',
 	    	callbackKey:'callback',
 	    	callback:'callback',
 	    	params:{
@@ -294,7 +294,7 @@ Ext.define('cfa.controller.NotebookAction',{
 	    	callback:function(success,result){
 	    			
 	    		if(success&&result.result== 0){//操作成功
-	    			store.loadData(result.data);
+	    			store.setData(result.data);
 	    			if(store.getCount()==0){
 	    				showTipsModal("您还没有笔记哦！",1500);
 	    			}
@@ -313,7 +313,7 @@ Ext.define('cfa.controller.NotebookAction',{
     	var showTipsModal = this.showTipsModal;
     	if(store.getCount()<=1){
 			Ext.data.JsonP.request({
-	    		url:domain+'RandomNote/findNoteBookByUserId',
+	    		url:domain+'CNoteAction/findNoteBookByUserId',
 	    		callbackKey:'callback',
 	    		callback:'callback',
 	    		params:{
@@ -355,7 +355,7 @@ Ext.define('cfa.controller.NotebookAction',{
 	showAllNote:function(store,showTipsModal){
 		var showTipsModal = this.showTipsModal;
 		Ext.data.JsonP.request({
-    		url:domain+'RandomNote/findNoteByUserId',
+    		url:domain+'CNoteAction/findNoteByUserId',
     		callbackKey:'callback',
     		callback:'callback',
     		params:{
@@ -363,7 +363,7 @@ Ext.define('cfa.controller.NotebookAction',{
 			},
     		callback:function(success,result){
     			if(success&&result.data != ""){
-	    				store.loadData(result.data);
+	    				store.setData(result.data);
 	    		}else if(result.data == ""){
 	    				store.removeAll();
 	    				showTipsModal("您好还没有笔记哦！",2000);
@@ -381,7 +381,7 @@ Ext.define('cfa.controller.NotebookAction',{
 	showNoteInNoteBook : function(noteBookId,store){
 		var showTipsModal = this.showTipsModal;
 			Ext.data.JsonP.request({
-	    		url:domain+'RandomNote/findNoteByUserIdAndBookId',
+	    		url:domain+'CNoteAction/findNoteByUserIdAndBookId',
 	    		callbackKey:'callback',
 	    		callback:'callback',
 	    		params:{
@@ -389,7 +389,7 @@ Ext.define('cfa.controller.NotebookAction',{
 				},
 	    		callback:function(success,result){
 	    			if(success&&result.data != ""){
-	    				store.loadData(result.data);
+	    				store.setData(result.data);
 	    			}else if(result.data == ""){
 	    				store.removeAll();
 	    				showTipsModal("该笔记本中还没有笔记",2000);
@@ -468,7 +468,7 @@ Ext.define('cfa.controller.NotebookAction',{
     /*笔记本重命名操作*/
     doRenameForBb:function(store,index,noteBookId,nbName){
 	    Ext.data.JsonP.request({
-				url:domain+'RandomNote/renameNb',
+				url:domain+'CNoteAction/renameNb',
 				callbackKey:'callback',
 				callback:'callback',
 				params:{
@@ -488,7 +488,7 @@ Ext.define('cfa.controller.NotebookAction',{
     newNb:function(store,index,nbName){
     	var showTipsModal = this.showTipsModal;
     	Ext.data.JsonP.request({
-			    		url:domain+'RandomNote/addNoteBook2',
+			    		url:domain+'CNoteAction/addNoteBook2',
 			    		callbackKey:'callback',
 			    		callback:'callback',
 			    		params:{
@@ -527,7 +527,7 @@ Ext.define('cfa.controller.NotebookAction',{
 					var noteBookId = store.getAt(index).get("id");
 					
 					Ext.data.JsonP.request({
-			    		url:domain+'RandomNote/delNoteBook',
+			    		url:domain+'CNoteAction/delNoteBook',
 			    		callbackKey:'callback',
 			    		callback:'callback',
 			    		params:{

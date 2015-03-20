@@ -1,4 +1,4 @@
-Ext.define('cfa.controller.NewNoteAction',{
+Ext.define('cfa.controller.note.NewNoteAction',{
 	extend:'Ext.app.Controller',
 	requires:['Ext.DataView'],
 	config: {
@@ -65,7 +65,7 @@ Ext.define('cfa.controller.NewNoteAction',{
         var showTipsModal = this.showTipsModal;
         var thisParam = this;
         Ext.data.JsonP.request({
-            url:domain+'RandomNote/addNote2',
+            url:domain+'CNoteAction/addNote2',
             callbackKey:'callback',
             callback:'callback',
             params:{
@@ -142,7 +142,7 @@ Ext.define('cfa.controller.NewNoteAction',{
 
 
                 Ext.data.JsonP.request({
-                            url:domain+'RandomNote/addNoteBook2',
+                            url:domain+'CNoteAction/addNoteBook2',
                             callbackKey:'callback',
                             callback:'callback',
                             params:{

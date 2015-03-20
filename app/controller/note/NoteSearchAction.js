@@ -1,4 +1,4 @@
-Ext.define('cfa.controller.NoteSearchAction',{
+Ext.define('cfa.controller.note.NoteSearchAction',{
 	extend:'Ext.app.Controller',
 	requires:['Ext.DataView','Ext.data.JsonP','Ext.data.reader.Json','Ext.data.Store'],
 	config: {
@@ -73,7 +73,7 @@ Ext.define('cfa.controller.NoteSearchAction',{
     	
         var showTipsModal = this.showTipsModal;
     	Ext.data.JsonP.request({
-    		url:domain+'RandomNote/findNoteByKeyWord',
+    		url:domain+'CNoteAction/findNoteByKeyWord',
     		callbackKey:'callback',
     		callback:'callback',
     		params:{
@@ -82,7 +82,7 @@ Ext.define('cfa.controller.NoteSearchAction',{
 			},
     		callback:function(success,result){
     			if(success&&result.data != ""){
-    				store.loadData(result.data);
+    				store.setData(result.data);
     				list.setStore(store);
     			}else if(result.result==0 && result.data == ""){
     				store.removeAll();
@@ -189,7 +189,7 @@ Ext.define('cfa.controller.NoteSearchAction',{
             var resetDelNote = this.resetDelNote;
             this.closeDelModel();
     		Ext.data.JsonP.request({
-	    		url:domain+'RandomNote/delNote',
+	    		url:domain+'CNoteAction/delNote',
 	    		callbackKey:'callback',
 	    		callback:'callback',
 	    		params:{

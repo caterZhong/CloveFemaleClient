@@ -1,4 +1,4 @@
-Ext.define('cfa.controller.NoteDetailAction',{
+Ext.define('cfa.controller.note.NoteDetailAction',{
 	extend:'Ext.app.Controller',
 	requires:['Ext.DataView'],
 	config: {
@@ -54,7 +54,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
         var createDate = new Date(note.get('createDate'));
         var showTipsModal = this.showTipsModal;
         Ext.data.JsonP.request({
-            url:domain+'RandomNote/updateNote2',
+            url:domain+'CNoteAction/updateNote2',
             callbackKey:'callback',
             callback:'callback',
             params:{
@@ -90,7 +90,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
         var noteId = localStorage.noteId;
         var showTipsModal = this.showTipsModal;
         Ext.data.JsonP.request({
-                url:domain+'RandomNote/findNoteById',
+                url:domain+'CNoteAction/findNoteById',
                 callbackKey:'callback',
                 callback:'callback',
                 params:{
@@ -101,7 +101,7 @@ Ext.define('cfa.controller.NoteDetailAction',{
                     if(success&&result.data!=null&&result.data != ""){
                         var note = result.data;
                         var noteStore = Ext.getStore("NoteDetailStore");
-                        noteStore.loadData(result.data);
+                        noteStore.setData(result.data);
                         var modifyDate = new Date(note.recentMFDate);
                         var stringModifyDate = modifyDate.getFullYear()+"年"+(modifyDate.getMonth() + 1)+"月"+modifyDate.getDate()+ "日";
                         Ext.getCmp("noteModifyDate_text").setHtml(stringModifyDate);

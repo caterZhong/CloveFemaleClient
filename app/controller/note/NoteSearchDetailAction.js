@@ -1,4 +1,4 @@
-Ext.define('cfa.controller.NoteSearchDetailAction',{
+Ext.define('cfa.controller.note.NoteSearchDetailAction',{
 	extend:'Ext.app.Controller',
 	requires:['Ext.DataView','Ext.data.Store'],
 	config: {
@@ -62,7 +62,7 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
         var noteId = localStorage.notesearchId;
         var keyword = localStorage.keyword;
         Ext.data.JsonP.request({
-                url:domain+'RandomNote/findSearchNoteDetailByNoteIdAndKeyword',
+                url:domain+'CNoteAction/findSearchNoteDetailByNoteIdAndKeyword',
                 callbackKey:'callback',
                 callback:'callback',
                 params:{
@@ -72,7 +72,7 @@ Ext.define('cfa.controller.NoteSearchDetailAction',{
                 },
                 callback:function(success,result){    
                     if(success&&result.data!=null&&result.data != ""){
-                        store.loadData(result.data);
+                        store.setData(result.data);
                     
                     }else{
                         showTipsModal("加载数据失败",2000)

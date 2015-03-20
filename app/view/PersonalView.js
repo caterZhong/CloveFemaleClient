@@ -20,12 +20,23 @@ Ext.define("cfa.view.PersonalView",{
 				title: "我", 
 				docked: "top",
 			},{
-				xtype:'button',
-				html:['<div class="personalImg"><img src="public/images/headPhoto.jpg" /></div><div class="personalName">丁香妹子</div><div class="personalId">丁香号:37232892</div>'],
-				cls:'psnSim',
-				name:'psnSim',
-				id:'psnSim',
-				ui: 'plain',
+				xtype:'panel',
+				// html:'sdf',
+				cls:'psnSimPanel',
+				items:[{
+					xtype:'button',
+					html:['<div class="personalImg"><img src="public/images/headPhoto.jpg" /></div><div class="personalName">丁香妹子</div><div class="personalId">丁香号:37232892</div>'],
+					cls:'psnSim',
+					name:'psnSim',
+					id:'psnSim',
+					ui: 'plain',
+				},{
+					xtype:'button',
+					html:'登录',
+					name:'btnToLogin',
+					cls:'btnToLogin',
+					ui:'plain',
+				}]
 			},{
 				xtype:'button',
 				cls:'psnMenu',

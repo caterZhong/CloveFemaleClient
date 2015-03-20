@@ -1,7 +1,10 @@
 Ext.define("cfa.view.RecordView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store"],
+	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store","cfa.view.kid.KidView",
+	 		   "cfa.view.preg.PregnantView", "cfa.view.note.NotebookView", "cfa.view.note.SlideNav",
+	 		   "cfa.view.medicine.MedicineListView","cfa.view.medicine.MedicineView","cfa.view.chart.ChartView",
+	 		   "cfa.view.DateUnit",],
 	
 	xtype: "recordview",
 	config:{
@@ -32,7 +35,7 @@ Ext.define("cfa.view.RecordView",{
 						{imgSrc:'public/images/note.png',itemMsg:'随手记'},
 						{imgSrc:'public/images/medicine.png',itemMsg:'小药箱'},
 						{imgSrc:'public/images/chart.png',itemMsg:'图表'},
-						{imgSrc:'public/images/note.png',itemMsg:'九宫解锁测试'},
+						//{imgSrc:'public/images/note.png',itemMsg:'九宫解锁测试'},
 					]
 				},
 				itemTpl:'<div class="recordMenuItem"><img src="{imgSrc}" /><span>{itemMsg}</span><div class="more">...</div></div>',

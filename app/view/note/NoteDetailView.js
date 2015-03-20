@@ -1,4 +1,4 @@
-Ext.define("cfa.view.NoteDetailView",{
+Ext.define("cfa.view.note.NoteDetailView",{
 
 	extend: "Ext.Panel",
 	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store",

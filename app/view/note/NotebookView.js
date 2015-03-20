@@ -1,14 +1,15 @@
-Ext.define("cfa.view.NotebookView",{
+Ext.define("cfa.view.note.NotebookView",{
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store","Ext.form.FormPanel"],
+	requires: ["Ext.TabPanel","Ext.DataView","Ext.Panel","Ext.data.Store","Ext.form.FormPanel",
+			   "cfa.view.note.NotebookFirstView","cfa.view.note.NewNoteView", "cfa.view.note.NoteSearchView", 
+			   "cfa.view.note.NoteDetailView", "cfa.view.note.NoteSearchDetailView",],
 	
 	xtype: "notebookview",
 	config:{
 			/*随手记主页*/
 			fullscreen: true,
 			layout: "hbox",
-			id:"notebookmainview",
 			items : [{//数据加载提示Model
 						id:'nbTipsModal',
 						xtype:'panel',

@@ -1,11 +1,10 @@
 Ext.define("cfa.view.MainView", {
 
 	extend: "Ext.Container",
-	requires: ["Ext.TabPanel","cfa.view.RecordView","cfa.view.PersonalView"],
+	requires: ["Ext.TabPanel","cfa.view.RecordView","cfa.view.PersonalView",],
 	
 	xtype: "mainview",
 	
-	//html: "Test Container"
     
     config:{
     	layout:{
@@ -20,7 +19,6 @@ Ext.define("cfa.view.MainView", {
     		items:[
 				{
 					title: "记录控",
-					//html: "记录控",
 					iconCls: "compose",
 		            items: [{
 		            	xtype: "recordview"
@@ -38,7 +36,6 @@ Ext.define("cfa.view.MainView", {
 				},
 				{
 					title: "我",
-					// html:"我",
 					iconCls: "user",
 					items: [{
 		            	xtype: "personalview"

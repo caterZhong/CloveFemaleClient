@@ -1,8 +1,10 @@
-Ext.define('cfa.view.SlideNav', {
+Ext.define('cfa.view.note.SlideNav', {
 				extend: 'Ext.List',
 				xtype: 'slidenav',
 				requires : ['Ext.data.Store'],
-				cls : 'slidenav-list',
+				config:{
+					cls : 'slidenav-list',
+				}
 	
 });
 
