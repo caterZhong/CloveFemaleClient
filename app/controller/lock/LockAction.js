@@ -27,7 +27,8 @@ Ext.define('cfa.controller.lock.LockAction',{
     },
 
     initPwd:function(locker,eOpts){
-    	console.log("adf");
+    	// console.log("LockAction.initPwd");
+
     	locker.setToSetup(false) ;
     	if(window.dialLockType == "swLock"){
     		locker.hideReturnBtnOrNot(true) ;
@@ -39,6 +40,7 @@ Ext.define('cfa.controller.lock.LockAction',{
 		var redirecter = this;
 		//设置获取密码之后的响应方法
         //方法的参数是密码字符串
+        // console.log("setSuccessCallback start") ;
 		locker.setSuccessCallback(function(passwd){
 		// Ext.Msg.alert("Customized callback(" + passwd + ")") ;
 			// alert(passwd);
@@ -50,12 +52,16 @@ Ext.define('cfa.controller.lock.LockAction',{
 				locker.warn("密码不正确，请重试") ;
 			}else{
 				// //退出密码器
-				locker.dispose();
+				locker.reset() ;
+				// Ext.getCmp('dial-locker').destroy() ;
+				// console.log("destroy...................") ;
+				// locker.dispose();
 				// isInit = false;
 				var nextPage = localStorage.nextPage;
 				redirecter.redirectTo(nextPage);
 			}
 		}) ;
+        // console.log("setSuccessCallback end") ;
     },
 
 });
