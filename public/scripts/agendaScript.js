@@ -3,7 +3,7 @@
 * @author Tanshichang
 * @since 2015-02-27
 */
-console.log("开始定义Agenda") ;
+// console.log("开始定义Agenda") ;
 function Agenda(title, description, startTime, endTime, type, remindMinutes, userId){
 	this.title = title;
 	this.description = description ;
@@ -21,12 +21,12 @@ function Agenda(title, description, startTime, endTime, type, remindMinutes, use
 		*/
 		//保存到服务器
 		//...
-		console.log("开始1: Agenda.create") ;
+		// console.log("开始1: Agenda.create") ;
 		var am = Ext.create('cfa.model.AgendaModel',{
      		name : '' ,
      		type : ''
      	}) ;
-     	console.log("开始2: Agenda.create") ;
+     	// console.log("开始2: Agenda.create") ;
 
      	am.create(me.title, me.description, me.startTime, me.endTime, me.type, me.remindMinutes, me.userId, function(resultId){
      		//create agenda to server : success callback
@@ -40,7 +40,7 @@ function Agenda(title, description, startTime, endTime, type, remindMinutes, use
             sa = "id="+ resultId+"\ntitle=" + title + "\ndescription=" + description + "\nstartTime="
             	+ startTime + "\nendTime=" + endTime + "\ntype=" + type 
             	+ "\nremindMinutes=" + remindMinutes + "\nuserId=" + userId ;
-            console.log("writeCommandToFile") ;
+            // console.log("writeCommandToFile") ;
             me.writeCommandToFile(sa, me.OP_TYPE_ADD, successCallback, failCallback) ;
 
 			
@@ -49,7 +49,7 @@ function Agenda(title, description, startTime, endTime, type, remindMinutes, use
      		console.log("服务器：创建日程失败") ;
      		failCallback() ;
      	}) ;
-     	console.log("开始3: Agenda.create") ;
+     	// console.log("开始3: Agenda.create") ;
      }; //this.create
 
 	this.update = function(successCallback, failCallback){
@@ -140,4 +140,4 @@ Agenda.prototype.AGENDA_TYPE_MEDECINE_STALE = 2 ;
 Agenda.prototype.OP_TYPE_ADD = 1 ;
 Agenda.prototype.OP_TYPE_DELETE = 2 ;
 Agenda.prototype.OP_TYPE_UPDATE = 3 ;
-console.log("定义Agenda完成") ;
+// console.log("定义Agenda完成") ;

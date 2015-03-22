@@ -1,3 +1,14 @@
+
+//当加载完成之后，隐藏加载动画
+document.addEventListener("deviceready", hideSplashScreen, false);
+function hideSplashScreen() {
+    // console.log("device ready!!!!set timeout to hide splash screen") ;
+    setTimeout(function(){
+        // console.log("splashscreen hide!!!!!!") ;
+        navigator.splashscreen.hide();
+    }, 500) ;    
+}
+
 /**
 * 初始化文件封装方法
 * @author Tanshichang
